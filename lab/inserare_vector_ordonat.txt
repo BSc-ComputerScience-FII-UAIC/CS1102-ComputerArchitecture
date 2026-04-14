@@ -1,0 +1,62 @@
+#include <iostream>
+
+using namespace std;
+
+void insert(int* array, int size, int max_size, int value)
+{
+	_asm
+	{
+		xor eax, eax;
+		xor ebx, ebx; // array
+		xor ecx, ecx; // pentru schimbare
+		xor edx, edx;
+		xor edi, edi; // i
+		xor esi, esi; // value
+
+		mov esi, [ebp + 12];
+		inc esi;
+		cmp esi, [ebp + 16];
+		jge sf_insert;
+
+		mov ebx, [ebp + 8]; // array
+		mov esi, [ebp + 20]; // value
+
+		mov edi, [ebp + 12];
+		dec edi;
+
+	bucla_insert_1:
+		cmp edi, 0;
+		jl sf_bucla_insert_1;
+		cmp[ebx + edi * 4], esi;
+		jl sf_bucla_insert_1;
+
+		mov ecx, [ebx + edi * 4];
+		mov[ebx + edi * 4 + 4], ecx;
+
+		dec edi;
+		jmp bucla_insert_1;
+	sf_bucla_insert_1:
+
+		mov[ebx + edi * 4 + 4], esi;
+
+
+	sf_insert:
+		nop;
+	}
+}
+
+
+int main()
+{
+	int vector[10] = { 1, 2, 3, 5, 6, 7 };
+	int el = 4;
+
+	insert(vector, 6, 10, el);
+
+	for (int i = 0; i < 7; ++i)
+	{
+		cout << vector[i] << " ";
+	}
+
+	return 0;
+}

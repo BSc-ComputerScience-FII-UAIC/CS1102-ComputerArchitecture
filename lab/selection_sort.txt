@@ -1,0 +1,102 @@
+#include <iostream>
+
+using namespace std;
+
+/*
+Procedure selection_sort(a, n)
+begin
+	for i ← n − 1 downto 1 do
+		imax ← i
+		for j ← i − 1 downto 0 do
+			if (a[j] > a[imax]) then
+				imax ← j
+		if (i! = imax) then
+			swap(a[i], a[imax])
+end
+
+*/
+
+void selection_sort(int* vector, int n)
+{
+	_asm
+	{
+		xor eax, eax; // swap
+		xor ebx, ebx; // i
+		xor ecx, ecx; // j
+		xor edx, edx; // vector[imax] // swap
+		xor edi, edi; // vector
+		xor esi, esi; // imax
+
+		mov edi, [ebp + 8]; // vector
+
+		mov ebx, [ebp + 12];
+		dec ebx;
+
+	for_selection_sort_1:
+		cmp ebx, 1;
+		jl sf_for_selection_sort_1;
+
+		mov esi, ebx; // imax = i;
+
+		mov ecx, ebx;
+		dec ecx; // j = i - 1
+
+	for_selection_sort_2:
+		cmp ecx, 0;
+		jl sf_for_selection_sort_2;
+
+		mov edx, [edi + esi * 4];
+		cmp[edi + ecx * 4], edx;
+		jle sf_if_selection_sort_1;
+
+		mov esi, ecx;
+
+	sf_if_selection_sort_1:
+
+
+		dec ecx; // --j
+		jmp for_selection_sort_2;
+	sf_for_selection_sort_2:
+
+
+
+		cmp ebx, esi;
+		je sf_if_selection_sort_2;
+
+		mov edx, [edi + esi * 4];
+		mov eax, [edi + ebx * 4];
+
+		mov[edi + esi * 4], eax;
+		mov[edi + ebx * 4], edx;
+
+
+	sf_if_selection_sort_2:
+
+
+		dec ebx; // --i
+		jmp for_selection_sort_1;
+	sf_for_selection_sort_1:
+
+
+	}
+}
+
+
+
+
+
+int main()
+{
+
+	int vector[] = { 10, 6, 7, 100, 65, 3, 9, 1, 101};
+	int n = sizeof(vector) / sizeof(vector[0]);
+
+	selection_sort(vector, n);
+
+	for (int i = 0; i < n; ++i)
+	{
+		cout << vector[i] << " ";
+	}
+
+	return 0;
+}

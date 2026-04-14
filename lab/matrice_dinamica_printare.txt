@@ -1,0 +1,183 @@
+#include <iostream>
+
+using namespace std;
+
+
+int main()
+{
+    constexpr int n = 5;
+    constexpr int m = 5;
+
+    char format[] = "%d ";
+    char new_line[] = "\n";
+
+
+	int** array{ new int* [5] }; 
+	for (int count = 0; count < 5; ++count)
+		array[count] = new int[5]; 
+
+
+    _asm {
+        xor eax, eax; // matrice
+        xor ebx, ebx;
+        xor ecx, ecx;
+        xor edx, edx;
+        xor edi, edi;
+        xor esi, esi;
+
+        mov eax, array;
+
+        push m;
+        push n;
+        push eax;
+        call lucru_matrice_dinamica;
+        add esp, 12;
+
+        mov eax, array;
+        lea ebx, format;
+        lea ecx, new_line;
+
+        push ecx;
+        push ebx;
+        push m;
+        push n;
+        push eax;
+        call print_matrice_dinamica;
+        add esp, 20;
+
+        jmp sf_main;
+
+
+    //==========================
+    // Lucru matrice dinamica
+    //==========================
+    lucru_matrice_dinamica:
+        push ebp;
+        mov ebp, esp;
+
+        xor eax, eax;
+        xor ebx, ebx; 
+        xor ecx, ecx; 
+        xor edx, edx;
+        xor edi, edi; // matrice
+        xor esi, esi;
+
+        mov edi, [ebp + 8];
+
+        mov ebx, 0;
+    bucla:
+        cmp ebx, [ebp + 12];
+        je gata;
+        mov esi, [edi + 4 * ebx];
+
+        mov ecx, 0;
+    bucla1:
+        cmp ecx, [ebp + 16];
+        je gata1;
+        cmp ebx, ecx;
+        jne el0;
+    el1:
+        mov dword ptr[esi + ecx * 4], 1;
+        inc ecx;
+        jmp bucla1;
+    el0:
+        mov dword ptr[esi + ecx * 4], 0;
+        inc ecx;
+        jmp bucla1;
+    gata1:
+        inc ebx;
+        jmp bucla;
+    gata:
+
+        pop ebp;
+        ret;
+
+
+    //==========================
+    // Print matrice dinamica
+    //==========================
+    print_matrice_dinamica:
+        push ebp;
+        mov ebp, esp;
+
+        xor eax, eax;
+        xor ebx, ebx; // i-ul
+        xor ecx, ecx; // j-ul
+        xor edx, edx;
+        xor edi, edi; // matrice
+        xor esi, esi; // raduri
+
+        mov edi, [ebp + 8]; // matrice
+
+        // [ebp + 8] - matrice
+        // [ebp + 12] - n
+        // [ebp + 16] - m
+        // [ebp + 20] - format
+        // [ebp + 24] - newline
+
+        mov ebx, 0;
+    bucla_1:
+        cmp ebx, [ebp + 12];
+        je gata_1;
+        mov esi, [edi + 4 * ebx];
+
+        mov ecx, 0;
+    bucla_2:
+        cmp ecx, [ebp + 16];
+        je gata_2;
+        cmp ebx, ecx;
+    
+        mov edx, dword ptr[esi + ecx * 4];
+
+        push ebx;
+        push ecx;
+        push edi;
+        push esi;
+
+        push edx;
+        push[ebp + 20];
+        call printf;
+        add esp, 8;
+
+        pop esi;
+        pop edi;
+        pop ecx;
+        pop ebx;
+
+        inc ecx; // ++j
+        jmp bucla_2;
+    gata_2:
+
+        push ebx;
+        push ecx;
+        push edi;
+        push esi;
+
+        push[ebp + 24];
+        call printf;
+        add esp, 4;
+
+        pop esi;
+        pop edi;
+        pop ecx;
+        pop ebx;
+
+
+        inc ebx; // ++i
+        jmp bucla_1;
+    gata_1:
+
+        pop ebp;
+        ret;
+
+    sf_main:
+        nop;
+
+    }
+
+	for (int count = 0; count < 5; ++count)
+		delete[] array[count];
+	delete[] array;
+
+	return 0;
+}

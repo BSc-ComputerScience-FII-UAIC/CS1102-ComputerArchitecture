@@ -1,0 +1,164 @@
+#include <stdio.h>
+#include <iostream>
+
+void calcul_transpusa(int* transpusa, int* matrice, int n, int m)
+{
+	_asm
+	{
+		xor eax, eax;
+		xor ebx, ebx; // i
+		xor ecx, ecx; // j
+		xor edx, edx;
+		xor edi, edi;
+		xor esi, esi; // matrice - transpusa
+
+		// transpusa [ebp + 8]
+		// matricea [ebp + 12]
+		// n [ebp + 16]
+		// m [ebp + 20]
+
+	bucla_calc_1:
+		cmp ebx, [ebp + 16]; // cmp i, n
+		jge sf_bucla_calc_1;
+
+		mov ecx, 0; // j = 0
+
+	bucla_calc_2:
+		cmp ecx, [ebp + 20];
+		jge sf_bucla_calc_2;
+
+		mov eax, [ebp + 20];
+		mul ecx;
+		add eax, ebx;
+
+		mov esi, [ebp + 12]; // punem matricea in esi
+		mov edi, [esi + eax * 4];
+
+		mov eax, [ebp + 16];
+		mul ebx;
+		add eax, ecx;
+
+		mov esi, [ebp + 8]; // punem transpusa in esi
+		mov[esi + eax * 4], edi;
+
+		inc ecx; // ++j
+		jmp bucla_calc_2;
+	sf_bucla_calc_2:
+
+		inc ebx; // ++i
+		jmp bucla_calc_1;
+	sf_bucla_calc_1:
+
+	}
+
+}
+
+void print_info(int* matrice, int n, int m, const char* format, const char* new_line)
+{
+	_asm
+	{
+		xor eax, eax;
+		xor ebx, ebx; // i
+		xor ecx, ecx; // j
+		xor edx, edx;
+		xor edi, edi; // ce trebuie de printat
+		xor esi, esi; // matrice
+
+		// matrice [ebp + 8]
+		mov esi, [ebp + 8];
+
+		// n [ebp + 12]
+		// m [ebp + 16]
+		// format [ebp + 20]
+		// new_line [ebp + 24]
+
+	bucla_print_1:
+		cmp ebx, [ebp + 12]; // cmp i, n
+		jge sf_bucla_print_1;
+
+		mov ecx, 0; // j = 0
+
+	bucla_print_2:
+		cmp ecx, [ebp + 16];
+		jge sf_bucla_print_2;
+
+		mov eax, [ebp + 16];
+		mul ebx;
+		add eax, ecx;
+		mov edi, [esi + eax * 4];
+
+		//
+		push ebx;
+		push ecx;
+		push esi;
+		//
+
+		push edi;
+		push[ebp + 20];
+		call printf;
+		add esp, 8;
+
+		//
+		pop esi;
+		pop ecx;
+		pop ebx;
+		//
+
+		inc ecx;
+		jmp bucla_print_2;
+	sf_bucla_print_2:
+
+		//
+		push ebx;
+		push ecx;
+		push esi;
+		//
+
+		push[ebp + 24];
+		call printf;
+		add esp, 4;
+
+		//
+		pop esi;
+		pop ecx;
+		pop ebx;
+		//
+
+		inc ebx; // ++i
+		jmp bucla_print_1;
+	sf_bucla_print_1:
+
+	}
+}
+
+
+int main()
+{
+	const char* format = "%d ";
+	const char* new_line = "\n";
+
+	const int n = 3;
+	const int m = 3;
+
+	int matrice[n][m] = 
+	{
+		{1,2,3},
+		{4,5,6},
+		{7,8,9}
+	};
+
+	int* ptr = (int*)matrice;
+
+	print_info(ptr, n, m, format, new_line);
+
+	std::cout << "\n";
+
+
+	int matrice2[n][m];
+	int* ptr2 = (int*)matrice2;
+
+	calcul_transpusa(ptr2, ptr, n, m);
+	print_info(ptr2, n, m, format, new_line);
+
+	return 0;
+}

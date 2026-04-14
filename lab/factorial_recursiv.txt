@@ -1,0 +1,92 @@
+#include <iostream>
+
+using namespace std;
+
+
+int main()
+{
+
+	int rez = 0;
+
+	_asm
+	{
+	//==============
+	//     MAIN
+
+		xor eax, eax; 
+		xor ebx, ebx; 
+		xor ecx, ecx; 
+		xor edx, edx;
+		xor edi, edi;
+		xor esi, esi;
+
+		push 5;
+		call factorial;
+		add esp, 4;
+
+		mov rez, eax;
+
+		jmp sf_main;
+
+
+	//==================
+	//     FACTORIAL
+	//==================
+
+		//
+		// int factorial(int n)
+		//{
+		//	if (n <= 1)
+		//		return 1;
+		//	else
+		//		return n * factorial(n - 1);
+		//}
+		//
+	factorial:
+		push ebp;
+		mov ebp, esp;
+
+		xor eax, eax; // rez
+		xor ebx, ebx; // n
+		xor ecx, ecx; // n - 1
+		xor edx, edx;
+		xor edi, edi;
+		xor esi, esi;
+
+		mov ebx, [ebp + 8];
+
+		cmp ebx, 1;
+		jg fact_else;
+
+		mov eax, 1;
+
+		pop ebp;
+		ret;
+
+	fact_else:
+
+		mov ecx, ebx;
+		dec ecx;
+
+		push ebx;
+
+		push ecx;
+		call factorial;
+		add esp, 4;
+
+		pop ebx;
+		mov edx, 0;
+		mul ebx;
+
+
+		pop ebp;
+		ret;
+
+	sf_main:
+		nop;
+	}
+
+	cout << rez;
+
+	return 0;
+}

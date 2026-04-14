@@ -1,0 +1,68 @@
+#include <iostream>
+
+using namespace std;
+
+void traversare_matrice(int* matrice, int n, int m)
+{
+	_asm
+	{
+		xor eax, eax;
+		xor ebx, ebx; // i
+		xor ecx, ecx; // j
+		xor edx, edx;
+		xor edi, edi;
+		xor esi, esi; // matrice
+
+		// matrice [ebp + 8]
+		mov esi, [ebp + 8];
+
+		// n [ebp + 12]
+		// m [ebp + 16]
+
+
+	bucla_matrice_1:
+		cmp ebx, [ebp + 12]; // cmp i, n
+		jge sf_bucla_matrice_1;
+
+		mov ecx, 0; // j = 0
+	bucla_matrice_2:
+		cmp ecx, [ebp + 16]; // cmp j, m
+		jge sf_bucla_matrice_2;
+
+		mov eax, [ebp + 16];
+		mul ebx;
+		add eax, ecx;
+
+		mov dword ptr[esi + eax * 4], 0; // aici lucram cu matricea
+
+
+		inc ecx; // ++j
+		jmp bucla_matrice_2;
+	sf_bucla_matrice_2:
+
+		inc ebx; // ++i
+		jmp bucla_matrice_1;
+	sf_bucla_matrice_1:
+
+	}
+}
+
+int main()
+{
+    int m[10][10];
+
+	int* p = (int*)m;
+
+	traversare_matrice(p, 10, 10);
+
+    for (int i = 0; i < 10; ++i)
+    {
+		for (int j = 0; j < 10; ++j)
+		{
+			cout << m[i][j] << " ";
+		}
+		cout << "\n";
+    }
+
+    return 0;
+}

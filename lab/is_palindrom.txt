@@ -1,0 +1,64 @@
+#include <iostream>
+
+using namespace std;
+
+
+int main()
+{
+	int nr = -268435441;
+	bool is_palindrom;
+	int bits = sizeof(nr) * 8;
+	
+	_asm
+	{
+		pusha;
+
+		xor eax, eax; // nr
+		xor ebx, ebx; // nr de repetari
+		xor ecx, ecx; // nr oglindit
+		xor edx, edx; // contor
+		xor esi, esi; // nr cu care lucram
+		xor edi, edi;
+
+		mov eax, nr;
+		mov esi, nr;
+		mov ebx, bits;
+
+	bucla:
+		cmp edx, ebx;
+		jge sf_bucla;
+
+		shl ecx, 1;
+
+		shr esi, 1;
+		jnc salt;
+
+		add ecx, 1;
+
+	salt:
+		inc edx;
+		jmp bucla;
+
+	sf_bucla:
+
+		xor eax, ecx;
+
+		cmp eax, 0;
+		jne else_;
+
+		mov is_palindrom, 1;
+		jmp sf_if;
+
+	else_:
+		mov is_palindrom, 0;
+
+	sf_if:
+
+		popa;
+	}
+
+
+	cout << is_palindrom;
+
+	return 0;
+}

@@ -1,0 +1,76 @@
+#include <iostream>
+
+using namespace std;
+
+void sortare(int* vector, int n)
+{
+	bool gata = false;
+	_asm
+	{
+		xor eax, eax; // numarul actual din vector
+		xor ebx, ebx; // numarul urmator din vector
+		xor ecx, ecx; // i-ul pentru for loop
+		xor edx, edx;
+		xor esi, esi; // vector
+		xor edi, edi; // nr_elemente
+
+		
+		mov esi, [ebp + 8]; // vector
+		mov edi, [ebp + 12]; // nr_elemente
+		dec edi;
+
+
+	start_bubblesort:
+		cmp gata, 0; // verificam  daca gata == false
+		jne end_bubblesort; 
+
+		mov gata, 1; // gata = true; presupunem ca e sortat
+
+
+		mov ecx, 0;
+	start_for_bubble:
+		cmp ecx, edi; // ecx < edi // i < n
+		jge end_while;
+
+		
+		mov eax, [esi + ecx * 4];
+		mov ebx, [esi + ecx * 4 + 4];
+		cmp eax, ebx;
+		jle end_for_bubble;
+
+		// interschimbam
+		mov[esi + ecx * 4], ebx;
+		mov[esi + ecx * 4 + 4], eax;
+		mov gata, 0; // gata == false
+
+	end_for_bubble:
+
+		inc ecx; // ++ i
+		jmp start_for_bubble;
+
+	end_while:
+		jmp start_bubblesort;
+
+	end_bubblesort:
+		nop;
+
+	}
+}
+
+
+
+
+int main()
+{
+	int a[] = { 10, 5, 4, 7, 9, 2, 1, 0, 3 };
+	int nr_elem = sizeof(a) / sizeof(a[0]);
+
+	sortare(a, nr_elem);
+
+	for (int i = 0; i < nr_elem; ++i)
+	{
+		cout << a[i] << " ";
+	}
+
+	return 0;
+}

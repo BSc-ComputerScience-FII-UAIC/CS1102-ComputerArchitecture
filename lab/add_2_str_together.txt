@@ -1,0 +1,172 @@
+#include <iostream>
+
+using namespace std;
+
+int str_add(char* str1, char* str2, int size) 
+{
+	_asm {
+
+		xor eax, eax; 
+		xor ebx, ebx; // str1
+		xor ecx, ecx; // str2
+		xor edx, edx; // dl - pentru a adauga in str1
+		xor edi, edi; // index de sf al lui str1
+		xor esi, esi; // index de iterat str2
+
+		mov ebx, [ebp + 8];
+		mov ecx, [ebp + 12];
+
+		// calculez in edi indexul de sfarsit al lui str1
+		mov edi, 0;
+	while_1:
+		cmp[ebx + edi], '\0';
+		je stop_while_1;
+		inc edi;
+		jmp while_1;
+
+	stop_while_1:
+
+		// calculez in eax lungimea lui str2
+		mov eax, 0;
+	while_2:
+		cmp[ecx + eax], '\0';
+		je stop_while_2;
+		inc eax;
+		jmp while_2;
+
+	stop_while_2:
+
+		add eax, edi; // vedem daca in str1 va incapea str2
+		cmp eax, [ebp + 16];
+		jge return_f; // daca nu, returnam 0
+
+		mov esi, 0;
+	while_3:
+		cmp[ecx + esi], '\0';
+		je return_t;
+		cmp edi, [ebp + 16];
+		je return_f;
+
+		mov dl, [ecx + esi];
+		mov[ebx + edi], dl;
+
+		inc esi;
+		inc edi;
+		jmp while_3;
+
+	return_t:
+		mov eax, 1;
+		jmp return_;
+
+	return_f:
+		mov eax, 0;
+
+	return_:
+	}
+}
+
+int main()
+{
+
+	char str1[100] = "Salut ce faci? ";
+	char str2[100] = "Salut, bine, tu?";
+
+	str_add(str1, str2, 100);
+
+	_asm
+	{
+		xor eax, eax;
+		xor ebx, ebx;
+		xor ecx, ecx;
+		xor edx, edx;
+		xor edi, edi;
+		xor esi, esi;
+
+		lea ebx, str1;
+		lea ecx, str2;
+
+
+		push 100; // maxim size
+		push ecx;
+		push ebx;
+		call str_add_asm;
+		add esp, 12;
+
+		jmp sf_main;
+
+
+		//=======================
+		//	Str add asm
+		//=======================
+	str_add_asm:
+		push ebp;
+		mov ebp, esp;
+
+		xor eax, eax;
+		xor ebx, ebx; // str1
+		xor ecx, ecx; // str2
+		xor edx, edx; // dl - pentru a adauga in str1
+		xor edi, edi; // index de sf al lui str1
+		xor esi, esi; // index de iterat str2
+
+		mov ebx, [ebp + 8];
+		mov ecx, [ebp + 12];
+
+		// calculez in edi indexul de sfarsit al lui str1
+		mov edi, 0;
+	while_asm_1:
+		cmp[ebx + edi], '\0';
+		je stop_while_asm_1;
+		inc edi;
+		jmp while_asm_1;
+
+	stop_while_asm_1:
+
+		// calculez in eax lungimea lui str2
+		mov eax, 0;
+	while_asm_2:
+		cmp[ecx + eax], '\0';
+		je stop_while_asm_2;
+		inc eax;
+		jmp while_asm_2;
+
+	stop_while_asm_2:
+
+		add eax, edi;
+		cmp eax, [ebp + 16];
+		jge return_asm_f;
+
+		mov esi, 0;
+	while_asm_3:
+		cmp[ecx + esi], '\0';
+		je return_asm_t;
+		cmp edi, [ebp + 16];
+		je return_asm_f;
+
+		mov dl, [ecx + esi];
+		mov[ebx + edi], dl;
+
+		inc esi;
+		inc edi;
+		jmp while_asm_3;
+
+	return_asm_t:
+		mov eax, 1;
+		jmp return_asm_;
+
+	return_asm_f:
+		mov eax, 0;
+
+	return_asm_:
+
+		pop ebp;
+		ret;
+
+	sf_main:
+		nop;
+	}
+
+	cout << str1;
+
+	return 0;
+}

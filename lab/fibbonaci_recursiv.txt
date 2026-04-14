@@ -1,0 +1,80 @@
+#include <iostream>
+
+using namespace std;
+
+//Sa se scrie codul in limbaj de asamblare care calculeaza al n-lea numar Fibonacci recursiv.
+//Pentru acest calcul va fi utlizata o functie; apelul acesteia, precum si returnarea rezultatului se va face in assembly
+
+/*
+	Aceasta rezolvare utilizeaza urmatoarea metoda:
+
+	int fibo(int n)
+	{
+		if (n <= 1)
+		{
+			return n;
+		}
+
+		return fibo(n - 1) + fibo(n - 2);
+	}
+*/
+
+int fibo(int n)
+{
+	_asm
+	{
+		xor eax, eax;
+		mov ebx, [ebp + 8];
+
+		cmp ebx, 1;
+		jg _sf_if;
+
+		mov eax, ebx;
+		jmp _sf;
+
+	_sf_if:
+
+		mov ebx, [ebp + 8];
+		dec ebx;
+		push ebx;
+		call fibo;
+		add esp, 4;
+
+		mov ecx, eax;
+		push ecx;
+
+		mov ebx, [ebp + 8];
+		sub ebx, 2;
+		push ebx;
+		call fibo;
+		add esp, 4;
+
+		pop ecx;
+		add eax, ecx;
+
+	_sf:
+
+	}
+
+}
+
+
+int main()
+{
+	int rez;
+
+	_asm
+	{
+		mov eax, 6;
+
+		push eax;
+		call fibo;
+		add esp, 4;
+
+		mov rez, eax;
+	}
+
+	cout << rez;
+
+	return 0;
+}

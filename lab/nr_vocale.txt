@@ -1,0 +1,147 @@
+#include <iostream>
+
+using namespace std;
+
+int nr_vocale(char str[])
+{
+	_asm
+	{
+		xor eax, eax; // count
+		xor ebx, ebx; // str
+		xor ecx, ecx; // caracterul
+		xor edx, edx;
+		xor edi, edi;
+		xor esi, esi;
+
+		mov ebx, [ebp + 8];
+
+	while_nr_vocale_1:
+		mov cl, [ebx];
+		cmp cl, '\0';
+		je sf_while_nr_vocale_1;
+
+		cmp cl, 'a';
+		je inc_count;
+		cmp cl, 'e';
+		je inc_count;
+		cmp cl, 'i';
+		je inc_count;
+		cmp cl, 'o';
+		je inc_count;
+		cmp cl, 'u';
+		je inc_count;
+		cmp cl, 'A';
+		je inc_count;
+		cmp cl, 'E';
+		je inc_count;
+		cmp cl, 'I';
+		je inc_count;
+		cmp cl, 'O';
+		je inc_count;
+		cmp cl, 'U';
+		je inc_count;
+
+		jmp inc_ebx;
+
+	inc_count:
+		inc eax;
+
+	inc_ebx:
+		inc ebx; // trecem la urmatorul caracter
+		jmp while_nr_vocale_1;
+	sf_while_nr_vocale_1:
+
+	}
+}
+
+
+int main()
+{
+	char a[20];
+
+	const char* format = "%s";
+	int nr_v = 0;
+
+	_asm
+	{
+		lea ebx, a;
+
+		push ebx;;
+		push format;
+		call scanf;
+		add esp, 8;
+
+		lea ebx, a;
+
+		push ebx;
+		call nr_vocale_asm;
+		add esp, 4;
+
+		mov nr_v, eax;
+
+		jmp sf_main;
+
+	//========================
+	//	Numarul de vocale
+	//========================
+
+	nr_vocale_asm:
+		push ebp;
+		mov ebp, esp;
+
+		xor eax, eax; // count
+		xor ebx, ebx; // str
+		xor ecx, ecx; // caracterul
+		xor edx, edx;
+		xor edi, edi;
+		xor esi, esi;
+
+		mov ebx, [ebp + 8];
+
+	while_nr_vocale_asm_1:
+		mov cl, [ebx];
+		cmp cl, '\0';
+		je sf_while_nr_vocale_asm_1;
+
+		cmp cl, 'a';
+		je inc_count_asm;
+		cmp cl, 'e';
+		je inc_count_asm;
+		cmp cl, 'i';
+		je inc_count_asm;
+		cmp cl, 'o';
+		je inc_count_asm;
+		cmp cl, 'u';
+		je inc_count_asm;
+		cmp cl, 'A';
+		je inc_count_asm;
+		cmp cl, 'E';
+		je inc_count_asm;
+		cmp cl, 'I';
+		je inc_count_asm;
+		cmp cl, 'O';
+		je inc_count_asm;
+		cmp cl, 'U';
+		je inc_count_asm;
+
+		jmp inc_str;
+
+	inc_count_asm:
+		inc eax;
+
+	inc_str:
+		inc ebx; // trecem la urmatorul caracter
+		jmp while_nr_vocale_asm_1;
+	sf_while_nr_vocale_asm_1:
+
+		pop ebp;
+		ret;
+
+	sf_main:
+		nop;
+	}
+
+	cout << nr_v << '\n';
+
+	return 0;
+}

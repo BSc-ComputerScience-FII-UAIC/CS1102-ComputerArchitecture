@@ -1,0 +1,64 @@
+#include <iostream>
+
+using namespace std;
+
+/*
+1.Scrieţi o bucată de cod (sau o funcţie bitcount(n)) care să contorizeze numărul de biţi pe 1 dintr-un argument întreg.
+#include <iostream>
+
+int bitcount(int n)
+{
+    int count{ 0 };
+
+    for (; n; n >>= 1)
+    {
+        if (n & 1)
+            ++count;
+    }
+
+    return count;
+}
+*/
+
+int bitcount(int n)
+{
+    _asm
+    {
+        xor eax, eax; // count
+        xor ebx, ebx; // n
+        xor ecx, ecx; // 1
+        xor edx, edx;
+        xor edi, edi; 
+        xor esi, esi;
+
+        mov ebx, [ebp + 8];
+        mov ecx, 1;
+
+    for_1:
+        cmp ebx, 0;
+        jle sf_for_1;
+
+        test ebx, ecx;
+        jz sf_if;
+
+        inc eax;
+
+    sf_if:
+
+        shr ebx, 1;
+        jmp for_1;
+    sf_for_1:
+        nop;
+    }
+}
+
+int main()
+{
+    int x{};
+    std::cout << ">>";
+    std::cin >> x;
+
+    std::cout << bitcount(x);
+
+    return 0;
+}

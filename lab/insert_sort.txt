@@ -1,0 +1,88 @@
+#include <iostream>
+
+using namespace std;
+
+/*
+Procedure insertSort(a, n)
+begin
+for i ← 1 to n − 1 do
+	j ← i–1 // a[0..i − 1] sortat
+	temp ← a[i] // caut locul lui temp
+	while ((j ≥ 0) and (a[j] > temp)) do
+		a[j + 1] ← a[j]
+		j ← j–1
+	if (a[j + 1]! = temp) then
+		a[j + 1] ← temp
+end
+*/
+
+void insert_sort(int* vector, int n)
+{
+	_asm
+	{
+		xor eax, eax;
+		xor ebx, ebx; // i
+		xor ecx, ecx; // j
+		xor edx, edx; // pastrare ceva
+		xor edi, edi; // vector
+		xor esi, esi; // temp
+
+		mov edi, [ebp + 8];
+
+		mov ebx, 1;
+
+	for_insert_sort_1:
+		cmp ebx, [ebp + 12];
+		jge sf_for_insert_sort_1;
+
+		mov ecx, ebx;
+		dec ecx;
+		mov esi, [edi + ebx * 4];
+
+	while_insert_sort_1:
+		cmp ecx, 0;
+		jl sf_while_insert_sort_1;
+		cmp[edi + ecx * 4], esi;
+		jle sf_while_insert_sort_1;
+
+		mov edx, [edi + ecx * 4];
+		mov[edi + ecx * 4 + 4], edx;
+
+		dec ecx;
+		jmp while_insert_sort_1;
+	sf_while_insert_sort_1:
+
+
+		cmp[edi + ecx * 4 + 4], esi;
+		je sf_if_sort_1;
+
+		mov[edi + ecx * 4 + 4], esi;
+
+	sf_if_sort_1:
+
+		inc ebx;
+		jmp for_insert_sort_1;
+	sf_for_insert_sort_1:
+
+	}
+}
+
+
+
+
+
+int main()
+{
+
+	int vector[] = { 10, 6, 7, 100, 65, 3, 9, 1, 101};
+	int n = sizeof(vector) / sizeof(vector[0]);
+
+	insert_sort(vector, n);
+
+	for (int i = 0; i < n; ++i)
+	{
+		cout << vector[i] << " ";
+	}
+
+	return 0;
+}

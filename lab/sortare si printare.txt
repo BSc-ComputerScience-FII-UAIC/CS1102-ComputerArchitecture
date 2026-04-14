@@ -1,0 +1,137 @@
+#include <iostream>
+
+using namespace std;
+
+
+int main()
+{
+
+	int a[] = { 1, 5, 6, 3, 9, 100, 56, 89 };
+	int nr_elem = sizeof(a) / sizeof(a[0]);
+
+	const char* printstr = "%d ";
+
+	int* p = a;
+
+	int ea;
+
+	_asm
+	{
+		xor eax, eax;
+		xor ebx, ebx;
+		xor ecx, ecx; // i-ul din for
+		xor edx, edx;
+		xor esi, esi;
+		xor edi, edi;
+
+		mov eax, p;
+		mov ebx, nr_elem;
+
+		push ebx;
+		push eax;
+		call sort;
+		add esp, 8;
+
+		mov eax, p;
+		mov ebx, nr_elem;
+		mov ecx, 0;
+
+	bucla:
+		cmp ecx, ebx;
+		jge sf_bucla11;
+
+		push eax;
+		push ecx;
+		push ebx;
+
+		push [eax + ecx*4];
+		push printstr;
+
+		call printf;
+
+		add esp, 8;
+		pop ebx;
+		pop ecx;
+		pop eax;
+
+		inc ecx;
+
+		jmp bucla;
+	sf_bucla11:
+		
+		jmp _final;
+
+
+
+	sort:
+		push ebp;
+		mov ebp, esp;
+
+		xor eax, eax;
+		xor ebx, ebx;
+		xor ecx, ecx;
+		xor edx, edx;
+		xor esi, esi;
+		xor edi, edi;
+
+		mov esi, [ebp+8]; //vectorul
+		mov edi, [ebp+12]; // vom folosi EDI de data asta pt nr. de elemente
+		dec edi; // decrementam EDI ca sa mergem in for loop pana la N-1 elemente si sa comparam a[i] cu a[i+1]
+		push 1; // ok
+
+		cmp edi, 0;
+		jne _sf_if1;
+
+		mov eax, 0;
+		jmp _sf_functie;
+
+	_sf_if1:
+
+
+	start_bubblesort:
+		cmp [ebp-4], 1;
+		jne end_bubblesort; // if not okay, exit
+
+		mov[ebp - 4], 0; // ok = false; - vom face = 1 daca gasim o permutare pe care s-o facem
+
+		mov ecx, 0; // initializam for loopu'
+	start_for_bubble:
+		cmp ecx, edi;
+		jge end_while;
+
+		// interiorul buclei for din bubblesort
+		mov eax, [esi + ecx * 4];
+		mov ebx, [esi + ecx * 4 + 4];
+		cmp eax, ebx;
+		jle end_for_bubble; // daca nu avem ce interschimba, sarim la final de for loop
+
+		// interschimbam
+		mov[esi + ecx * 4], ebx;
+		mov[esi + ecx * 4 + 4], eax;
+		mov[ebp - 4], 1;
+
+	end_for_bubble:
+		inc ecx;
+		jmp start_for_bubble;
+
+	end_while:
+		jmp start_bubblesort;
+
+	end_bubblesort:
+		nop;
+		mov eax, 1;
+
+	_sf_functie:
+		add esp, 4;
+		pop ebp;
+		ret;
+
+	_final:
+		nop;
+
+	}
+	
+
+
+	return 0;
+}

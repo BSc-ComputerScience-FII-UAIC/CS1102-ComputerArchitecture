@@ -1,0 +1,51 @@
+void calcul_transpusa(int transpusa[][3], int matrice[][3], int n, int m)
+{
+	_asm
+	{
+		xor eax, eax;
+		xor ebx, ebx; // i
+		xor ecx, ecx; // j
+		xor edx, edx;
+		xor edi, edi;
+		xor esi, esi; // matrice - transpusa
+
+		// transpusa [ebp + 8]
+		// matricea [ebp + 12]
+		// n [ebp + 16]
+		// m [ebp + 20]
+
+	bucla_calc_1:
+		cmp ebx, [ebp + 16]; // cmp i, n
+		jge sf_bucla_calc_1;
+
+		mov ecx, 0; // j = 0
+
+	bucla_calc_2:
+		cmp ecx, [ebp + 20];
+		jge sf_bucla_calc_2;
+
+		mov eax, [ebp + 20];
+		mul ebx;
+		add eax, ecx;
+
+		mov esi, [ebp + 12]; // punem matricea in esi
+		mov edi, [esi + eax * 4];
+		
+		mov eax, [ebp + 16];
+		mul ecx;
+		add eax, ebx;
+
+		mov esi, [ebp + 8]; // punem transpusa in esi
+		mov[esi + eax * 4], edi;
+
+		inc ecx; // ++j
+		jmp bucla_calc_2;
+	sf_bucla_calc_2:
+
+		inc ebx; // ++i
+		jmp bucla_calc_1;
+	sf_bucla_calc_1:
+
+	}
+
+}

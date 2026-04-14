@@ -1,0 +1,60 @@
+#include <iostream>
+
+using namespace std;
+
+int nr_digits(unsigned int nr)
+{
+	int nr_cifre;
+	_asm
+	{
+		push ebx;
+		push esi;
+		
+		mov eax, [ebp + 8];
+		mov ebx, 0;
+		mov esi, 10;
+
+	bucla:
+		mov edx, 0;
+		cmp eax, 0;
+		je sf_bucla;
+
+		div esi;
+		inc ebx;
+
+		jmp bucla;
+
+	sf_bucla:
+
+		mov nr_cifre, ebx;
+
+		pop esi;
+		pop ebx;
+	}
+
+	return nr_cifre;
+}
+
+
+int main()
+{
+	int nr_cifre;
+
+	_asm
+	{
+		
+		mov eax, 123456;
+
+		push eax;
+		call nr_digits;
+
+		add esp, 4;
+
+		mov nr_cifre, eax;
+		
+	}
+
+	cout << nr_cifre;
+
+	return 0;
+}

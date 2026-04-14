@@ -1,0 +1,43 @@
+#include <iostream>
+#include <stdio.h>
+
+using namespace std;
+
+
+int main()
+{
+	int nr = 10;
+
+	//=====================
+	// Prima varianta
+
+	const char* format1 = "%d ";
+
+	_asm
+	{
+		mov ebx, nr;
+
+		push ebx;
+		push format1;
+		call printf;
+		add esp, 8;
+	}
+
+	//=====================
+	// A doua varianta
+
+	char format2[] = "%d ";
+
+	_asm
+	{
+		lea eax, format2;
+		mov ebx, nr;
+
+		push ebx;
+		push eax;
+		call printf;
+		add esp, 8;
+	}
+
+	return 0;
+}

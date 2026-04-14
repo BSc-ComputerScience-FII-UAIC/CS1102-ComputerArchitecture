@@ -22,12 +22,9 @@ int fibRecursive(int) {
 		add eax, edx
 		jmp return_final
 
-
-		return_t:
+    return_t:
 			mov eax, 1
 	
-		return_final:
-
-
+    return_final:
 	}
 }

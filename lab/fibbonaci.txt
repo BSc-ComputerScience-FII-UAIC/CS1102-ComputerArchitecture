@@ -1,0 +1,56 @@
+#include <iostream>
+
+int fibbonaci(int n)
+{
+	_asm
+	{
+		xor eax, eax;
+		xor ebx, ebx; // i-ul
+		xor ecx, ecx; // n
+		xor edx, edx; 
+		xor edi, edi; // primul termen
+		xor esi, esi; // al doilea termen
+
+		mov ecx, [ebp + 8];
+
+		cmp ecx, 1;
+		jle _return_f;
+
+
+		mov edi, 0;
+		mov esi, 1;
+		mov ebx, 3;
+
+		bucla :
+		cmp ebx, ecx;
+		jg _sfarsit;
+
+		mov edx, edi;
+		mov edi, esi;
+		
+		add edx, esi;
+		mov esi, edx;
+		
+
+		inc ebx;
+		jmp bucla;
+	_sfarsit:
+
+		mov eax, esi;
+
+		jmp _return;
+	_return_f:
+		mov eax, 0;
+
+	_return:
+
+	}
+
+}
+
+
+int main()
+{
+	std::cout << fibbonaci(9); // 0, 1, 1, 2, 3, 5, 8, 13, 21
+	return 0;
+}

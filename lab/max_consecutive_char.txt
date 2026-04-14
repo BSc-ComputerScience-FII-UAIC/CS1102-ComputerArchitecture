@@ -1,0 +1,182 @@
+#include <iostream>
+
+using namespace std;
+
+
+char get_max_consecutive_char(char str[])
+{
+	_asm
+	{
+		xor eax, eax; // char-ul cel mai repetat
+		xor ebx, ebx; // str
+		xor ecx, ecx; // ch - char-ul care il folosim // cl - char-ul care trebuie verificat
+		xor edx, edx;
+		xor edi, edi; // max repetari
+		xor esi, esi; // repetari
+
+		mov ebx, [ebp + 8]; // str
+
+		mov cl, [ebx];
+		cmp cl, '\0';
+		je sf_bucla_1_1;
+		inc ebx;
+		inc esi;
+
+		mov ch, [ebx - 1];
+		mov cl, [ebx];
+	bucla_1_1:
+		mov cl, [ebx];
+		cmp cl, '\0';
+		je sf_bucla_1_1;
+
+		cmp cl, ch; // if 1
+		jne else_1_1;
+
+		inc esi; // count
+
+		jmp sf_if_1_1;
+	else_1_1: // else
+
+		cmp esi, edi; // if 2
+		jle sf_if_1_2;
+
+		mov edi, esi;
+		mov eax, 0;
+		mov al, ch;
+
+
+	sf_if_1_2: // sf if 2
+
+		mov ch, [ebx];
+		mov esi, 0;
+
+	sf_if_1_1: // sf if 1
+
+
+		inc ebx; // trecem la adresa urmatorului caracter
+		jmp bucla_1_1;
+	sf_bucla_1_1:
+
+		cmp esi, edi; // if 3 - verificam pentru ultima data daca exista un element cu mai multe repetari consecutive
+		jle sf_if_1_3;
+
+		mov edi, esi;
+		mov eax, 0;
+		mov al, ch;
+
+	sf_if_1_3: // sf if 3
+	}
+}
+
+int main()
+{
+	char str[] = "aaiugufiuuuuuuuuuuuuuuuuuuuufaaahhhh[p[p[lpppppppppppaaaaaa";
+
+	char rez1, rez2;
+	
+	_asm
+	{
+		xor eax, eax; 
+		xor ebx, ebx; // str
+		xor ecx, ecx; 
+		xor edx, edx;
+		xor edi, edi; 
+		xor esi, esi; 
+
+
+		lea ebx, str;
+
+		push ebx;
+		call get_max_consecutive_char;
+		pop ebx;
+
+		mov rez1, al;
+
+		push ebx;
+		call get_max_consecutive_char_asm;
+		add esp, 4;
+
+		mov rez2, al;
+
+		jmp sf_main;
+
+	//==================================
+	//	GET MAX CONSECUTIVE CHAR ASM
+	//==================================
+	get_max_consecutive_char_asm:
+		push ebp;
+		mov ebp, esp;
+
+		xor eax, eax; // char-ul cel mai repetat
+		xor ebx, ebx; // str
+		xor ecx, ecx; // ch - char-ul care il folosim // cl - char-ul care trebuie verificat
+		xor edx, edx;
+		xor edi, edi; // max repetari
+		xor esi, esi; // repetari
+
+		mov ebx, [ebp + 8]; // str
+
+		mov cl, [ebx];
+		cmp cl, '\0';
+		je sf_bucla_asm_1_1;
+		inc ebx;
+		inc esi;
+
+		mov ch, [ebx - 1];
+		mov cl, [ebx];
+	bucla_asm_1_1:
+		mov cl, [ebx];
+		cmp cl, '\0';
+		je sf_bucla_asm_1_1;
+
+		cmp cl, ch; // if 1
+		jne else_asm_1_1;
+
+		inc esi; // count
+
+		jmp sf_if_asm_1_1;
+	else_asm_1_1: // else
+
+		cmp esi, edi; // if 2
+		jle sf_if_asm_1_2;
+
+		mov edi, esi;
+		mov eax, 0;
+		mov al, ch;
+
+
+	sf_if_asm_1_2: // sf if 2
+
+		mov ch, [ebx];
+		mov esi, 0;
+
+	sf_if_asm_1_1: // sf if 1
+
+
+		inc ebx; // trecem la adresa urmatorului caracter
+		jmp bucla_asm_1_1;
+	sf_bucla_asm_1_1:
+
+		cmp esi, edi; // if 3 - verificam pentru ultima data daca exista un element cu mai multe repetari consecutive
+		jle sf_if_asm_1_3;
+
+		mov edi, esi;
+		mov eax, 0;
+		mov al, ch;
+
+	sf_if_asm_1_3: // sf if 3
+
+		pop ebp;
+		ret;
+
+	//===========================
+	sf_main:
+		nop;
+
+	}
+
+
+	cout << rez1 << ' ' <<  rez2;
+
+	return 0;
+}

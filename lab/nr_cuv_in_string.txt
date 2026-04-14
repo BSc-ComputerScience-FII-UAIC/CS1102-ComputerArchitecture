@@ -1,0 +1,111 @@
+#include <iostream>
+
+using namespace std;
+
+
+int main()
+{
+	char prop[] = "Ana are mere mari";
+
+	const char* format = "%d ";
+
+
+	_asm
+	{
+		//main
+		xor eax, eax; // nr_cuv
+		xor ebx, ebx; // array
+		xor ecx, ecx;
+		xor edx, edx;
+		xor edi, edi;
+		xor esi, esi;
+
+		lea ebx, prop;
+
+		push ebx;
+		call numarare_cuvinte;
+		pop ebx;
+
+		push eax;
+		push format;
+		call printf;
+		add esp, 8;
+
+		// sfarsit main
+		jmp sfarsit_;
+
+
+	numarare_cuvinte:
+		push ebp;
+		mov ebp, esp;
+
+		xor eax, eax; // nr_cuv
+		xor ebx, ebx; // array
+		xor ecx, ecx; // i-ul
+		xor edx, edx;
+		xor edi, edi;
+		xor esi, esi;
+
+		mov eax, 0;
+		mov ebx, [ebp + 8];
+
+		cmp ebx, '\0';
+		je sf_nr_cuvinte;
+
+		//if_1
+		cmp[ebx + ecx], ' ';
+		jne in_if_1;
+
+		inc ecx
+
+		cmp[ebx + ecx], ' ';
+		je sf_if_1;
+
+	in_if_1:
+
+		inc eax;
+		inc ecx;
+
+	sf_if_1:
+		//sf if
+
+
+		//bucla
+	bucla:
+		cmp[ebx + ecx], '\0';
+		je sf_bucla;
+
+		cmp[ebx + ecx], ' ';
+		jne sf_if_2_;
+		inc ecx;
+
+		cmp[ebx + ecx], '\0';
+		je sf_bucla;
+		cmp[ebx + ecx], ' ';
+		je sf_if_2_;
+
+		inc eax;
+
+	sf_if_2_:
+
+		inc ecx;
+		jmp bucla;
+	sf_bucla:
+		//sf bucla
+
+	sf_nr_cuvinte:
+		pop ebp;
+		ret;
+
+
+	sfarsit_:
+		nop;
+	}
+	
+
+
+
+
+
+	return 0;
+}

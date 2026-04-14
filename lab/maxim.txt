@@ -1,0 +1,51 @@
+#include <iostream>
+
+using namespace std;
+
+int maxim(int a, int b)
+{
+	_asm
+	{
+		push ebx;
+
+		mov eax, [ebp + 8];
+		mov ebx, [ebp + 12];
+		
+		cmp eax, ebx;
+		jge _sf;
+
+		mov eax, ebx;
+
+	_sf:
+
+		pop ebx;
+	}
+}
+
+
+int main()
+{
+	int maxi;
+
+	int a = -10;
+	int b = 90;
+
+	_asm
+	{
+		mov ebx, a;
+		mov edx, b;
+
+		push edx;
+		push ebx;
+
+		call maxim;
+
+		add esp, 8;
+
+		mov maxi, eax;
+	}
+
+	std::cout << maxi;
+
+	return 0;
+}

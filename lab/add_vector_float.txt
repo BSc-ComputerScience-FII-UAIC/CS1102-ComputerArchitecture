@@ -1,0 +1,48 @@
+#include <iostream>
+
+using namespace std;
+
+
+float adunare(float vector[], unsigned int size)
+{
+	float ret = 0;
+	_asm
+	{
+		xor eax, eax;
+		xor ebx, ebx; // i
+		xor ecx, ecx;
+		xor edx, edx;
+		xor edi, edi; // vector
+		xor esi, esi;
+
+		mov edi, [ebp + 8];
+		// [ebp + 12] size
+
+		fldz; // punem 0
+
+	bucla_adunare_1:
+		cmp ebx, [ebp + 12];
+		jge sf_bucla_adunare_1;
+
+		fld[edi + ebx * 4];
+		faddp st(1), st(0);
+
+		inc ebx;
+		jmp bucla_adunare_1;
+	sf_bucla_adunare_1:
+
+		fstp ret;
+
+	}
+	return ret;
+}
+
+int main()
+{
+	float vector[] = { 3.5, 1.45, 10.2, 90.45, 100.3, 7.8, 9.89, 89.67, 100.59 };
+	int size = sizeof(vector) / sizeof(vector[0]);
+
+	cout << adunare(vector, size);
+
+	return 0;
+}

@@ -1,0 +1,151 @@
+#include <iostream>
+
+int main()
+{
+	int a[] = { 10, 5, 4, 7, 9, 2, 1, 0, 3 };
+	int nr_elem = sizeof(a) / sizeof(a[0]);
+
+	const char* format = "%d ";
+
+	_asm
+	{
+		
+		xor eax, eax; 
+		xor ebx, ebx; // a
+		xor ecx, ecx; // nr
+		xor edx, edx; 
+		xor esi, esi;
+		xor edi, edi;
+
+		lea ebx, a;
+		mov ecx, nr_elem;
+
+		push ecx; // nr_elem
+		push ebx; // a
+		call sort;
+		add esp, 8; 
+
+		
+		lea ebx, a;
+		mov ecx, nr_elem;
+
+		push format;
+		push ecx; // nr_elemente
+		push ebx; // a
+		call afisare; 
+		add esp, 12;
+
+		jmp sf_main;
+
+
+	// ================
+	//  SORTARE
+	// ================
+	sort:
+		push ebp;
+		mov ebp, esp;
+
+		xor eax, eax; // numarul actual din vector
+		xor ebx, ebx; // numarul urmator din vector
+		xor ecx, ecx; // i-ul pentru for loop
+		xor edx, edx;
+		xor esi, esi; // vector
+		xor edi, edi; // nr_elemente
+
+		
+		mov esi, [ebp + 8]; // vector
+		mov edi, [ebp + 12]; // nr_elemente
+		dec edi;
+
+
+		push 0; // bool gata = false;
+
+	start_bubblesort:
+		cmp[ebp - 4], 0; // verificam  daca gata == false
+		jne end_bubblesort; 
+
+		mov[ebp - 4], 1; // gata = true; presupunem ca e sortat
+
+
+		mov ecx, 0;
+	start_for_bubble:
+		cmp ecx, edi; // ecx < edi // i < n
+		jge end_while;
+
+		
+		mov eax, [esi + ecx * 4];
+		mov ebx, [esi + ecx * 4 + 4];
+		cmp eax, ebx;
+		jle end_for_bubble;
+
+		// interschimbam
+		mov[esi + ecx * 4], ebx;
+		mov[esi + ecx * 4 + 4], eax;
+		mov[ebp - 4], 0; // gata == false
+
+	end_for_bubble:
+
+		inc ecx; // ++ i
+		jmp start_for_bubble;
+
+	end_while:
+		jmp start_bubblesort;
+
+	end_bubblesort:
+		nop;
+
+		pop esi; 
+		pop ebp;
+		ret;
+
+
+
+		// ------------
+		//  AFISARE
+		// ------------
+	afisare:
+		push ebp;
+		mov ebp, esp;
+
+		mov edi, [ebp + 12]; // nr elem
+
+		mov ecx, 0; // initializam for loopu'
+	start_afisare:
+		cmp ecx, edi;
+		jge end_afisare;
+
+		// fiindca printf cel mai probabil o sa se foloseasca de registrii in care noi tinem valor
+		// constnate, e bine sa salvam aceste valori pe stiva
+		push ecx;
+		push edi;
+
+			// interior for loop
+		mov esi, [ebp + 8];
+		push[esi + ecx * 4]; // numarul pe care vrem sa-l afisam
+		push[ebp + 16]; // stringul de afisare
+		call printf;
+		pop esi; // eliberam stiva
+		pop esi;
+
+		// restauram valorile salvate pe stiva
+		pop edi;
+		pop ecx;
+
+		inc ecx;
+		jmp start_afisare;
+
+	end_afisare:
+		nop;
+
+		pop ebp;
+		ret;
+
+		// ------------
+		//  END
+		// ------------
+	sf_main:
+		nop;
+	}
+
+	return 0;
+}

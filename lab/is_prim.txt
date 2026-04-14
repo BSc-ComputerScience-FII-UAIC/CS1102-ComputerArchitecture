@@ -1,0 +1,54 @@
+#include <iostream>
+#include <stdio.h>
+
+using namespace std;
+
+bool prim(int n) 
+{
+	_asm {
+
+		xor eax, eax;
+		xor ebx, ebx;
+		xor ecx, ecx;
+		xor edx, edx;
+		xor edi, edi;
+		xor esi, esi; // i-ul din while, impartitorul
+
+		cmp[ebp + 8], 1
+		jle return_false // daca e mai mic sau egal ca unu - False
+
+		mov esi, 2
+
+		while_1:
+		cmp esi, [ebp + 8]
+			je return_true
+
+			mov edx, 0
+			mov eax, [ebp + 8]
+			div esi
+			cmp edx, 0
+			je return_false
+
+			inc esi
+			jmp while_1
+
+			jmp return_true
+
+
+			return_false :
+		mov eax, 0 // false
+			jmp return_
+
+			return_true :
+		mov eax, 1 // true
+
+			return_ :
+	}
+}
+
+int main()
+{
+	
+	cout << prim(101);
+	return 0;
+}

@@ -1,0 +1,79 @@
+#include <iostream>
+#include <stdio.h>
+
+using namespace std;
+
+struct nr_mare
+{
+	unsigned int mare;
+	unsigned int mic;
+};
+
+nr_mare suma_num_la_n(int n)
+{
+	nr_mare nr;
+
+	nr_mare* p = &nr;
+
+	_asm
+	{
+		xor eax, eax; 
+		xor ebx, ebx; 
+		xor ecx, ecx; // 2
+		xor edx, edx;
+		xor edi, edi; // n
+		xor esi, esi; // n + 1
+
+		mov ebx, p;
+
+		// n [ebp + 8]
+		mov edi, [ebp + 8];
+		mov esi, [ebp + 8];
+		inc esi;
+
+		mov eax, edi;
+		mov ecx, 2;
+		div ecx;
+
+		cmp edx, 1;
+		je impar;
+		
+		mov edx, 0;
+		mov eax, edi;
+
+		div ecx;
+
+		mov edi, eax;
+		jmp sf_impar;
+
+	impar:
+		mov edx, 0;
+		mov eax, esi;
+
+		div ecx;
+
+		mov esi, eax;
+
+	sf_impar:
+
+		mov edx, 0;
+		mov eax, edi;
+		mul esi;
+
+		mov dword ptr [ebx], edx;
+		mov dword ptr [nr + 4], eax;
+	}
+
+	return nr;
+}
+
+int main()
+{
+	int n = 122000;
+
+	nr_mare nr = suma_num_la_n(n);
+
+	cout << nr.mare << nr.mic;
+
+	return 0;
+}

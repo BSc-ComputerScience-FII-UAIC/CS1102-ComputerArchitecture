@@ -1,0 +1,38 @@
+#include <iostream>
+
+using namespace std;
+
+int factorial(int n)
+{
+	_asm
+	{
+		xor eax, eax; //rez
+		xor ebx, ebx; // i
+		xor ecx, ecx; // n
+		xor edx, edx;
+		xor edi, edi; // ceva
+		xor esi, esi;
+
+		mov ecx, [ebp + 8];
+
+		mov eax, 1; //rez
+		mov ebx, 2; // i-ul
+
+		bucla:
+		cmp ebx, ecx;
+		jg sfarsit;
+
+		imul ebx;
+
+		inc ebx;
+		jmp bucla;
+	sfarsit:
+	}
+}
+
+int main()
+{
+	cout << factorial(11);
+
+	return 0;
+}

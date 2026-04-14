@@ -1,0 +1,140 @@
+#include <iostream>
+using namespace std;
+
+void litera_mare(char str[])
+{
+	_asm
+	{
+		xor eax, eax;
+		xor ebx, ebx; // str
+		xor ecx, ecx; // cl - caracter
+		xor edx, edx;
+		xor edi, edi; 
+		xor esi, esi;
+
+
+		mov ebx, [ebp + 8];
+		mov cl, [ebx]; // caracter
+
+
+		cmp  cl, 0;
+		je end_while;
+		cmp  cl, 'a';
+		jl incrementare;
+		cmp  cl, 'z';
+		ja incrementare;
+		sub[ebx], 32;
+		inc ebx;
+
+
+		start_while :
+		mov cl, [ebx];
+		cmp  cl, 0;
+		je end_while;
+
+		cmp  cl, 'a';
+		jl incrementare;
+		cmp  cl, 'z';
+		jg incrementare;
+		cmp[ebx - 1], ' ';
+		jne incrementare;
+		sub[ebx], 32;
+
+
+	incrementare:
+		inc ebx;
+		jmp start_while;
+
+
+	end_while :
+	}
+}
+
+int main()
+{
+	char a[] = "salut lume BUNA si nu prea";
+
+	_asm
+	{
+		xor eax, eax;
+		xor ebx, ebx; // str
+		xor ecx, ecx;
+		xor edx, edx;
+		xor edi, edi;
+		xor esi, esi;
+
+		lea ebx, a;
+
+		push ebx;
+		call litera_mare_asm;
+		add esp, 4;
+
+		jmp sf_main;
+
+	//======================
+	//		Litera mare
+	//======================
+
+	litera_mare_asm:
+		push ebp;
+		mov ebp, esp;
+
+		xor eax, eax;
+		xor ebx, ebx; // str
+		xor ecx, ecx; // cl - caracter
+		xor edx, edx;
+		xor edi, edi;
+		xor esi, esi;
+
+
+		mov ebx, [ebp + 8];
+		mov cl, [ebx]; // caracter
+
+
+		cmp  cl, 0;
+		je end_while_asm;
+		cmp  cl, 'a';
+		jl incrementare_asm;
+		cmp  cl, 'z';
+		ja incrementare_asm;
+		sub[ebx], 32;
+		inc ebx;
+
+
+	start_while_asm:
+		mov cl, [ebx];
+		cmp  cl, 0;
+		je end_while_asm;
+
+		cmp  cl, 'a';
+		jl incrementare_asm;
+		cmp  cl, 'z';
+		jg incrementare_asm;
+		cmp[ebx - 1], ' ';
+		jne incrementare_asm;
+		sub[ebx], 32;
+
+
+	incrementare_asm:
+		inc ebx;
+		jmp start_while_asm;
+
+
+	end_while_asm:
+
+		pop ebp;
+		ret;
+
+
+	sf_main:
+		nop;
+	}
+
+
+	cout << a;
+
+
+	cout << endl;
+
+
+}

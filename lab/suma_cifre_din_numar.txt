@@ -1,0 +1,118 @@
+#include <iostream>
+using namespace std;
+
+int suma_cifre(int nr)
+{
+	_asm
+	{
+		xor eax, eax; // nr
+		xor ebx, ebx; // suma cifrelor
+		xor ecx, ecx; // 10
+		xor edx, edx; // pentru impartire trebuie 0 sa fie
+		xor edi, edi; 
+		xor esi, esi;
+
+
+		mov eax, [ebp + 8]; // nr
+
+		mov ecx, 10;
+
+	start_for:
+		cmp eax, 0;
+		je end_for;
+
+		mov edx, 0;
+		div ecx;
+		add ebx, edx;
+
+		jmp start_for;
+	end_for:
+
+		mov eax, ebx;
+	}
+}
+int main()
+{
+	int a = 0;
+	
+	cin >> a;
+
+	int rez1 = 0;
+	int rez2 = 0;
+
+	_asm
+	{
+		xor eax, eax;
+		xor ebx, ebx; // a
+		xor ecx, ecx; 
+		xor edx, edx;
+		xor edi, edi; 
+		xor esi, esi;
+
+		//Simpla
+		mov ebx, a;
+
+		push ebx;
+		call suma_cifre;
+		add esp, 4;
+
+		mov rez1, eax;
+
+		//ASM
+		mov ebx, a;
+
+		push ebx;
+		call suma_cifre_asm;
+		add esp, 4;
+
+		mov rez2, eax;
+
+		jmp sf_main;
+
+
+	//==============================
+	//  Suma Cifre ASM
+	//==============================
+	suma_cifre_asm:
+		push ebp;
+		mov ebp, esp;
+
+		xor eax, eax; // nr
+		xor ebx, ebx; // suma cifrelor
+		xor ecx, ecx; // 10
+		xor edx, edx; // pentru impartire trebuie 0 sa fie
+		xor edi, edi;
+		xor esi, esi;
+
+
+		mov eax, [ebp + 8]; // nr
+
+		mov ecx, 10;
+
+	start_for_asm:
+		cmp eax, 0;
+		je end_for_asm;
+
+		mov edx, 0;
+		div ecx;
+		add ebx, edx;
+
+		jmp start_for_asm;
+	end_for_asm:
+
+		mov eax, ebx;
+
+		pop ebp;
+		ret;
+
+	//===========================
+
+	sf_main:
+		nop;
+
+	}
+
+	cout << "Simpla: " << rez1 << endl << "ASM: " << rez2 << endl;
+
+	return 0;
+}

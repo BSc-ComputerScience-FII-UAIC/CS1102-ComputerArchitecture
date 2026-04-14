@@ -1,0 +1,78 @@
+#include <iostream>
+
+using namespace std;
+
+float medie_vector(float vector[], int size)
+{
+	float ret_float = 0;
+	_asm
+	{
+		xor eax, eax;
+		xor ebx, ebx; // vector
+		xor ecx, ecx; // size
+		xor edx, edx; 
+		xor edi, edi; // i
+		xor esi, esi;
+
+		mov ebx, [ebp + 8];
+		mov ecx, [ebp + 16];
+
+		fldz;
+
+	bucla_medie_1:
+		cmp edi, [ebp + 12]; // edi (i) < size
+		jge sf_bucla_medie_1;
+
+		fld [ebx + edi * 4];
+		faddp st(1), st(0);
+
+
+		inc edi;
+		jmp bucla_medie_1;
+	sf_bucla_medie_1:
+
+		fidiv [ebp + 12];
+
+		fstp dword ptr ret_float;
+
+	}
+
+	return ret_float;
+}
+
+
+
+int main()
+{
+	float vector[] = { 9.67, 1.8, 19.01, 88, 90.673, 10 };
+	int size1 = sizeof(vector) / sizeof(vector[0]);
+
+	float rez1 = 0;
+	float rez2 = 0;
+
+	_asm
+	{
+		xor eax, eax;
+		xor ebx, ebx; // vector
+		xor ecx, ecx; // size
+		xor edx, edx; 
+		xor edi, edi; 
+		xor esi, esi;
+
+		lea ebx, vector;
+		mov ecx, size1;
+
+		push ecx;
+		push ebx;
+		call medie_vector;
+		add esp, 8;
+
+		fstp rez1;
+	}
+
+	rez2 = medie_vector(vector, size1);
+
+	cout << rez1 << " " << rez2;
+
+	return 0;
+}

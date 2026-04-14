@@ -1,0 +1,56 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+	int a = 0;
+	int* p = &a;
+
+	const char* format = "%d";
+
+	_asm
+	{
+		mov ebx, p;
+
+		push ebx;;
+		push format;
+		call scanf;
+		add esp, 8;
+		
+	}
+	
+	cout << "Numarul introdus: " << a << '\n';
+
+	return 0;
+}
+
+=======================================
+	A doua metoda
+=======================================
+
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+	int a = 0;
+
+	const char* format = "%d";
+
+	_asm
+	{
+		lea ebx, a;
+
+		push ebx;
+		push format;
+		call scanf;
+		add esp, 8;
+
+	}
+
+	cout << "Numarul introdus: " << a << '\n';
+
+	return 0;
+}

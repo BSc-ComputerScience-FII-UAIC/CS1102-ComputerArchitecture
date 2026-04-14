@@ -1,0 +1,99 @@
+#include <iostream>
+
+using namespace std;
+
+int str_len(char* str) 
+{
+	_asm {
+
+		xor eax, eax; // strlen
+		xor ebx, ebx; // str
+		xor ecx, ecx; 
+		xor edx, edx;
+		xor edi, edi; 
+		xor esi, esi; 
+
+		mov ebx, [ebp + 8];
+
+		// calculez in eax lungimea lui str
+		mov eax, 0;
+	while_1:
+		cmp[ebx + eax], '\0';
+		je stop_while_1;
+		inc eax;
+		jmp while_1;
+
+	stop_while_1:
+
+	}
+}
+
+int main()
+{
+
+	char str1[100] = "Salut ce faci? ";
+	char str2[100] = "Salut, bine, tu?";
+
+	cout << str_len(str2);
+	int rez = 0;
+
+	_asm
+	{
+		xor eax, eax;
+		xor ebx, ebx;
+		xor ecx, ecx;
+		xor edx, edx;
+		xor edi, edi;
+		xor esi, esi;
+
+		lea ebx, str1;
+		lea ecx, str2;
+
+
+		push ebx;
+		call str_len_asm;
+		add esp, 4;
+
+		mov rez, eax;
+
+		jmp sf_main;
+
+
+		//=======================
+		//	Str len asm
+		//=======================
+	str_len_asm:
+		push ebp;
+		mov ebp, esp;
+
+		xor eax, eax; // strlen
+		xor ebx, ebx; // str
+		xor ecx, ecx;
+		xor edx, edx;
+		xor edi, edi;
+		xor esi, esi;
+
+		mov ebx, [ebp + 8];
+
+		// calculez in eax lungimea lui str
+		mov eax, 0;
+	while_asm_1:
+		cmp[ebx + eax], '\0';
+		je stop_while_asm_1;
+		inc eax;
+		jmp while_asm_1;
+
+	stop_while_asm_1:
+
+		pop ebp;
+		ret;
+
+
+	sf_main:
+		nop;
+	}
+
+	cout << rez;
+
+	return 0;
+}

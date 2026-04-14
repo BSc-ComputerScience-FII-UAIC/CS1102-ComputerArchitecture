@@ -1,0 +1,130 @@
+#include <iostream>
+using namespace std;
+
+int radical(unsigned int n) 
+{
+	_asm 
+	{
+		xor eax, eax;
+		xor ebx, ebx; // n
+		xor ecx, ecx; 
+		xor edx, edx;
+		xor edi, edi;
+		xor esi, esi;
+
+		cmp[ebp + 8], 1;
+		jle return_radical_1;
+
+		mov ebx, [ebp + 8]; // n
+		mov esi, 1; // sqrt(n)
+		mov ecx, 1; // (n + 1)^2
+
+		while_radical_1:
+		cmp ecx, ebx;
+		jg return_radical_2;
+
+		inc esi;
+		mov eax, esi;
+		mul eax;
+		mov ecx, eax;
+
+		jmp while_radical_1;
+
+	return_radical_1 :
+		mov eax, [ebp + 8];
+		jmp return_;
+
+	return_radical_2 :
+		sub esi, 1;
+		mov eax, esi;
+
+	return_ :
+
+	}
+}
+
+int main()
+{
+	unsigned int n = -13;
+	int rez = 0;
+
+
+	_asm
+	{
+		xor eax, eax;
+		xor ebx, ebx; // n
+		xor ecx, ecx;
+		xor edx, edx;
+		xor edi, edi;
+		xor esi, esi;
+
+
+		mov ebx, n;
+
+		push ebx;
+		call radical_asm;
+		add esp, 4;
+
+		mov rez, eax;
+
+
+		jmp sf_main;
+
+
+	//===============================
+	//		Radical asm
+	//===============================
+	radical_asm:
+		push ebp;
+		mov ebp, esp;
+
+		xor eax, eax;
+		xor ebx, ebx; // n
+		xor ecx, ecx;
+		xor edx, edx;
+		xor edi, edi;
+		xor esi, esi;
+
+		cmp[ebp + 8], 1;
+		jle return_radical_asm_1;
+
+		mov ebx, [ebp + 8]; // n
+		mov esi, 1; // sqrt(n)
+		mov ecx, 1; // (n + 1)^2
+
+	while_radical_asm_1:
+		cmp ecx, ebx;
+		jg return_radical_asm_2;
+
+		inc esi;
+		mov eax, esi;
+		mul eax;
+		mov ecx, eax;
+
+		jmp while_radical_asm_1;
+
+	return_radical_asm_1:
+		mov eax, [ebp + 8];
+		jmp return_asm_;
+
+	return_radical_asm_2:
+		sub esi, 1;
+		mov eax, esi;
+
+	return_asm_:
+
+
+		pop ebp;
+		ret;
+
+
+	sf_main:
+		nop;
+	}
+
+
+	cout << radical(n) << '\n';
+	cout << rez;
+
+	return 0;
+}

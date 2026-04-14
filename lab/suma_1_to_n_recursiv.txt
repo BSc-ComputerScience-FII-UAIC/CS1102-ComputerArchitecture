@@ -1,0 +1,122 @@
+#include <iostream>
+
+using namespace std;
+
+
+//==============================
+//	Suma de la 1 la n recursiv
+//==============================
+
+int suma(int n)
+{
+	_asm 
+	{
+		xor eax, eax;
+		xor ebx, ebx; // n
+		xor ecx, ecx; 
+		xor edx, edx;
+		xor edi, edi; 
+		xor esi, esi;
+
+		mov ebx, [ebp + 8]; // n
+
+
+		cmp ebx, 1;
+		jg else_1;
+
+		mov eax, 1; // daca numarul ajunge egal sau mai mic ca 1 pai returnam 1
+		jmp end_function;
+
+	else_1:
+
+		sub ebx, 1;
+		push ebx;
+		call suma;
+		add esp, 4;
+
+		add eax, [ebp + 8]; // suma(n - 1) + n
+
+	end_function:
+	}
+}
+int main()
+{
+	int n;
+	cin >> n;
+
+	int rez1 = 0;
+	int rez2 = 0;
+
+	_asm {
+
+		xor eax, eax;
+		xor ebx, ebx; // n
+		xor ecx, ecx;
+		xor edx, edx;
+		xor edi, edi;
+		xor esi, esi;
+
+		//simpla
+		mov ebx, n;
+
+		push ebx;
+		call suma;
+		add esp, 4;
+		mov rez1, eax;
+
+		//asm
+		mov ebx, n;
+
+		push ebx;
+		call suma_asm;
+		add esp, 4;
+		mov rez2, eax;
+
+		jmp sf_main;
+
+
+	//==============================
+	//	Suma de la 1 la n recursiv
+	//==============================
+	suma_asm:
+		push ebp;
+		mov ebp, esp;
+
+		xor eax, eax;
+		xor ebx, ebx; // n
+		xor ecx, ecx;
+		xor edx, edx;
+		xor edi, edi;
+		xor esi, esi;
+
+		mov ebx, [ebp + 8]; // n
+
+
+		cmp ebx, 1;
+		jg else_asm_1; 
+
+		mov eax, 1; // daca numarul ajunge egal sau mai mic ca 1 pai returnam 1
+		pop ebp;
+		ret;
+
+	else_asm_1:
+
+		sub ebx, 1;
+		push ebx;
+		call suma_asm;
+		add esp, 4;
+
+		add eax, [ebp + 8]; // suma(n - 1) + n
+
+
+		pop ebp;
+		ret;
+	//==============================
+
+
+	sf_main:
+
+	}
+	cout << "Simpla: " << rez1 << "\nASM: " << rez2;
+	return 0;
+}

@@ -1,0 +1,226 @@
+#include <iostream>
+
+using namespace std;
+
+// cel mai mare divizor comun
+
+int cmmdc_sub_fun(int a, int b)
+{
+	_asm
+	{
+		xor eax, eax;
+		xor ebx, ebx; // a
+		xor ecx, ecx; // b
+		xor edx, edx;
+		xor edi, edi; 
+		xor esi, esi;
+
+		mov ebx, [ebp + 8]; // a
+		mov ecx, [ebp + 12]; // b
+
+
+		cmp ebx, ecx;
+		jne sf_if_cmmdc_1;
+
+		mov eax, ebx;
+		jmp sfarsit_cmmdc;
+
+	sf_if_cmmdc_1:
+
+
+		cmp ebx, ecx;
+		jle else_cmmdc_2;
+
+		sub ebx, ecx;
+
+		push ecx;
+		push ebx;
+		call cmmdc_sub_fun;
+		pop ebx;
+		pop ecx;
+
+		jmp sf_if_cmmdc_2;
+		else_cmmdc_2:
+
+		sub ecx, ebx;
+
+		push ecx;
+		push ebx;
+		call cmmdc_sub_fun;
+		pop ebx;
+		pop ecx;
+
+	sf_if_cmmdc_2:
+
+	sfarsit_cmmdc:
+
+	}
+}
+
+int cmmdc_div_fun(int a, int b)
+{
+	_asm
+	{
+		xor eax, eax;
+		xor ebx, ebx; // a
+		xor ecx, ecx; // b
+		xor edx, edx;
+		xor edi, edi;
+		xor esi, esi;
+
+		mov ebx, [ebp + 8]; // a 
+		mov ecx, [ebp + 12]; // b
+
+		mov eax, ebx;
+		div ecx;
+		cmp edx, 0;
+		jne else_div_1;
+
+		mov eax, ecx;
+		jmp sf_cmmdc_div_fun;
+
+	else_div_1:
+
+		push edx;
+		push ecx;
+		call cmmdc_div_fun;
+		add esp, 8;
+
+
+		sf_cmmdc_div_fun:
+	}
+}
+
+
+int main()
+{
+	
+	cout << cmmdc_div_fun(21, 14) << "\n";
+
+	int rez1 = 0;
+	int rez2 = 0;
+
+	_asm
+	{
+
+		push 18;
+		push 15;
+		call _cmmdc_sub_asm;
+
+		mov rez1, eax;
+		add esp, 8;
+
+
+		push 14;
+		push 21;
+		call _cmmdc_sub_asm;
+
+		mov rez2, eax;
+		add esp, 8;
+
+		jmp sfarsit_main;
+
+
+	//=====================
+	// CMMDC Sub
+	//=====================
+	_cmmdc_sub_asm:
+		push ebp;
+		mov ebp, esp;
+
+		xor eax, eax;
+		xor ebx, ebx; // a
+		xor ecx, ecx; // b
+		xor edx, edx;
+		xor edi, edi;
+		xor esi, esi;
+
+		mov ebx, [ebp + 8]; // a
+		mov ecx, [ebp + 12]; // b
+
+
+		cmp ebx, ecx;
+		jne sf_if_cmmdc_asm_1;
+
+		mov eax, ebx;
+		jmp sfarsit_cmmdc_asm;
+
+	sf_if_cmmdc_asm_1:
+
+
+		cmp ebx, ecx;
+		jle else_cmmdc_asm_2;
+
+		sub ebx, ecx;
+
+		push ecx;
+		push ebx;
+		call _cmmdc_sub_asm;
+		pop ebx;
+		pop ecx;
+
+		jmp sf_if_cmmdc_asm_2;
+	else_cmmdc_asm_2:
+
+		sub ecx, ebx;
+
+		push ecx;
+		push ebx;
+		call _cmmdc_sub_asm;
+		pop ebx;
+		pop ecx;
+
+	sf_if_cmmdc_asm_2:
+
+	sfarsit_cmmdc_asm:
+
+		pop ebp;
+		ret;
+
+	//=====================
+	// CMMDC div
+	//=====================
+	_cmmdc_div_asm:
+		push ebp;
+		mov ebp, esp;
+
+		xor eax, eax;
+		xor ebx, ebx; // a
+		xor ecx, ecx; // b
+		xor edx, edx;
+		xor edi, edi;
+		xor esi, esi;
+
+		mov ebx, [ebp + 8]; // a 
+		mov ecx, [ebp + 12]; // b
+
+		mov eax, ebx;
+		div ecx;
+		cmp edx, 0;
+		jne else_div_1;
+
+		mov eax, ecx;
+		jmp sf_cmmdc_div_fun;
+
+	else_div_1:
+
+		push edx;
+		push ecx;
+		call cmmdc_div_fun;
+		add esp, 8;
+
+	sf_cmmdc_div_fun:
+
+		pop ebp;
+		ret;
+
+	//==================
+
+	sfarsit_main:
+		nop;
+	}
+
+	cout << rez1 << '\n' << rez2;
+
+	return 0;
+}

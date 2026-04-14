@@ -1,0 +1,229 @@
+#include <iostream>
+
+int main()
+{
+	int a[] = { 3,6,4,2,1,3,4,5,6,7 };
+	int nr_elem = sizeof(a) / sizeof(a[0]);
+
+	int n = 2410365;
+
+	// eax, ebx, ecx, edx, esi, edi
+	// ecx <=> i
+	// Problema 1: Calculati media lui a
+	// Problema 2: Calculati cel mai mare numar din a
+	// Problema 3: Calculati nr. de elemente impare
+	// Problema 4: Sortati vectorul folosind bubblesort
+
+	int result_prob1 = 0;
+	int result_prob2 = 0;
+	int result_prob3 = 0;
+	int result_prob5 = 0;
+
+	bool ok;
+
+
+	int* p = a;
+
+	_asm
+	{
+		pusha;
+		/*
+		
+		// Problema 1: Calculati media lui a
+
+		xor eax, eax; // suma
+		xor ebx, ebx; // nr_elem
+		xor ecx, ecx; // contor
+		xor edx, edx;
+		xor esi, esi; // vectorul a
+		xor edi, edi;
+
+		mov esi, p;
+		mov ebx, nr_elem;
+
+
+
+	bucla1:
+		cmp ecx, ebx;
+		jge sf_bucla1;
+
+		add eax, [esi + ecx * 4];
+
+		inc ecx;
+
+		jmp bucla1;
+	sf_bucla1:
+
+		idiv ebx;
+
+		mov result_prob1, eax;
+
+		// Problema 2: Calculati cel mai mare numar din a
+		xor eax, eax; // cel mai mare numar
+		xor ebx, ebx; // nr_elem
+		xor ecx, ecx; // contor
+		xor edx, edx;
+		xor esi, esi; // vectorul a
+		xor edi, edi;
+
+		mov esi, p;
+		mov ebx, nr_elem;
+
+		mov eax, [esi];
+
+	bucla2:
+		cmp ecx, ebx;
+		jge sf_bucla2;
+
+		cmp eax, [esi + ecx * 4];
+		jge sf_if2;
+
+		mov eax, [esi + ecx * 4];
+
+	sf_if2:
+
+		inc ecx;
+		jmp bucla2;
+	sf_bucla2:
+
+		mov result_prob2, eax;
+
+
+		// Problema 3: Calculati nr. de elemente impare
+		xor eax, eax; // locul unde o sa punem elementul din vector pentru al imparti
+		xor ebx, ebx; // nr_elem
+		xor ecx, ecx; // contor
+		xor edx, edx; //rest impartire
+		xor esi, esi; // vectorul a
+		xor edi, edi; // nr de elemente impare
+
+		mov ebx, nr_elem;
+		mov esi, p;
+
+	bucla3:
+		cmp ecx, ebx;
+		jge sf_bucla3;
+
+		mov ebx, 2;
+
+		mov eax, [esi + ecx * 4];
+		idiv ebx;
+
+		cmp edx, 1;
+		jne sf_if;
+
+		inc edi;
+
+	sf_if:
+
+		mov edx, 0;
+		mov ebx, nr_elem;
+		inc ecx;
+		jmp bucla3;
+	sf_bucla3:
+
+		mov result_prob3, edi;
+		
+
+		// Problema 4: Sortati vectorul folosind bubblesort
+		xor eax, eax; // variabila de schimb
+		xor ebx, ebx; // variabila de schimb
+		xor ecx, ecx; // contor_1
+		xor edx, edx; // control_2 + 1
+		xor esi, esi; // vectorul a
+		xor edi, edi; // control_2
+
+		mov esi, p;
+
+		mov ecx, nr_elem;
+		dec ecx;
+		dec ecx;
+
+	bucla4_1:
+		cmp ecx, 0;
+		jl sf_bucla4_1;
+		
+		mov ok, 0;
+		mov edi, 0;
+
+	bucla4_2:
+		cmp edi, ecx;
+		jge sf_bucla4_2;
+
+		mov edx, [esi + edi * 4 + 4];
+		mov eax, [esi + edi * 4];
+
+		cmp eax, edx;
+		jle sf_if4;
+
+
+		mov[esi + edi * 4], edx;
+		mov[esi + edi * 4 + 4], eax;
+
+
+		mov ok, 1;
+
+
+	sf_if4:
+
+		inc edi;
+		jmp bucla4_2;
+
+	sf_bucla4_2:
+
+		cmp eax, 0;
+		jne sf_if4_2;
+		jmp sf_bucla4_1;
+
+	sf_if4_2:
+
+		dec ecx;
+		jmp bucla4_1;
+	sf_bucla4_1:
+		*/
+
+		//Problema5: Sa se calculeze suma cifrelor pare ale unui numar natural n. 
+		//De exemplu, pentru n=2410365, va rezulta s=21.
+
+		xor eax, eax; // n
+		xor ebx, ebx; // suma
+		xor ecx, ecx; // 
+		xor edx, edx; // rest
+		xor esi, esi; // 
+		xor edi, edi; // impartitorul
+
+
+		mov edi, 10;
+		mov eax, n;
+		
+	bucla5:
+		cmp eax, 0;
+		jle sf_bucla5;
+
+		idiv edi;
+
+		add ebx, edx;
+
+		mov edx, 0;
+
+		jmp bucla5;
+	sf_bucla5:
+
+		mov result_prob5, ebx;
+
+		popa;
+	}
+
+	printf("Rezultat Prob 1: %X\n", result_prob1);
+	printf("Rezultat Prob 2: %d\n", result_prob2);
+	printf("Rezultat Prob 3: %d\n", result_prob3);
+	printf("Rezultat Prob 5: %d\n", result_prob5);
+
+	printf("Vectorul nostru sortat este: \n");
+	for (int i = 0; i < nr_elem; i++)
+	{
+		printf("%d ", a[i]);
+	}
+
+	return 0;
+}

@@ -1,0 +1,86 @@
+#include <iostream>
+
+using namespace std;
+
+
+int main()
+{
+
+	int a[] = { 1, 5, 6, 3, 9, 100, 56, 89 };
+	int nr_elem = sizeof(a) / sizeof(a[0]);
+
+	char format[] = "%d ";
+
+	_asm
+	{
+		xor eax, eax; // a
+		xor ebx, ebx; // nr_elem
+		xor ecx, ecx; // format
+		xor edx, edx;
+		xor esi, esi;
+		xor edi, edi;
+
+		lea eax, a;
+		mov ebx, nr_elem;
+		lea ecx, format;
+
+		push ecx;
+		push ebx;
+		push eax;
+		call print_vector_asm;
+		add esp, 12;
+
+
+		jmp _final;
+
+	//===========================
+	//	Print vector ASM
+	//===========================
+	print_vector_asm:
+		push ebp;
+		mov ebp, esp;
+
+		xor eax, eax; // vector
+		xor ebx, ebx; // nr_elemente
+		xor ecx, ecx; // i-ul din for
+		xor edx, edx;
+		xor esi, esi;
+		xor edi, edi;
+
+		mov eax, [ebp + 8]; //vector
+		mov ebx, [ebp + 12]; // nr_elemente
+
+		mov ecx, 0; // i-ul
+	bucla:
+		cmp ecx, ebx;
+		jge sf_bucla11;
+
+		push eax;
+		push ecx;
+		push ebx;
+
+		push[eax + ecx * 4];
+		push [ebp + 16];
+
+		call printf;
+
+		add esp, 8;
+		pop ebx;
+		pop ecx;
+		pop eax;
+
+		inc ecx; // ++i
+		jmp bucla;
+	sf_bucla11:
+
+		pop ebp;
+		ret;
+
+
+	_final:
+		nop;
+
+	}
+
+	return 0;
+}

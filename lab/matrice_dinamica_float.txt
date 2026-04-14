@@ -1,0 +1,122 @@
+#include <iostream>
+
+using namespace std;
+
+
+void lucru_cu_matricea(float** m1, float** m2, float** rez, unsigned int n, unsigned int m)
+{
+	int doi = 2;
+	_asm
+	{
+		xor eax, eax; 
+		xor ebx, ebx; 
+		xor ecx, ecx; // i
+		xor edx, edx; 
+		xor edi, edi; // j
+		xor esi, esi; 
+
+
+		mov edi, [ebp + 16];
+
+		// [ebp + 20] = n // linie
+		// [ebp + 24] = m // coloana
+
+	bucla_1_1:
+		cmp ecx, [ebp + 20];
+		jge sf_bucla_1_1;
+
+		mov edi, 0;
+	bucla_1_2:
+		cmp edi, [ebp + 24];
+		jge sf_bucla_1_2;
+
+		mov esi, [ebp + 8];
+		mov ebx, [esi + ecx * 4];
+		fld dword ptr[ebx + edi * 4];
+
+		mov esi, [ebp + 12];
+		mov ebx, [esi + ecx * 4];
+		fld dword ptr[ebx + edi * 4];
+		
+
+
+		mov edx, 0;
+		mov eax, ecx;
+		div doi;
+		//if
+		cmp edx, 0;
+		jne _impar;
+		// par
+
+		faddp st(1), st(0);
+
+		jmp sf_if_1;
+	_impar:
+
+		fsubp st(1), st(0);
+
+	sf_if_1:
+
+		mov esi, [ebp + 16];
+		mov ebx, [esi + ecx * 4];
+		fstp dword ptr[ebx + edi * 4];
+
+		inc edi;
+		jmp bucla_1_2;
+	sf_bucla_1_2:
+
+		inc ecx;
+		jmp bucla_1_1;
+	sf_bucla_1_1:
+
+	}
+}
+
+
+int main()
+{
+	constexpr int n = 5;
+	constexpr int m = 5;
+
+	char format[] = "%d ";
+	char new_line[] = "\n";
+
+
+	float** matrice1{ new float* [5] };
+	for (int count = 0; count < 5; ++count)
+		matrice1[count] = new float[5]{ 5.1, 5.2, 5.3, 5.4, 5.5 };
+
+	float** matrice2{ new float* [5] };
+	for (int count = 0; count < 5; ++count)
+		matrice2[count] = new float[5]{ 10.5, 10.4, 10.3, 10.2, 10.1 };
+
+	float** rez{ new float* [5] };
+	for (int count = 0; count < 5; ++count)
+		rez[count] = new float[5]{0};
+
+
+	lucru_cu_matricea(matrice1, matrice2, rez, 5, 5);
+
+
+	for (int count = 0; count < 5; ++count)
+	{
+		for (int c = 0; c < 5; ++c)
+		{
+			cout << rez[count][c] << " ";
+		}
+		cout << "\n";
+	}
+
+
+	for (int count = 0; count < 5; ++count)
+		delete[] matrice1[count];
+	delete[] matrice1;
+	for (int count = 0; count < 5; ++count)
+		delete[] matrice2[count];
+	delete[] matrice2;
+	for (int count = 0; count < 5; ++count)
+		delete[] rez[count];
+	delete[] rez;
+
+	return 0;
+}
