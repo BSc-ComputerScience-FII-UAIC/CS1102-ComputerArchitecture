@@ -1,0 +1,36 @@
+{
+  "id": "lesson-parallel-architectures",
+  "title": "Parallel Architectures: UMA, NUMA and Message-Passing",
+  "source_courses": [
+    "course8"
+  ],
+  "unit": "unit-cpu-structure-and-performance",
+  "order": 12,
+  "duration_minutes_estimate": 45,
+  "summary": "Covers multiprocessor system types (UMA/SMP, NUMA/DSM, message-passing), scalability challenges, and memory system classifications.",
+  "key_concepts": [
+    "multiprocessor",
+    "UMA",
+    "NUMA",
+    "message-passing",
+    "SMP",
+    "DSM",
+    "scalability",
+    "Amdahl's law (parallel)"
+  ],
+  "content_points": [
+    "UMA/SMP: shared memory, equal access time for all processors. Simple but does not scale.",
+    "NUMA/DSM: physically distributed memory, shared address space, non-uniform access time.",
+    "Message-passing: each processor has local memory; communication via explicit messages.",
+    "Scalability: linear speedup is ideal but unachievable; limited by sequential program portions (Amdahl's law) and communication overhead.",
+    "Very large processor counts may cause performance to plateau or drop."
+  ],
+  "prerequisites": [
+    "lesson-cache-construction-types"
+  ],
+  "learning_objectives": [
+    "Describe UMA, NUMA, and message-passing multiprocessor systems",
+    "Explain scalability challenges in large parallel systems",
+    "Apply Amdahl's law in the context of parallel computing"
+  ]
+}

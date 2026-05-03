@@ -1,0 +1,43 @@
+{
+  "id": "lesson-cache-construction-types",
+  "title": "Cache Construction Types: Direct Mapped, Fully Associative, Set Associative",
+  "source_courses": [
+    "course7"
+  ],
+  "unit": "unit-computer-architecture-and-memory",
+  "order": 7,
+  "duration_minutes_estimate": 60,
+  "summary": "Describes and compares direct mapped, fully associative, and set associative caches: address decomposition, data placement, and trade-offs.",
+  "key_concepts": [
+    "direct mapped cache",
+    "fully associative cache",
+    "set associative cache",
+    "tag",
+    "cache line selector",
+    "byte offset",
+    "valid bit",
+    "associative memory"
+  ],
+  "content_points": [
+    "Direct mapped: each memory address maps to exactly one cache line; address = tag | line_selector | byte_offset.",
+    "Advantages: simple, fast. Drawbacks: conflicts (two addresses mapping to same line evict each other).",
+    "Fully associative: any line can go anywhere; implemented with associative (content-addressable) memory.",
+    "Advantages: flexible, high hit ratio. Drawbacks: slow, complex hardware.",
+    "Set associative: middle ground; address maps to a set of n lines (n-way); best of both worlds.",
+    "Set associative: slightly slower than direct mapped; much better hit ratio."
+  ],
+  "examples": [
+    {
+      "name": "Direct mapped address split",
+      "description": "32-bit address, 2048 lines × 32 bytes: line_selector=11 bits, byte_offset=5 bits, tag=16 bits."
+    }
+  ],
+  "prerequisites": [
+    "lesson-cache-performance"
+  ],
+  "learning_objectives": [
+    "Describe direct mapped, fully associative, and set associative cache designs",
+    "Split a memory address for a direct mapped cache",
+    "Compare the three types in terms of speed and hit ratio"
+  ]
+}

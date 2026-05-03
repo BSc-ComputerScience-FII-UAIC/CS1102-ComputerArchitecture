@@ -1,0 +1,157 @@
+{
+  "id": "course7",
+  "source_file": "course/eng/course7.pdf",
+  "parsing_status": "success",
+  "title": "Cache Memory: Performance, Construction Types, Write Policies",
+  "course": "Computer Architecture and Operating Systems",
+  "part": "Part I",
+  "part_number": 7,
+  "semester_half": 1,
+  "slide_range": {
+    "start": 272,
+    "end": 301
+  },
+  "main_topics": [
+    "V.3.1. Cache Memory (continued)"
+  ],
+  "subtopics": [
+    "Cache performance parameters (hit ratio, miss ratio, access time)",
+    "Cache addressing issues",
+    "Cache lines and spatial locality",
+    "Replacement policy",
+    "Direct mapped cache",
+    "Fully associative cache",
+    "Set associative cache",
+    "Write-back vs write-through",
+    "Extending the cache concept (disk caches, browser caches)"
+  ],
+  "key_concepts": [
+    "hit ratio (H)",
+    "miss ratio (M)",
+    "cache access time (T_c)",
+    "main memory access time (T_p)",
+    "average memory access time (T)",
+    "cache line",
+    "spatial locality in cache",
+    "replacement policy",
+    "LRU (Least Recently Used)",
+    "direct mapped cache",
+    "fully associative cache",
+    "set associative cache",
+    "associative memory",
+    "tag",
+    "cache line selector",
+    "byte selector",
+    "valid bit",
+    "write-back cache",
+    "write-through cache",
+    "dirty bit",
+    "disk cache",
+    "browser cache"
+  ],
+  "definitions": [
+    {
+      "term": "hit ratio (H)",
+      "description": "The fraction of memory accesses satisfied from the cache (0 ≤ H ≤ 1)."
+    },
+    {
+      "term": "miss ratio (M)",
+      "description": "The fraction of memory accesses not satisfied from the cache; M = 1 - H."
+    },
+    {
+      "term": "cache line",
+      "description": "A fixed-size block of consecutive main memory locations brought into the cache together to exploit spatial locality."
+    },
+    {
+      "term": "direct mapped cache",
+      "description": "Each main-memory line maps to exactly one cache line (determined by the address). Simple but inflexible."
+    },
+    {
+      "term": "fully associative cache",
+      "description": "A line can be placed in any cache location. Maximally flexible replacement but slow (parallel comparison required)."
+    },
+    {
+      "term": "set associative cache",
+      "description": "Combines direct-mapped and fully-associative: each address maps to a set of n lines (n-way set associative)."
+    },
+    {
+      "term": "write-back cache",
+      "description": "Writes go to the cache only; the main memory is updated when the cache line is evicted."
+    },
+    {
+      "term": "write-through cache",
+      "description": "Every write updates both the cache and the main memory simultaneously."
+    },
+    {
+      "term": "replacement policy",
+      "description": "The rule that decides which cache line to evict when the cache is full (e.g., LRU – evict the Least Recently Used line)."
+    }
+  ],
+  "formulas": [
+    {
+      "name": "Average memory access time",
+      "expression": "T = T_c * H + T_m * M  (where T_m is access time on a miss)"
+    },
+    {
+      "name": "Direct mapped cache address split",
+      "description": "32-bit address = tag || cache_line_selector || byte_selector_within_line"
+    },
+    {
+      "name": "Cache performance example",
+      "description": "T_c=2ns, T_p=10ns, T_m=11ns, H=95% → T = 2.45ns ≈ 0.245 * T_p  (>4× speedup)"
+    }
+  ],
+  "algorithms": [
+    {
+      "name": "Direct mapped cache lookup",
+      "description": "Split the address into tag, line selector, and byte offset. Check the cache line at the computed index; compare tags and valid bit."
+    },
+    {
+      "name": "Set associative cache lookup",
+      "description": "Map address to a set; check all n ways in parallel for a tag match."
+    }
+  ],
+  "examples": [
+    {
+      "name": "Direct mapped cache address decomposition",
+      "description": "32-bit address, 211 cache lines × 25 bytes: line selector=11 bits, byte offset=5 bits, tag=16 bits. Example: address 45097373 → tag=688, line=268, byte=29."
+    },
+    {
+      "name": "Direct mapped cache conflict",
+      "description": "for(i=0;i<1000;i++) a=a+i; where i and a both map to cache line 161 → frequent evictions → many misses."
+    }
+  ],
+  "prerequisites": [
+    "lesson-memory-hierarchy-and-cache-intro",
+    "lesson-temporal-locality",
+    "lesson-spatial-locality"
+  ],
+  "learning_objectives": [
+    "Calculate average memory access time using hit ratio",
+    "Explain the role of cache lines in exploiting spatial locality",
+    "Compare direct mapped, fully associative, and set associative caches",
+    "Describe replacement policies and their trade-offs",
+    "Distinguish write-back and write-through policies",
+    "Identify the cache concept in disk caches and browser caches"
+  ],
+  "lessons": [
+    "lesson-cache-performance",
+    "lesson-cache-construction-types",
+    "lesson-cache-write-policies"
+  ],
+  "unit": "unit-computer-architecture-and-memory",
+  "relationships": [
+    {
+      "type": "follows",
+      "target": "course6"
+    },
+    {
+      "type": "precedes",
+      "target": "course8"
+    },
+    {
+      "type": "part_of",
+      "target": "unit-computer-architecture-and-memory"
+    }
+  ]
+}

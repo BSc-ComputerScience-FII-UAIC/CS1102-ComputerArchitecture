@@ -1,0 +1,38 @@
+{
+  "id": "lesson-overflow-detection",
+  "title": "Overflow Detection in Fixed-point Arithmetic",
+  "source_courses": [
+    "course5"
+  ],
+  "unit": "unit-internal-representations",
+  "order": 6,
+  "duration_minutes_estimate": 45,
+  "summary": "Defines overflow, explains sign extension for changing representation width, and derives the C2 overflow detection rule using carry bits and NXOR.",
+  "key_concepts": [
+    "overflow",
+    "sign extension",
+    "carry bits C_{n-1} and C_n",
+    "NXOR overflow test"
+  ],
+  "content_points": [
+    "Overflow: result of an operation falls outside [min, max] of the representation.",
+    "Sign extension to n+k bits: A+S – insert k zeros after sign bit; C1/C2 – repeat sign bit k times.",
+    "C2 overflow condition: carry-out C_n ≠ carry into sign position C_{n-1}. Detected by NXOR gate.",
+    "Overflow cannot occur when adding numbers of opposite signs.",
+    "C2 Theorem 2: if no overflow, the result fits in n bits (take lower n bits of formal sum)."
+  ],
+  "formulas": [
+    {
+      "name": "C2 overflow test",
+      "expression": "overflow = C_{n-1} XOR C_n  (1 → overflow occurred)"
+    }
+  ],
+  "prerequisites": [
+    "lesson-fixed-point-representations"
+  ],
+  "learning_objectives": [
+    "Define overflow for a given fixed-point representation",
+    "Apply sign extension to change representation width",
+    "Detect overflow in C2 using the carry-bit rule"
+  ]
+}

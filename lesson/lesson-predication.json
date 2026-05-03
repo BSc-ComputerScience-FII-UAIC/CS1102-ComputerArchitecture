@@ -1,0 +1,30 @@
+{
+  "id": "lesson-predication",
+  "title": "Predication",
+  "source_courses": [
+    "course9"
+  ],
+  "unit": "unit-cpu-structure-and-performance",
+  "order": 7,
+  "duration_minutes_estimate": 30,
+  "summary": "Covers Intel IA-64 predication: predicate registers, predicated instructions, and how branches are eliminated by executing both paths with conditional commitment.",
+  "key_concepts": [
+    "predication",
+    "predicate register",
+    "predicated instruction",
+    "IA-64 architecture"
+  ],
+  "content_points": [
+    "Each instruction has an associated predicate (Boolean bit stored in a predicate register).",
+    "An instruction produces effects only if its predicate is true; otherwise result is discarded.",
+    "Test instructions set predicate registers.",
+    "Example: if(R1==0){R2=5; R3=8;} else R2=21; → cmp R1,0,P1; <P1>mov R2,5; <P1>mov R3,8; <P2>mov R2,21."
+  ],
+  "prerequisites": [
+    "lesson-speculative-execution"
+  ],
+  "learning_objectives": [
+    "Explain how predication eliminates branch control flow",
+    "Convert a simple if-else to predicated assembly"
+  ]
+}

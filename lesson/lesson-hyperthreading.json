@@ -1,0 +1,32 @@
+{
+  "id": "lesson-hyperthreading",
+  "title": "Hyperthreading",
+  "source_courses": [
+    "course9"
+  ],
+  "unit": "unit-cpu-structure-and-performance",
+  "order": 10,
+  "duration_minutes_estimate": 30,
+  "summary": "Describes hyperthreading: one physical processor appearing as two virtual processors, duplicating state components while sharing execution resources.",
+  "key_concepts": [
+    "hyperthreading",
+    "virtual processor",
+    "physical processor",
+    "SMT (Simultaneous Multithreading)"
+  ],
+  "content_points": [
+    "Duplicated: general-purpose registers, control registers, interrupt controller, status registers.",
+    "Shared: execution units, branch prediction units, buses, control unit.",
+    "When one virtual processor stalls, the other can use the pipeline stages.",
+    "Not equal to a second physical CPU: shared resources may bottleneck.",
+    "Low hardware cost: only state components duplicated."
+  ],
+  "prerequisites": [
+    "lesson-pipeline"
+  ],
+  "learning_objectives": [
+    "Explain how hyperthreading creates virtual processors",
+    "Describe which components are duplicated vs. shared",
+    "Assess the performance benefit vs. adding a physical CPU"
+  ]
+}

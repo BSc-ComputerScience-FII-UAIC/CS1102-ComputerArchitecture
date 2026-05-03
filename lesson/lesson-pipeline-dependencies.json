@@ -1,0 +1,47 @@
+{
+  "id": "lesson-pipeline-dependencies",
+  "title": "Pipeline Dependencies: Stall and Forwarding",
+  "source_courses": [
+    "course8"
+  ],
+  "unit": "unit-cpu-structure-and-performance",
+  "order": 4,
+  "duration_minutes_estimate": 60,
+  "summary": "Covers the three types of pipeline dependencies (structural, data, control), their causes and effects on throughput, and the solutions: stall and forwarding.",
+  "key_concepts": [
+    "structural dependency",
+    "data dependency",
+    "control dependency",
+    "stall",
+    "bubble",
+    "forwarding",
+    "jump instruction",
+    "pipeline flush"
+  ],
+  "content_points": [
+    "Structural: two instructions need the same resource simultaneously (e.g., memory, ALU).",
+    "Data: instruction 2 needs a result not yet computed by instruction 1 (RAW, WAR, WAW).",
+    "Control: jump instructions change PC late; following instructions fetched incorrectly; pipeline may be flushed.",
+    "~1 in 7 instructions is a jump – significant performance impact.",
+    "Stall: insert bubble (NOP) until dependency resolves. Simple but slow.",
+    "Forwarding: route result directly from ALU output to dependent instruction input; reduces stalls."
+  ],
+  "examples": [
+    {
+      "name": "Data dependency",
+      "description": "'mov eax,7; sub eax,3' – sub must wait for mov to write eax."
+    },
+    {
+      "name": "Forwarding",
+      "description": "'add byte ptr [eax],5; sub ecx,[eax]' – sub takes addition result directly from ALU."
+    }
+  ],
+  "prerequisites": [
+    "lesson-pipeline"
+  ],
+  "learning_objectives": [
+    "Identify structural, data, and control pipeline dependencies",
+    "Explain the impact of stalls on throughput",
+    "Describe forwarding and its hardware requirements"
+  ]
+}

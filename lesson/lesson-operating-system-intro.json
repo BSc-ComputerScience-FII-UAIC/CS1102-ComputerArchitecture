@@ -1,0 +1,31 @@
+{
+  "id": "lesson-operating-system-intro",
+  "title": "The Operating System: Role and Structure",
+  "source_courses": [
+    "course11"
+  ],
+  "unit": "unit-operating-system",
+  "order": 1,
+  "duration_minutes_estimate": 30,
+  "summary": "Describes the role of the OS as a resource manager, its dependence on hardware (especially interrupts), and its main components (kernel, drivers).",
+  "key_concepts": [
+    "operating system",
+    "resource management",
+    "kernel",
+    "driver",
+    "interrupt system"
+  ],
+  "content_points": [
+    "OS: program that manages hardware and software resources, links hardware to applications.",
+    "Provides services, supervises applications, and can take control on errors.",
+    "Requires hardware support – most importantly the interrupt system.",
+    "Main components: kernel (core logic) and drivers (device-specific modules)."
+  ],
+  "prerequisites": [
+    "lesson-interrupt-system"
+  ],
+  "learning_objectives": [
+    "Describe the role of the operating system",
+    "Identify the main components of an OS"
+  ]
+}

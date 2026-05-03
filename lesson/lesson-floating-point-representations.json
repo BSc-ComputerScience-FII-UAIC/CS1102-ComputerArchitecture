@@ -1,0 +1,64 @@
+{
+  "id": "lesson-floating-point-representations",
+  "title": "Floating-point Representations and IEEE 754",
+  "source_courses": [
+    "course5"
+  ],
+  "unit": "unit-internal-representations",
+  "order": 7,
+  "duration_minutes_estimate": 60,
+  "summary": "Explains scientific notation in base 2, the structure of IEEE 754 single and double precision, special values (NaN, ∞, denormalised), and representable intervals.",
+  "key_concepts": [
+    "scientific notation",
+    "normalized form",
+    "mantissa",
+    "characteristic",
+    "IEEE 754",
+    "single precision",
+    "double precision",
+    "NaN",
+    "infinity",
+    "denormalized number"
+  ],
+  "content_points": [
+    "Normalized base-2 form: 1.f × 2^e; the leading 1 is implicit (not stored).",
+    "Components: sign S (1 bit), characteristic C = e + excess (biased exponent), fractional mantissa f.",
+    "Single precision (32 bits): S=1, C=8 (excess-127), f=23. Range ≈ ±1.2×10^(-38) to ±3.4×10^38.",
+    "Double precision (64 bits): S=1, C=11 (excess-1023), f=52. Range ≈ ±1.7×10^(-308) to ±1.7×10^308.",
+    "Special values: infinity (C=max, f=0), NaN (C=max, f≠0), denormalized (C=min, f≠0), zero (C=min, f=0).",
+    "Precision: ≈ 2^(e-23) for single, 2^(e-52) for double."
+  ],
+  "formulas": [
+    {
+      "name": "Floating-point value",
+      "expression": "N = (-1)^S × 1.f × 2^(C - excess)"
+    },
+    {
+      "name": "Single precision excess",
+      "expression": "excess = 127"
+    },
+    {
+      "name": "Double precision excess",
+      "expression": "excess = 1023"
+    }
+  ],
+  "examples": [
+    {
+      "name": "Encode -23.25 in IEEE 754 single",
+      "description": "Sign=1, e=4, C=131=10000011_2, f=0111010...0 → C1BA0000h"
+    },
+    {
+      "name": "Decode 42D80000h",
+      "description": "S=0, C=133→e=6, M=1.1011 → +108"
+    }
+  ],
+  "prerequisites": [
+    "lesson-overflow-detection",
+    "lesson-bcd-and-excess-representations"
+  ],
+  "learning_objectives": [
+    "Describe the structure of IEEE 754 single and double precision",
+    "Encode and decode floating-point numbers",
+    "Identify special floating-point values (NaN, ∞, denormalized)"
+  ]
+}

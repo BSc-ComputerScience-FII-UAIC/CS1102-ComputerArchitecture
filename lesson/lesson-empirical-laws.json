@@ -1,0 +1,41 @@
+{
+  "id": "lesson-empirical-laws",
+  "title": "Empirical Laws in Computer Science",
+  "source_courses": [
+    "course1"
+  ],
+  "unit": "unit-boole-algebra-and-combinational-circuits",
+  "order": 2,
+  "duration_minutes_estimate": 45,
+  "summary": "Covers the 90:10 law, Amdahl's law, temporal locality, and spatial locality – the fundamental empirical principles guiding computer architecture decisions.",
+  "key_concepts": [
+    "empirical law",
+    "90:10 law",
+    "Amdahl's law",
+    "temporal locality",
+    "spatial locality",
+    "physical order",
+    "logical order"
+  ],
+  "content_points": [
+    "90:10 law (Knuth): 90% of execution time is spent in 10% of the instructions.",
+    "Amdahl's law: A(a, fa) = 1 / ((1-fa) + fa/a). Best gains come from optimising the most-used components.",
+    "Temporal locality: recently accessed memory locations will likely be accessed again soon.",
+    "Spatial locality: neighbours of recently accessed locations will likely be accessed soon.",
+    "Physical order = the order instructions are stored; logical order = the order they are executed (may differ due to jumps)."
+  ],
+  "formulas": [
+    {
+      "name": "Amdahl's law",
+      "expression": "A(a, fa) = 1 / ((1 - fa) + fa/a)"
+    }
+  ],
+  "prerequisites": [
+    "lesson-introduction-to-computing"
+  ],
+  "learning_objectives": [
+    "Apply Amdahl's law to calculate system speedup",
+    "Distinguish temporal and spatial locality",
+    "Explain the 90:10 law and its implications"
+  ]
+}

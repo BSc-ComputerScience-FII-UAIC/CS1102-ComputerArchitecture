@@ -1,0 +1,34 @@
+{
+  "id": "lesson-floating-point-arithmetic",
+  "title": "Floating-point Arithmetic",
+  "source_courses": [
+    "course5"
+  ],
+  "unit": "unit-internal-representations",
+  "order": 8,
+  "duration_minutes_estimate": 45,
+  "summary": "Step-by-step procedures for floating-point addition and multiplication, including mantissa alignment, normalisation, and rounding.",
+  "key_concepts": [
+    "floating-point addition",
+    "floating-point multiplication",
+    "mantissa alignment",
+    "normalisation",
+    "rounding",
+    "overflow",
+    "underflow"
+  ],
+  "content_points": [
+    "Addition: align mantissas by shifting the smaller exponent's mantissa; add in C2; normalise; round.",
+    "Multiplication: add exponents; multiply mantissas; normalise; round; sign = XOR of input signs.",
+    "If normalised exponent overflows → result is ±∞. If underflows → result is 0 or denormalized.",
+    "Extended arithmetic adds rules for ∞ (e.g., x/∞=0) and NaN propagation (NaN op x = NaN)."
+  ],
+  "prerequisites": [
+    "lesson-floating-point-representations"
+  ],
+  "learning_objectives": [
+    "Perform floating-point addition step by step",
+    "Perform floating-point multiplication step by step",
+    "Explain the role of normalisation and rounding"
+  ]
+}

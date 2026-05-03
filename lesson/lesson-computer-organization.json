@@ -1,0 +1,34 @@
+{
+  "id": "lesson-computer-organization",
+  "title": "Computer Organisation: CPU, Memory, I/O, Buses",
+  "source_courses": [
+    "course6"
+  ],
+  "unit": "unit-computer-architecture-and-memory",
+  "order": 2,
+  "duration_minutes_estimate": 30,
+  "summary": "Describes the main hardware components of a computing system and the von Neumann model.",
+  "key_concepts": [
+    "von Neumann computer",
+    "CPU",
+    "main memory",
+    "peripheral devices",
+    "data bus",
+    "address bus",
+    "control bus",
+    "program counter"
+  ],
+  "content_points": [
+    "Von Neumann: memorised program; instructions and data in same memory; PC tracks next instruction.",
+    "Main components: CPU (processes), memory (stores), I/O peripherals (communicate), buses (connect).",
+    "Three buses: data (transfers data/instructions), address (selects location), control (CPU signals).",
+    "CPU executes instructions indicated by PC; PC updates to next or branched address."
+  ],
+  "prerequisites": [
+    "lesson-computer-architecture-visions"
+  ],
+  "learning_objectives": [
+    "List the main components of a von Neumann computing system",
+    "Describe the purpose of each system bus"
+  ]
+}

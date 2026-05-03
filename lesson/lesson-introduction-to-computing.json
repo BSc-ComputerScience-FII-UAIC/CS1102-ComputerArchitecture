@@ -1,0 +1,30 @@
+{
+  "id": "lesson-introduction-to-computing",
+  "title": "Introduction to Computing",
+  "source_courses": [
+    "course1"
+  ],
+  "unit": "unit-boole-algebra-and-combinational-circuits",
+  "order": 1,
+  "duration_minutes_estimate": 45,
+  "summary": "Traces the evolution of computing from the abacus to the von Neumann model, defines universal computing machines, and outlines a brief history of key contributors and milestones.",
+  "key_concepts": [
+    "universal computing machine",
+    "von Neumann model",
+    "memorized program",
+    "parallel computing",
+    "quantum computing"
+  ],
+  "content_points": [
+    "Operations that can be performed evolved from addition (abacus) to branching (Babbage) to the memorized-program model (von Neumann).",
+    "A universal computing machine can behave like any particular machine, solving any problem solvable by a specific machine.",
+    "Key historical figures: Boole (1854), Gödel (1935), Shannon (1938), von Neumann (1946), Shockley et al. (1947).",
+    "Integrated circuits followed the transistor, enabling today's computing."
+  ],
+  "prerequisites": [],
+  "learning_objectives": [
+    "Describe the evolution of computing devices",
+    "Define a universal computing machine",
+    "Identify key historical contributors to computer science"
+  ]
+}

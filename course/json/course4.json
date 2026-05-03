@@ -1,0 +1,192 @@
+{
+  "id": "course4",
+  "source_file": "course/eng/course4.pdf",
+  "parsing_status": "success",
+  "title": "Internal Representations: Alpha-numerical Codes, Number Bases, BCD, Fixed-point",
+  "course": "Computer Architecture and Operating Systems",
+  "part": "Part I",
+  "part_number": 4,
+  "semester_half": 1,
+  "slide_range": {
+    "start": 138,
+    "end": 186
+  },
+  "main_topics": [
+    "IV.1. Alpha-numerical Codes",
+    "IV.2. Internal Number Representation",
+    "IV.3. BCD and Excess Representations",
+    "IV.4. Fixed-point Representations"
+  ],
+  "subtopics": [
+    "ASCII, EBCDIC, ISO 8859-1, Unicode",
+    "Positional representation",
+    "Base conversion (d↔10)",
+    "BCD representation and addition",
+    "Excess-k representation",
+    "Sign-magnitude (A+S)",
+    "One's complement (C1)",
+    "Two's complement (C2)"
+  ],
+  "key_concepts": [
+    "character encoding",
+    "ASCII",
+    "Unicode",
+    "positional representation",
+    "radix (base)",
+    "base 2 (binary)",
+    "base 16 (hexadecimal)",
+    "base 8 (octal)",
+    "BCD (Binary Coded Decimal)",
+    "excess-k representation",
+    "fixed-point representation",
+    "sign-magnitude",
+    "one's complement",
+    "two's complement",
+    "redundant encoding",
+    "representable interval",
+    "precision (step)",
+    "approximation",
+    "overflow"
+  ],
+  "definitions": [
+    {
+      "term": "ASCII",
+      "description": "American Standard Code for Information Interchange: 7-bit character encoding (plus one parity bit). 'a'=97, 'A'=65, '0'=48."
+    },
+    {
+      "term": "Unicode",
+      "description": "Universal character encoding supporting non-Latin scripts (extension of ASCII)."
+    },
+    {
+      "term": "positional representation",
+      "description": "A number representation where each position has an implicit weight (power of the base); value = Σ a_i * d^i."
+    },
+    {
+      "term": "BCD (Binary Coded Decimal)",
+      "description": "Each decimal digit is represented by 4 bits; used in business/financial applications."
+    },
+    {
+      "term": "excess-k representation",
+      "description": "Each n-bit string represents the value given by binary writing minus k; the representable interval is [-k, 2^n - k - 1]."
+    },
+    {
+      "term": "sign-magnitude (A+S)",
+      "description": "The leftmost bit encodes the sign; remaining bits encode the magnitude. Has two representations for 0."
+    },
+    {
+      "term": "one's complement (C1)",
+      "description": "Negative numbers are obtained by inverting all bits of the positive representation. Has two representations for 0."
+    },
+    {
+      "term": "two's complement (C2)",
+      "description": "Negative numbers are obtained by inverting all bits and adding 1. Only one representation for 0; addition uses the same hardware as unsigned."
+    },
+    {
+      "term": "precision",
+      "description": "The smallest non-zero difference between consecutive representable numbers; equals 2^(-m) for an n+m bit fixed-point representation."
+    }
+  ],
+  "formulas": [
+    {
+      "name": "Base conversion formula",
+      "expression": "N = Σ a_i * d^i  (i from -m to n-1)"
+    },
+    {
+      "name": "Unsigned integer limits (n bits)",
+      "expression": "[0, 2^n - 1]"
+    },
+    {
+      "name": "A+S representable interval (n+m bits)",
+      "expression": "[-(2^(n-1) - 2^(-m)), +(2^(n-1) - 2^(-m))]  (redundant: two zeros)"
+    },
+    {
+      "name": "C2 representable interval (n+m bits)",
+      "expression": "[-2^(n-1), 2^(n-1) - 2^(-m)]  (asymmetric, non-redundant)"
+    },
+    {
+      "name": "BCD addition correction",
+      "description": "If the sum of two BCD digits exceeds 9, add 6 (0110) to get the correct BCD result."
+    }
+  ],
+  "algorithms": [
+    {
+      "name": "Base-10 to base-d integer conversion",
+      "description": "Repeated division by d, collect remainders bottom-up."
+    },
+    {
+      "name": "Base-10 to base-d fractional conversion",
+      "description": "Repeated multiplication by d, collect integer parts top-down (may produce a repeating sequence)."
+    },
+    {
+      "name": "Two's complement negation",
+      "description": "Invert all bits and add 1 (equivalently: the C2 representation of -q equals q + 2^N for an N-bit representation)."
+    },
+    {
+      "name": "C1 addition",
+      "description": "Add using a classical adder; then add the carry-out bit to the result (end-around carry)."
+    },
+    {
+      "name": "C2 addition",
+      "description": "Add using a classical adder; the carry-out is simply ignored (no correction needed)."
+    }
+  ],
+  "examples": [
+    {
+      "name": "Base conversion: 5E4.D(16) to decimal",
+      "expression": "5·16^2 + 14·16^1 + 4·16^0 + 13·16^(-1) = 24128.8125"
+    },
+    {
+      "name": "Base conversion: 87.35(10) to binary",
+      "expression": "1010111.01(0110)_2 (0.35 has a repeating binary fraction)"
+    },
+    {
+      "name": "Excess-5 table on 4 bits",
+      "description": "Shows values from -5 to 10 with their 4-bit encodings"
+    },
+    {
+      "name": "Two's complement example",
+      "description": "77 → 01001101; -77 → 10110011"
+    }
+  ],
+  "exercises": [
+    "Prove that C1 and C2 representations have a negative value when the sign bit is 1",
+    "Show why adding 6 corrects BCD addition when the sum exceeds 9",
+    "Derive the C2 N-bit representation of a negative integer q as 2^N - |q|"
+  ],
+  "prerequisites": [
+    "lesson-boole-algebra",
+    "lesson-logic-diagrams"
+  ],
+  "learning_objectives": [
+    "Explain why character encodings are needed and how ASCII works",
+    "Perform base conversions between binary, octal, decimal, hexadecimal",
+    "Understand BCD representation and correct BCD addition",
+    "Explain excess-k representation and its representable interval",
+    "Compare sign-magnitude, one's complement, and two's complement",
+    "Determine the representable interval and precision of a fixed-point encoding",
+    "Perform negation and addition in C1 and C2",
+    "Explain why C2 is the most widely used integer representation"
+  ],
+  "lessons": [
+    "lesson-alphanumerical-codes",
+    "lesson-positional-representation",
+    "lesson-base-conversion",
+    "lesson-bcd-and-excess-representations",
+    "lesson-fixed-point-representations"
+  ],
+  "unit": "unit-internal-representations",
+  "relationships": [
+    {
+      "type": "follows",
+      "target": "course3"
+    },
+    {
+      "type": "precedes",
+      "target": "course5"
+    },
+    {
+      "type": "part_of",
+      "target": "unit-internal-representations"
+    }
+  ]
+}

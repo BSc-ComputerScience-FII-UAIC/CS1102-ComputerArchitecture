@@ -1,0 +1,49 @@
+{
+  "id": "lesson-memory-segmentation",
+  "title": "Memory Segmentation",
+  "source_courses": [
+    "course11"
+  ],
+  "unit": "unit-operating-system",
+  "order": 6,
+  "duration_minutes_estimate": 60,
+  "summary": "Explains the memory segmentation mechanism: segment descriptors, virtual address translation, access rights, Intel descriptor tables (GDT, LDT, IDT), and privilege levels.",
+  "key_concepts": [
+    "segmentation",
+    "segment",
+    "segment descriptor",
+    "selector",
+    "GDT",
+    "LDT",
+    "IDT",
+    "virtual address",
+    "physical address",
+    "access rights",
+    "privilege levels"
+  ],
+  "content_points": [
+    "Virtual address = selector (13-bit table index + table bit + 2-bit RPL) + offset within segment.",
+    "Descriptor: start address, size, access rights. OS updates start address when loading segment.",
+    "Physical address = segment_base_address + offset (if access and size checks pass).",
+    "Intel: three descriptor tables – GDT (global), LDT (per-process), IDT (interrupts).",
+    "Privilege levels: CPL (process), RPL (selector), DPL (segment); access allowed iff CPL ≤ DPL and RPL ≤ DPL."
+  ],
+  "examples": [
+    {
+      "name": "Segmentation translation",
+      "description": "ds=3 → start=155000; eax=27348 < 49000 → physical=182348."
+    },
+    {
+      "name": "Invalid offset trap",
+      "description": "ss=1 → start=211000; ebp=19370 > 15500 → trap generated."
+    }
+  ],
+  "prerequisites": [
+    "lesson-process-management"
+  ],
+  "learning_objectives": [
+    "Explain the segmentation address translation",
+    "Describe segment descriptors and descriptor tables",
+    "Apply the Intel privilege level rule"
+  ]
+}

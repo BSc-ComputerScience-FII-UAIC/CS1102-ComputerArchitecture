@@ -1,0 +1,34 @@
+{
+  "id": "lesson-bus-communication",
+  "title": "Bus Structure and Arbitration",
+  "source_courses": [
+    "course10"
+  ],
+  "unit": "unit-io-interrupts-and-parallel",
+  "order": 4,
+  "duration_minutes_estimate": 30,
+  "summary": "Explains bus structure, arbitration (centralised vs. decentralised), and electrical implementation details (tri-state, open-collector).",
+  "key_concepts": [
+    "bus",
+    "bus arbitration",
+    "centralised arbitration",
+    "decentralised arbitration",
+    "tri-state output",
+    "open-collector circuit",
+    "high impedance"
+  ],
+  "content_points": [
+    "A bus is a shared communication path with electrical signals and access rules.",
+    "Multiple devices may request bus access simultaneously; arbitration grants access.",
+    "Centralised: dedicated arbiter circuit decides. Decentralised: devices negotiate.",
+    "Tri-state: output can be 0, 1, or high-Z (disconnected); enables bus sharing.",
+    "Open-collector: multiple outputs can be wired-AND together safely."
+  ],
+  "prerequisites": [
+    "lesson-computer-organization"
+  ],
+  "learning_objectives": [
+    "Describe bus arbitration",
+    "Explain tri-state and open-collector circuits and their role in bus design"
+  ]
+}

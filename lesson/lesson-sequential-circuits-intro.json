@@ -1,0 +1,37 @@
+{
+  "id": "lesson-sequential-circuits-intro",
+  "title": "Sequential Circuits: State, Clock and Types",
+  "source_courses": [
+    "course3"
+  ],
+  "unit": "unit-sequential-circuits-and-automata",
+  "order": 1,
+  "duration_minutes_estimate": 30,
+  "summary": "Introduces sequential circuits: how internal state is stored and evolves, clock signals (synchronous vs. asynchronous operation), and the two main types (bistable and multi-bit).",
+  "key_concepts": [
+    "sequential circuit",
+    "internal state",
+    "clock signal",
+    "synchronous circuit",
+    "asynchronous circuit",
+    "level-active",
+    "edge-active",
+    "feedback connection",
+    "gate propagation delay"
+  ],
+  "content_points": [
+    "Output depends on both input and internal state; same input can yield different outputs at different times.",
+    "Synchronous: state changes on clock edge/level; asynchronous: state changes on any event.",
+    "Clock period must be long enough for signals to stabilise through all gates.",
+    "Level-active: responds while clock is at level; edge-active: responds on clock transition.",
+    "Feedback is essential for memory in sequential circuits."
+  ],
+  "prerequisites": [
+    "lesson-logic-diagrams"
+  ],
+  "learning_objectives": [
+    "Distinguish combinational and sequential circuits",
+    "Explain the role of a clock in synchronous circuits",
+    "Differentiate level-active and edge-active operation"
+  ]
+}

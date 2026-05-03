@@ -1,0 +1,186 @@
+{
+  "id": "course8",
+  "source_file": "course/eng/course8.pdf",
+  "parsing_status": "success",
+  "title": "CPU Structure, Pipeline, Branch Prediction, RISC and Parallel Architectures",
+  "course": "Computer Architecture and Operating Systems",
+  "part": "Part II",
+  "part_number": 8,
+  "semester_half": 2,
+  "slide_range": {
+    "start": 1,
+    "end": 102
+  },
+  "main_topics": [
+    "I. The Central Processing Unit (CPU)",
+    "II. Improving the CPU Performance",
+    "II.1. Pipeline",
+    "II.2. Multiplying the Execution Units",
+    "II.3. Branch Prediction",
+    "II.9. RISC Architecture",
+    "II.10. Parallel Architectures"
+  ],
+  "subtopics": [
+    "CPU structure (ALU, registers, control unit, PC, IR, MAR, MDR)",
+    "Instruction execution steps",
+    "Pipeline concept and performance",
+    "Pipeline dependencies (structural, data, control)",
+    "Stall and forwarding",
+    "Superscalar and superpipeline units",
+    "Static and dynamic branch prediction",
+    "Branch Target Buffer (BTB)",
+    "Intel Pentium BTB implementation",
+    "CISC vs RISC",
+    "Parallel architectures (UMA, NUMA, message-passing)",
+    "Scalability"
+  ],
+  "key_concepts": [
+    "ALU",
+    "general-purpose registers",
+    "control unit",
+    "PC (Program Counter)",
+    "IR (Instruction Register)",
+    "MAR (Memory Address Register)",
+    "MDR (Memory Data Register)",
+    "pipeline",
+    "pipeline stage",
+    "latency",
+    "throughput",
+    "structural dependency",
+    "data dependency",
+    "control dependency",
+    "stall (bubble)",
+    "forwarding (bypassing)",
+    "superscalar",
+    "superpipeline",
+    "branch prediction",
+    "static prediction",
+    "dynamic prediction",
+    "BTB (Branch Target Buffer)",
+    "2-bit saturation counter",
+    "CISC",
+    "RISC",
+    "load/store architecture",
+    "parallel computing",
+    "multiprocessor",
+    "UMA (Uniform Memory Access)",
+    "NUMA (Non-Uniform Memory Access)",
+    "message-passing system",
+    "scalability",
+    "Amdahl's law in parallel"
+  ],
+  "definitions": [
+    {
+      "term": "pipeline",
+      "description": "A technique for executing instructions in overlapping stages; an n-stage pipeline can have n instructions active simultaneously, one per stage."
+    },
+    {
+      "term": "latency",
+      "description": "The number of clock cycles needed to execute a single instruction (= number of pipeline stages)."
+    },
+    {
+      "term": "throughput",
+      "description": "The number of instructions completed per clock cycle; ideally 1 for a pipeline, less in practice due to dependencies."
+    },
+    {
+      "term": "stall",
+      "description": "A pipeline bubble inserted when an instruction must wait for a dependency to resolve; effectively a NOP is injected."
+    },
+    {
+      "term": "forwarding (bypassing)",
+      "description": "A hardware technique that routes a computed result directly from the ALU output to the input of a dependent instruction, reducing stalls."
+    },
+    {
+      "term": "superscalar",
+      "description": "A processor with multiple ALUs that can execute more than one instruction per clock cycle."
+    },
+    {
+      "term": "superpipeline",
+      "description": "A processor with two or more independent pipelines capable of executing different instructions simultaneously."
+    },
+    {
+      "term": "BTB (Branch Target Buffer)",
+      "description": "A cache-like structure storing the recent branch history and target addresses, used for dynamic branch prediction."
+    },
+    {
+      "term": "RISC (Reduced Instruction Set Computer)",
+      "description": "CPU design philosophy: fewer, simpler instructions; large register file; fixed instruction format; load/store architecture."
+    },
+    {
+      "term": "CISC (Complex Instruction Set Computer)",
+      "description": "CPU design philosophy: many complex instructions; small register file; variable instruction format."
+    },
+    {
+      "term": "UMA (Uniform Memory Access)",
+      "description": "Symmetric multiprocessing: all processors share one memory with equal access time."
+    },
+    {
+      "term": "NUMA (Non-Uniform Memory Access)",
+      "description": "Memory is physically distributed; access time depends on which processor accesses which memory module."
+    }
+  ],
+  "formulas": [
+    {
+      "name": "Pipeline throughput (ideal)",
+      "expression": "1 instruction/cycle  (after the pipeline is full)"
+    },
+    {
+      "name": "BTB state transitions",
+      "description": "2-bit saturation counter: 00→01→10→11 (on taken), 11→10→01→00 (on not-taken)"
+    }
+  ],
+  "examples": [
+    {
+      "name": "Instruction execution steps (14 steps)",
+      "description": "Detailed breakdown from PC→MAR through write-back result to memory/register."
+    },
+    {
+      "name": "Pipeline evolution in Intel processors",
+      "description": "Pentium III: 10 stages; Pentium IV Northwood: 20; Pentium IV Prescott: 32; AMD Athlon: 17."
+    },
+    {
+      "name": "Data dependency in assembly",
+      "description": "'mov eax,7; sub eax,3' – second instruction must wait for eax to be written by the first."
+    }
+  ],
+  "prerequisites": [
+    "lesson-computer-organization",
+    "lesson-memory-types",
+    "lesson-cache-memory"
+  ],
+  "learning_objectives": [
+    "Describe the internal structure of a CPU",
+    "List the steps of instruction execution",
+    "Explain how pipeline improves CPU throughput",
+    "Identify and resolve structural, data, and control pipeline dependencies",
+    "Compare stall and forwarding as dependency solutions",
+    "Describe superscalar and superpipeline designs",
+    "Explain static and dynamic branch prediction schemes",
+    "Compare RISC and CISC design philosophies",
+    "Describe multiprocessor memory architectures (UMA, NUMA, message-passing)"
+  ],
+  "lessons": [
+    "lesson-cpu-structure",
+    "lesson-instruction-execution",
+    "lesson-pipeline",
+    "lesson-pipeline-dependencies",
+    "lesson-branch-prediction",
+    "lesson-risc-vs-cisc",
+    "lesson-parallel-architectures"
+  ],
+  "unit": "unit-cpu-structure-and-performance",
+  "relationships": [
+    {
+      "type": "follows",
+      "target": "course7"
+    },
+    {
+      "type": "precedes",
+      "target": "course9"
+    },
+    {
+      "type": "part_of",
+      "target": "unit-cpu-structure-and-performance"
+    }
+  ]
+}

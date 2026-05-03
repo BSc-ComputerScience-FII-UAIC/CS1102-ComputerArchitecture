@@ -1,0 +1,32 @@
+{
+  "id": "lesson-risc-vs-cisc",
+  "title": "RISC vs. CISC Architecture",
+  "source_courses": [
+    "course8"
+  ],
+  "unit": "unit-cpu-structure-and-performance",
+  "order": 11,
+  "duration_minutes_estimate": 30,
+  "summary": "Compares CISC and RISC design philosophies, explains the practical observations that motivated RISC, and lists RISC advantages.",
+  "key_concepts": [
+    "CISC",
+    "RISC",
+    "load/store architecture",
+    "fixed instruction format",
+    "register file"
+  ],
+  "content_points": [
+    "CISC: many complex, variable-length instructions; small register set; many memory addressing modes.",
+    "Observation: 20% of instructions used 80% of the time; complex instructions can be simulated.",
+    "RISC: fewer, simpler instructions; many registers; fixed instruction format; only load/store access memory.",
+    "RISC advantages: faster instructions, fewer memory accesses (if compiler is good), simpler decode (less stalls), smaller die area."
+  ],
+  "prerequisites": [
+    "lesson-pipeline"
+  ],
+  "learning_objectives": [
+    "List the defining characteristics of CISC and RISC",
+    "Explain the empirical observation that motivated RISC",
+    "Compare RISC and CISC performance trade-offs"
+  ]
+}

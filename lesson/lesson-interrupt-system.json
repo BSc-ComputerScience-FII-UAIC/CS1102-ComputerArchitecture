@@ -1,0 +1,41 @@
+{
+  "id": "lesson-interrupt-system",
+  "title": "The Interrupt System",
+  "source_courses": [
+    "course10"
+  ],
+  "unit": "unit-io-interrupts-and-parallel",
+  "order": 5,
+  "duration_minutes_estimate": 60,
+  "summary": "Covers interrupt types (hardware, trap, software), the interrupt controller, maskable vs non-maskable interrupts, and the complete interrupt handling sequence.",
+  "key_concepts": [
+    "interrupt",
+    "maskable interrupt",
+    "non-maskable interrupt",
+    "IF flag",
+    "interrupt controller",
+    "IRQ line",
+    "INTA signal",
+    "interrupt vector table",
+    "service routine",
+    "trap",
+    "software interrupt"
+  ],
+  "content_points": [
+    "Interrupts allow the CPU to respond asynchronously to external events without polling.",
+    "Maskable: CPU can ignore them (IF=0); Non-maskable: always serviced.",
+    "Interrupt controller (Intel 8259): collects IRQ lines, arbitrates by priority, signals CPU.",
+    "Handling: save state on stack → clear IF → identify source (type byte) → look up vector table → jump to service routine → restore state → resume.",
+    "Vector table at address 0: 256 entries × 4 bytes = 1 KB.",
+    "Types: hardware (peripheral), trap (CPU-internal error), software (program requests OS service)."
+  ],
+  "prerequisites": [
+    "lesson-peripheral-devices"
+  ],
+  "learning_objectives": [
+    "Trace the complete interrupt handling sequence",
+    "Distinguish maskable and non-maskable interrupts",
+    "Explain the interrupt vector table structure",
+    "Differentiate hardware interrupts, traps, and software interrupts"
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "id": "lesson-kernel",
+  "title": "The Kernel and Processor Modes",
+  "source_courses": [
+    "course11"
+  ],
+  "unit": "unit-operating-system",
+  "order": 2,
+  "duration_minutes_estimate": 45,
+  "summary": "Explains user mode vs. kernel mode, mode switching via interrupts, kernel functions (process/memory/file/IPC management), and why mode separation protects the system.",
+  "key_concepts": [
+    "kernel",
+    "user mode",
+    "kernel mode",
+    "mode switching",
+    "process management",
+    "memory management",
+    "file system",
+    "inter-process communication"
+  ],
+  "content_points": [
+    "User mode: restricted access (memory zones limited, no hardware access).",
+    "Kernel mode: unrestricted – the OS runs here.",
+    "Switching user → kernel: software interrupt or exception. Kernel → user: interrupt return.",
+    "No application code runs in kernel mode → application errors cannot harm the OS or other apps.",
+    "Kernel functions: process management, memory management, file system management, IPC."
+  ],
+  "prerequisites": [
+    "lesson-operating-system-intro"
+  ],
+  "learning_objectives": [
+    "Distinguish user mode and kernel mode",
+    "Explain mode switching mechanisms",
+    "List the main functions of the kernel"
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "id": "lesson-mmu-intel-and-os",
+  "title": "Using the MMU: Intel and OS Perspectives",
+  "source_courses": [
+    "course13"
+  ],
+  "unit": "unit-operating-system",
+  "order": 11,
+  "duration_minutes_estimate": 30,
+  "summary": "Explains how Intel hardware implements segmentation and pagination, how Windows and Linux actually use the MMU, and the MMU's overall benefits and costs.",
+  "key_concepts": [
+    "MMU",
+    "Intel segmentation",
+    "Intel pagination",
+    "Windows/Linux memory model",
+    "4 KB pages",
+    "4 MB pages"
+  ],
+  "content_points": [
+    "Intel: segmentation cannot be disabled but can be made transparent (all segments cover entire memory).",
+    "Intel: pagination can be enabled/disabled.",
+    "Windows and Linux practice: segmentation not used (all segments = full address space); pagination with 4 KB pages (Windows also supports 4 MB).",
+    "MMU benefits: isolation between processes, hardware-enforced access checks, support for virtual memory.",
+    "MMU costs: complex management, memory for page tables, doubles memory access count (mitigated by TLB)."
+  ],
+  "prerequisites": [
+    "lesson-memory-pagination",
+    "lesson-memory-segmentation"
+  ],
+  "learning_objectives": [
+    "Explain how Windows and Linux configure Intel MMU",
+    "Evaluate MMU trade-offs (protection vs. performance)"
+  ]
+}

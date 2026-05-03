@@ -1,0 +1,36 @@
+{
+  "id": "lesson-cache-coherence",
+  "title": "Cache Coherence: Write Invalidate and Write Update",
+  "source_courses": [
+    "course10"
+  ],
+  "unit": "unit-io-interrupts-and-parallel",
+  "order": 2,
+  "duration_minutes_estimate": 60,
+  "summary": "Defines the three conditions for cache coherence, describes snooping and directory protocols, and compares write-invalidate and write-update strategies.",
+  "key_concepts": [
+    "cache coherence",
+    "snooping protocol",
+    "directory-based protocol",
+    "write invalidate",
+    "write update",
+    "invalid / dirty / shared states"
+  ],
+  "content_points": [
+    "Coherence conditions: (1) a processor reads what it last wrote; (2) another processor eventually sees the written value; (3) all processors agree on write order.",
+    "Write-through cache: coherence easier (main memory always current); write-back: harder.",
+    "Snooping: each cache monitors the bus for writes to lines it holds.",
+    "Directory: centralised record of which caches hold each line.",
+    "Write invalidate: invalidate all copies on write; lower bus traffic, preferred.",
+    "Write update: broadcast new value; lower latency for reads but higher bus traffic."
+  ],
+  "prerequisites": [
+    "lesson-cache-write-policies",
+    "lesson-multiprocessor-communication"
+  ],
+  "learning_objectives": [
+    "State the three conditions for memory coherence",
+    "Compare snooping and directory coherence protocols",
+    "Analyse write-invalidate and write-update trade-offs"
+  ]
+}

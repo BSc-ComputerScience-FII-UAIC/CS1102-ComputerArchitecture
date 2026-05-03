@@ -1,0 +1,31 @@
+{
+  "id": "lesson-speculative-execution",
+  "title": "Speculative Execution",
+  "source_courses": [
+    "course9"
+  ],
+  "unit": "unit-cpu-structure-and-performance",
+  "order": 6,
+  "duration_minutes_estimate": 30,
+  "summary": "Explains speculative execution: executing all branch outcomes simultaneously, keeping results in temporary registers, and committing or discarding based on the actual outcome.",
+  "key_concepts": [
+    "speculative execution",
+    "temporary register",
+    "result validation",
+    "exponential variant growth"
+  ],
+  "content_points": [
+    "All possible branch outcomes executed in parallel before the condition is evaluated.",
+    "Results stored in temporary registers (not committed to architectural state).",
+    "On resolution: commit correct result; discard wrong-path results.",
+    "100% 'accuracy' but requires many extra registers; exponential growth if branches contain branches.",
+    "Simpler application: selection adder (computes both carry-in=0 and carry-in=1 sums simultaneously)."
+  ],
+  "prerequisites": [
+    "lesson-branch-prediction"
+  ],
+  "learning_objectives": [
+    "Describe speculative execution and its implementation",
+    "Explain the register requirements and exponential cost problem"
+  ]
+}

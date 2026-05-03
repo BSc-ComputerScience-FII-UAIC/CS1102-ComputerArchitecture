@@ -1,0 +1,36 @@
+{
+  "id": "lesson-cpu-structure",
+  "title": "CPU Internal Structure",
+  "source_courses": [
+    "course8"
+  ],
+  "unit": "unit-cpu-structure-and-performance",
+  "order": 1,
+  "duration_minutes_estimate": 30,
+  "summary": "Describes the internal components of a CPU: ALU, registers (general-purpose, PC, IR, MAR, MDR, temporary), and the control unit.",
+  "key_concepts": [
+    "ALU",
+    "general-purpose registers",
+    "control unit",
+    "PC",
+    "IR",
+    "MAR",
+    "MDR",
+    "temporary registers",
+    "internal bus"
+  ],
+  "content_points": [
+    "ALU performs calculations. Control unit commands other components and sets up timing.",
+    "PC: holds the address of the next instruction to execute; updated automatically or by branches.",
+    "IR: holds the code of the instruction currently being decoded.",
+    "MAR: memory address register – holds the address to be accessed. MDR: memory data register – holds data read from/written to memory.",
+    "Temporary registers: ALU operand and result registers."
+  ],
+  "prerequisites": [
+    "lesson-computer-organization"
+  ],
+  "learning_objectives": [
+    "Name and describe the main internal components of a CPU",
+    "Explain the roles of PC, IR, MAR, and MDR"
+  ]
+}

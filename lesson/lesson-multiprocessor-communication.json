@@ -1,0 +1,30 @@
+{
+  "id": "lesson-multiprocessor-communication",
+  "title": "Multiprocessor Communication: Buses and Interconnection Networks",
+  "source_courses": [
+    "course10"
+  ],
+  "unit": "unit-io-interrupts-and-parallel",
+  "order": 1,
+  "duration_minutes_estimate": 30,
+  "summary": "Compares bus-based and network-based communication in multiprocessor systems, covering trade-offs in simplicity, performance, and scalability.",
+  "key_concepts": [
+    "bus communication",
+    "interconnection network",
+    "total vs partial connection",
+    "scalability"
+  ],
+  "content_points": [
+    "Bus: economic, simple, lower performance; does not scale; cache coherence is critical.",
+    "Interconnection network: flexible, higher performance; supports more parallel accesses.",
+    "Total connection: every processor directly connected to all others.",
+    "Partial connection: some processor pairs connected indirectly."
+  ],
+  "prerequisites": [
+    "lesson-parallel-architectures"
+  ],
+  "learning_objectives": [
+    "Compare bus and network-based multiprocessor communication",
+    "Explain why buses do not scale well"
+  ]
+}

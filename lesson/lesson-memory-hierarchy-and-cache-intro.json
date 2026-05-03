@@ -1,0 +1,34 @@
+{
+  "id": "lesson-memory-hierarchy-and-cache-intro",
+  "title": "Memory Hierarchy and Cache Introduction",
+  "source_courses": [
+    "course6"
+  ],
+  "unit": "unit-computer-architecture-and-memory",
+  "order": 5,
+  "duration_minutes_estimate": 30,
+  "summary": "Introduces the memory hierarchy (registers → cache → main memory → disk), explains the motivation for cache memory, and connects it to locality laws.",
+  "key_concepts": [
+    "memory hierarchy",
+    "cache memory",
+    "speed vs capacity trade-off",
+    "temporal locality",
+    "spatial locality"
+  ],
+  "content_points": [
+    "Processor is faster than main memory → must wait for data.",
+    "Hierarchy: each level is smaller and faster than the one below.",
+    "Cache: small, fast SRAM circuit between CPU and main memory.",
+    "Locality laws justify keeping recently used data in cache.",
+    "Cache lookup: check cache first; on miss, fetch from main memory."
+  ],
+  "prerequisites": [
+    "lesson-memory-types",
+    "lesson-empirical-laws"
+  ],
+  "learning_objectives": [
+    "Describe the memory hierarchy levels",
+    "Explain why cache memory improves performance",
+    "Connect locality laws to cache behaviour"
+  ]
+}

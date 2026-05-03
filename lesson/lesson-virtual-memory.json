@@ -1,0 +1,37 @@
+{
+  "id": "lesson-virtual-memory",
+  "title": "Virtual Memory",
+  "source_courses": [
+    "course12"
+  ],
+  "unit": "unit-operating-system",
+  "order": 9,
+  "duration_minutes_estimate": 45,
+  "summary": "Explains virtual memory (swap): swapping pages to disk, the page file, demand paging, replacement policies, and the dirty bit optimisation.",
+  "key_concepts": [
+    "virtual memory",
+    "swap",
+    "page file",
+    "demand paging",
+    "working set",
+    "dirty bit",
+    "page fault"
+  ],
+  "content_points": [
+    "Virtual memory: use disk as an extension of RAM; inactive pages saved to page file.",
+    "Demand paging: load a page only when accessed (page fault trap triggers OS to load it).",
+    "Working set: the subset of pages actually needed at a given time; if it fits in RAM, disk access is rare.",
+    "Replacement policy: evict the page least likely to be needed soon (LRU approximation).",
+    "Dirty bit: per-page flag set on first write; on eviction, only dirty pages need to be written to disk.",
+    "Page fault flow: trap → OS finds page in page file → load into free frame → update page table → retry instruction."
+  ],
+  "prerequisites": [
+    "lesson-memory-pagination"
+  ],
+  "learning_objectives": [
+    "Explain virtual memory and demand paging",
+    "Describe the page fault handling sequence",
+    "Explain the dirty bit optimisation",
+    "Discuss replacement policies for virtual memory"
+  ]
+}

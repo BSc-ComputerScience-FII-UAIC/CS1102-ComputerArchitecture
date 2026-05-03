@@ -1,0 +1,38 @@
+{
+  "id": "lesson-computer-architecture-visions",
+  "title": "Computer Architecture: Programmer and Implementer Visions",
+  "source_courses": [
+    "course6"
+  ],
+  "unit": "unit-computer-architecture-and-memory",
+  "order": 1,
+  "duration_minutes_estimate": 30,
+  "summary": "Distinguishes ISA from machine organisation, contrasts user/programmer/implementer views, and explains the language translation hierarchy.",
+  "key_concepts": [
+    "ISA",
+    "machine organisation",
+    "programmer's vision",
+    "user's vision",
+    "assembler",
+    "compiler",
+    "machine language",
+    "assembly language",
+    "high-level language"
+  ],
+  "content_points": [
+    "Computer architecture = ISA + machine organisation.",
+    "Programmer's view: instruction set (machine/assembly/high-level languages).",
+    "Implementer's view: detailed design down to gate level (ALU, control unit, registers, datapath).",
+    "Language hierarchy: machine language → assembly language → high-level languages.",
+    "Assembler: assembly → machine code. Compiler: high-level → machine (directly or via assembly).",
+    "Advantages of assembly: efficiency, hardware access. Advantages of high-level: portability, productivity."
+  ],
+  "prerequisites": [
+    "lesson-introduction-to-computing"
+  ],
+  "learning_objectives": [
+    "Define ISA and machine organisation",
+    "Describe the role of assembler and compiler",
+    "Compare the advantages of assembly and high-level languages"
+  ]
+}

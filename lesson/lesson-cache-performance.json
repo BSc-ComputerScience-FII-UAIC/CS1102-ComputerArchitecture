@@ -1,0 +1,40 @@
+{
+  "id": "lesson-cache-performance",
+  "title": "Cache Performance: Hit Ratio and Access Time",
+  "source_courses": [
+    "course7"
+  ],
+  "unit": "unit-computer-architecture-and-memory",
+  "order": 6,
+  "duration_minutes_estimate": 45,
+  "summary": "Defines hit/miss ratio, derives the average memory access time formula, and analyses cache performance with numerical examples.",
+  "key_concepts": [
+    "hit ratio",
+    "miss ratio",
+    "average access time",
+    "cache line",
+    "replacement policy"
+  ],
+  "content_points": [
+    "H = hit ratio (fraction of accesses served from cache); M = 1 - H.",
+    "T = T_c * H + T_m * M; T_m = memory access time on a miss.",
+    "Extreme cases: H=100% → T = T_c (ideal); H=0% → T = T_m > T_p (worse than without cache).",
+    "Numerical example: T_c=2ns, T_p=10ns, T_m=11ns, H=95% → T=2.45ns (>4× speedup).",
+    "Cache line: a block of consecutive main-memory bytes fetched together; exploits spatial locality.",
+    "Replacement policy determines which line to evict when cache is full."
+  ],
+  "formulas": [
+    {
+      "name": "Average access time",
+      "expression": "T = T_c * H + T_m * (1 - H)"
+    }
+  ],
+  "prerequisites": [
+    "lesson-memory-hierarchy-and-cache-intro"
+  ],
+  "learning_objectives": [
+    "Calculate average memory access time given hit ratio and access times",
+    "Explain the role of cache lines in exploiting spatial locality",
+    "Describe replacement policies"
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "id": "lesson-karnaugh-minimization",
+  "title": "Karnaugh Diagram Minimization",
+  "source_courses": [
+    "course2"
+  ],
+  "unit": "unit-boole-algebra-and-combinational-circuits",
+  "order": 7,
+  "duration_minutes_estimate": 60,
+  "summary": "Explains the Veitch-Karnaugh method: diagram structure, Grey code ordering, adjacencies, grouping rules, minimisation with don't-care conditions, and worked examples.",
+  "key_concepts": [
+    "Karnaugh diagram",
+    "Grey code",
+    "adjacency",
+    "block of 2^k ones",
+    "don't care",
+    "7-segment display",
+    "minimal simplification"
+  ],
+  "content_points": [
+    "Grey code ensures adjacency ↔ neighbourhood in the diagram.",
+    "Adjacencies: n-variable diagram → n adjacent positions per cell (wrap-around at edges).",
+    "A block of 2^k cells (all 1s, power-of-2 dimensions) yields a conjunction of n-k variables.",
+    "Minimisation rules: cover all 1s with as few and as large blocks as possible; avoid redundant blocks.",
+    "Don't-care cells can be assigned 0 or 1 to enlarge groups and obtain a simpler expression.",
+    "Application: 7-segment display decoder with impossible combinations for digits 10–15."
+  ],
+  "prerequisites": [
+    "lesson-normal-forms-dnf-cnf",
+    "lesson-circuit-minimization-algebraic"
+  ],
+  "learning_objectives": [
+    "Fill and read a 2-, 3-, and 4-variable Karnaugh diagram",
+    "Apply Grey code to identify adjacent cells",
+    "Group 1s into maximal blocks and read off the minimised expression",
+    "Exploit don't-care conditions to simplify further"
+  ]
+}

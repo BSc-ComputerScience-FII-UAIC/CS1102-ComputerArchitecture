@@ -1,0 +1,174 @@
+{
+  "id": "course2",
+  "source_file": "course/eng/course2.pdf",
+  "parsing_status": "success",
+  "title": "Minimization of Boole Functions Using Karnaugh Diagrams and Combinational Circuits",
+  "course": "Computer Architecture and Operating Systems",
+  "part": "Part I",
+  "part_number": 2,
+  "semester_half": 1,
+  "slide_range": {
+    "start": 45,
+    "end": 86
+  },
+  "main_topics": [
+    "II.4. Minimization of Boole Functions Using Karnaugh Diagrams",
+    "II.5. Combinational Circuits"
+  ],
+  "subtopics": [
+    "Veitch-Karnaugh method",
+    "Grey code",
+    "Diagram adjacencies",
+    "Karnaugh minimization steps",
+    "Impossible value combinations",
+    "Multiplexer",
+    "Decoder",
+    "Half-adder and full adder",
+    "Ripple-carry adder",
+    "Carry lookahead adder",
+    "Carry selection adder",
+    "Arithmetic Logic Unit (ALU)"
+  ],
+  "key_concepts": [
+    "Karnaugh diagram",
+    "Veitch-Karnaugh method",
+    "Grey code",
+    "diagram adjacency",
+    "block of 2^k ones",
+    "impossible combinations (don't care)",
+    "multiplexer (MUX)",
+    "decoder",
+    "half-adder",
+    "full adder",
+    "ripple-carry adder",
+    "carry lookahead adder",
+    "carry selection adder",
+    "ALU (Arithmetic Logic Unit)"
+  ],
+  "definitions": [
+    {
+      "term": "Karnaugh diagram",
+      "description": "A 2-dimensional table for visualizing Boole functions where adjacent cells differ by exactly one variable (Grey code ordering)."
+    },
+    {
+      "term": "Grey code",
+      "description": "A binary encoding where any two consecutive values differ by exactly one bit. Used for labeling Karnaugh diagram rows/columns."
+    },
+    {
+      "term": "don't care condition",
+      "description": "Input combinations that will never occur, allowing freedom to assign 0 or 1 to simplify the Boole expression."
+    },
+    {
+      "term": "multiplexer",
+      "description": "A combinational circuit with 2^n data inputs, n selection inputs, and one output. Routes one of the data inputs to the output based on the selection bits."
+    },
+    {
+      "term": "decoder",
+      "description": "A combinational circuit with n inputs and 2^n outputs. At each moment exactly one output is active, corresponding to the binary value on the input."
+    },
+    {
+      "term": "half-adder",
+      "description": "Adds two 1-bit inputs; outputs a sum bit and a carry-out bit."
+    },
+    {
+      "term": "full adder",
+      "description": "Adds three 1-bit inputs (including carry-in); outputs a sum bit and carry-out. Can be cascaded for multi-bit addition."
+    },
+    {
+      "term": "ripple-carry adder",
+      "description": "A multi-bit adder built by cascading full adders; carry propagates sequentially. Simple but slow."
+    },
+    {
+      "term": "carry lookahead adder",
+      "description": "An adder that computes carry bits independently and in parallel, reducing propagation delay."
+    }
+  ],
+  "formulas": [
+    {
+      "name": "Karnaugh block size",
+      "description": "A block of 2^k positions in a Karnaugh diagram yields a conjunction term of n-k variables."
+    },
+    {
+      "name": "Carry lookahead",
+      "expression": "C_i = G_i + P_i * C_{i-1} = A_i * B_i + (A_i + B_i) * C_{i-1}"
+    }
+  ],
+  "algorithms": [
+    {
+      "name": "Karnaugh minimization",
+      "steps": [
+        "Fill the Karnaugh diagram with function values",
+        "Find all maximal blocks of 1s (each must be of size 2^k)",
+        "Cover all 1s with as few and as large blocks as possible",
+        "For each block, write the conjunction term using the variables that remain constant across the block",
+        "OR all terms together"
+      ]
+    },
+    {
+      "name": "MUX-based Boole function implementation (folding)",
+      "description": "Use half the variables as selection inputs; assign the remaining variable (or its complement or 0/1) to the data inputs."
+    }
+  ],
+  "examples": [
+    {
+      "name": "Majority of 3 – Karnaugh",
+      "description": "Minimal expression BC + AC + AB derived via Karnaugh."
+    },
+    {
+      "name": "7-segment display digit decoder",
+      "description": "Segment 'd' truth table with impossible combinations; two implementations (safe vs. exploiting don't cares)."
+    },
+    {
+      "name": "2-bit comparison circuit",
+      "description": "4 inputs (A,B,C,D) for numbers N1=AB and N2=CD; outputs LT, EQ, GT."
+    },
+    {
+      "name": "2-bit multiplication circuit",
+      "description": "4 inputs (A,B,C,D); 4 outputs P8,P4,P2,P1 giving N1*N2."
+    },
+    {
+      "name": "BCD increment-by-1 circuit",
+      "description": "Add 1 to a BCD digit (0–9); impossible combinations for 10–15."
+    }
+  ],
+  "exercises": [
+    "2-bit comparison: derive minimal expressions for LT, EQ, GT using Karnaugh",
+    "2-bit multiplication: derive expressions for P8, P4, P2, P1",
+    "BCD increment: derive expressions using impossible combinations"
+  ],
+  "prerequisites": [
+    "lesson-boole-algebra",
+    "lesson-normal-forms-dnf-cnf",
+    "lesson-logic-diagrams"
+  ],
+  "learning_objectives": [
+    "Apply the Veitch-Karnaugh method to minimize Boole functions",
+    "Understand Grey code and diagram adjacencies",
+    "Handle impossible input combinations in circuit design",
+    "Design multiplexers and implement Boole functions using them",
+    "Understand decoder operation",
+    "Build adder circuits (half-adder, full adder, ripple-carry)",
+    "Compare ripple-carry and carry lookahead adders",
+    "Understand the structure of an ALU"
+  ],
+  "lessons": [
+    "lesson-karnaugh-minimization",
+    "lesson-combinational-circuits-mux-decoder",
+    "lesson-adder-circuits-and-alu"
+  ],
+  "unit": "unit-boole-algebra-and-combinational-circuits",
+  "relationships": [
+    {
+      "type": "follows",
+      "target": "course1"
+    },
+    {
+      "type": "precedes",
+      "target": "course3"
+    },
+    {
+      "type": "part_of",
+      "target": "unit-boole-algebra-and-combinational-circuits"
+    }
+  ]
+}

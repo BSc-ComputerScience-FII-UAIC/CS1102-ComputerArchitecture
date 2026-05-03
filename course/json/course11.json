@@ -1,0 +1,189 @@
+{
+  "id": "course11",
+  "source_file": "course/eng/course11.pdf",
+  "parsing_status": "success",
+  "title": "The Operating System: Kernel, System Calls, Drivers, Processes and Memory Segmentation",
+  "course": "Computer Architecture and Operating Systems",
+  "part": "Part II",
+  "part_number": 11,
+  "semester_half": 2,
+  "slide_range": {
+    "start": 149,
+    "end": 201
+  },
+  "main_topics": [
+    "V. The Operating System",
+    "V.1. The Kernel",
+    "V.2. System Calls",
+    "V.3. Drivers",
+    "V.4. Process Management",
+    "V.5. Memory Management",
+    "V.5.1. Memory Segmentation"
+  ],
+  "subtopics": [
+    "Role of the operating system",
+    "Kernel vs. user mode",
+    "Mode switching via interrupts",
+    "Kernel functions (process, memory, file system, IPC)",
+    "System call phases",
+    "Buffer usage with system calls",
+    "Drivers and modular OS structure",
+    "Process states (running, ready, waiting)",
+    "Multitasking (preemptive, non-preemptive)",
+    "Threads vs. processes",
+    "Virtual and physical addresses",
+    "Memory segmentation",
+    "Segment descriptor tables (GDT, LDT, IDT)",
+    "Intel privilege levels (CPL, RPL, DPL)"
+  ],
+  "key_concepts": [
+    "operating system",
+    "kernel",
+    "kernel mode",
+    "user mode",
+    "driver",
+    "system call",
+    "software interrupt",
+    "process",
+    "thread",
+    "multitasking",
+    "preemptive multitasking",
+    "process states",
+    "scheduling",
+    "real-time clock",
+    "virtual address",
+    "physical address",
+    "MMU (Memory Management Unit)",
+    "segmentation",
+    "segment",
+    "segment descriptor",
+    "selector",
+    "GDT (Global Descriptor Table)",
+    "LDT (Local Descriptor Table)",
+    "IDT (Interrupt Descriptor Table)",
+    "CPL (Current Privilege Level)",
+    "RPL (Requested Privilege Level)",
+    "DPL (Descriptor Privilege Level)",
+    "access rights",
+    "trap on invalid access"
+  ],
+  "definitions": [
+    {
+      "term": "operating system",
+      "description": "A program that manages computer resources, links hardware to applications, provides services to applications, and supervises their execution."
+    },
+    {
+      "term": "kernel",
+      "description": "The core of the OS: manages hardware and software resources, runs in kernel mode, and provides process management, memory management, file system, and IPC."
+    },
+    {
+      "term": "kernel mode",
+      "description": "Unrestricted CPU execution mode used by the OS; allows access to all hardware."
+    },
+    {
+      "term": "user mode",
+      "description": "Restricted CPU execution mode used by applications; limited memory access and no direct hardware access."
+    },
+    {
+      "term": "system call",
+      "description": "A mechanism by which a user-mode application requests a service from the kernel, implemented via a software interrupt."
+    },
+    {
+      "term": "process",
+      "description": "An instance of a running program with its own memory space (code, data, stack); the OS schedules processes on the CPU."
+    },
+    {
+      "term": "thread",
+      "description": "A sub-unit of a process; threads within the same process share the process's memory space but have their own execution context."
+    },
+    {
+      "term": "segment descriptor",
+      "description": "A data structure maintained by the OS that stores start address, size, and access rights of a memory segment."
+    },
+    {
+      "term": "segmentation",
+      "description": "A memory management scheme that divides the address space into variable-size segments; virtual address = segment selector + offset within segment."
+    },
+    {
+      "term": "privilege level",
+      "description": "Intel x86 access control: CPL (process level), RPL (selector level), DPL (segment level); access allowed when CPL ≤ DPL and RPL ≤ DPL."
+    }
+  ],
+  "algorithms": [
+    {
+      "name": "System call sequence",
+      "steps": [
+        "Application places parameters in memory",
+        "Software interrupt is generated; CPU switches to kernel mode",
+        "Kernel identifies the requested service and dispatches the routine",
+        "Routine validates parameters",
+        "If valid, service is performed",
+        "Results placed in accessible memory zone",
+        "CPU switches back to user mode; program resumes"
+      ]
+    },
+    {
+      "name": "Memory access via segmentation",
+      "steps": [
+        "Program issues virtual address (selector + offset)",
+        "OS/hardware looks up segment descriptor",
+        "Check access rights; trap on insufficient privileges",
+        "Check offset against segment size; trap if exceeded",
+        "Compute physical address = segment_base + offset",
+        "Access physical memory"
+      ]
+    }
+  ],
+  "examples": [
+    {
+      "name": "printf with buffered system calls",
+      "description": "printf builds text in a local buffer; write() system call is issued only when buffer is full, reducing expensive kernel transitions."
+    },
+    {
+      "name": "Segmentation illustration",
+      "description": "Descriptor table with 5 entries; mov byte ptr ds:[eax],25 with ds=3 → physical address 155000+27348=182348."
+    },
+    {
+      "name": "Intel privilege access condition",
+      "description": "Access allowed iff CPL ≤ DPL AND RPL ≤ DPL."
+    }
+  ],
+  "prerequisites": [
+    "lesson-interrupt-system",
+    "lesson-computer-organization"
+  ],
+  "learning_objectives": [
+    "Describe the role and main components of an operating system",
+    "Explain the distinction between kernel mode and user mode",
+    "Trace a complete system call from application to kernel and back",
+    "Explain the role and structure of device drivers",
+    "Describe process states and multitasking mechanisms",
+    "Distinguish processes from threads",
+    "Explain virtual vs. physical addresses and the role of the MMU",
+    "Describe the memory segmentation mechanism and segment descriptors",
+    "Explain Intel privilege levels and the access control rule"
+  ],
+  "lessons": [
+    "lesson-operating-system-intro",
+    "lesson-kernel",
+    "lesson-system-calls",
+    "lesson-drivers",
+    "lesson-process-management",
+    "lesson-memory-segmentation"
+  ],
+  "unit": "unit-operating-system",
+  "relationships": [
+    {
+      "type": "follows",
+      "target": "course10"
+    },
+    {
+      "type": "precedes",
+      "target": "course12"
+    },
+    {
+      "type": "part_of",
+      "target": "unit-operating-system"
+    }
+  ]
+}

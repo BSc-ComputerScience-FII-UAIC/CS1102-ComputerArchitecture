@@ -1,0 +1,34 @@
+{
+  "id": "lesson-combinational-circuits-mux-decoder",
+  "title": "Combinational Circuits: Multiplexer and Decoder",
+  "source_courses": [
+    "course2"
+  ],
+  "unit": "unit-boole-algebra-and-combinational-circuits",
+  "order": 8,
+  "duration_minutes_estimate": 45,
+  "summary": "Covers the multiplexer (MUX) and decoder as fundamental combinational building blocks, including their implementation and use for Boole function realisation.",
+  "key_concepts": [
+    "multiplexer",
+    "decoder",
+    "folding (MUX-based implementation)",
+    "data inputs",
+    "selection inputs"
+  ],
+  "content_points": [
+    "Multiplexer (2^n data inputs, n select inputs, 1 output): routes selected data input to output.",
+    "Implement any n-variable function: truth table outputs → data inputs; variables → select inputs.",
+    "Folding: use n-1 variables as select inputs; assign the remaining variable (or constant) to data inputs – halves the MUX size.",
+    "Decoder (n inputs, 2^n outputs): activates exactly one output equal to the binary input value.",
+    "Each decoder output corresponds to one minterm; enables efficient sum-of-minterms implementation."
+  ],
+  "prerequisites": [
+    "lesson-logic-diagrams",
+    "lesson-normal-forms-dnf-cnf"
+  ],
+  "learning_objectives": [
+    "Describe the operation of a multiplexer and decoder",
+    "Implement a Boole function using a MUX",
+    "Apply folding to reduce MUX size"
+  ]
+}

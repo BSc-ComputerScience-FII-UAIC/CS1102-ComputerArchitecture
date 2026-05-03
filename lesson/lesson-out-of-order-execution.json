@@ -1,0 +1,29 @@
+{
+  "id": "lesson-out-of-order-execution",
+  "title": "Out-of-order Execution",
+  "source_courses": [
+    "course9"
+  ],
+  "unit": "unit-cpu-structure-and-performance",
+  "order": 8,
+  "duration_minutes_estimate": 30,
+  "summary": "Explains out-of-order execution: instructions begin or finish in a different order than written when no data dependency prevents it, eliminating pipeline stalls.",
+  "key_concepts": [
+    "out-of-order execution",
+    "in-order commit",
+    "dispatch"
+  ],
+  "content_points": [
+    "Instructions that are independent can begin and complete out of program order.",
+    "Purpose: keep pipeline stages busy while a stalled instruction waits.",
+    "Example: 'in al,278; add bl,al; mov edx,[ebp+8]' – third instruction has no dependency; may complete before first two.",
+    "Results are still committed in-order to preserve program semantics."
+  ],
+  "prerequisites": [
+    "lesson-pipeline-dependencies"
+  ],
+  "learning_objectives": [
+    "Explain when out-of-order execution is applicable",
+    "Describe how in-order commit maintains correct program behaviour"
+  ]
+}

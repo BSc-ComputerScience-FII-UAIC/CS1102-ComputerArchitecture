@@ -1,0 +1,33 @@
+{
+  "id": "lesson-registers-and-counters",
+  "title": "Registers, Shift Registers and Counters",
+  "source_courses": [
+    "course3"
+  ],
+  "unit": "unit-sequential-circuits-and-automata",
+  "order": 4,
+  "duration_minutes_estimate": 45,
+  "summary": "Explains parallel registers, shift registers (classic, bidirectional, universal), and binary counters built from bistable circuits.",
+  "key_concepts": [
+    "parallel register",
+    "shift register",
+    "universal shift register",
+    "binary counter",
+    "D flip-flop register"
+  ],
+  "content_points": [
+    "Parallel register: n bistable circuits sharing the same clock; all bits change simultaneously.",
+    "Shift register (flip-flops required): memorises the last n values applied on input; bits shift one position per cycle.",
+    "Universal shift register: serial/parallel inputs and outputs; left or right shift; controlled by 2-bit mode selector.",
+    "Binary counter: n-bit number increments on each clock tick; wraps from maximum back to 0."
+  ],
+  "prerequisites": [
+    "lesson-latches-and-flip-flops"
+  ],
+  "learning_objectives": [
+    "Build a parallel register from D flip-flops",
+    "Explain the operation of classic and shift registers",
+    "Describe the universal shift register mode table",
+    "Design a binary counter using the FSM approach"
+  ]
+}

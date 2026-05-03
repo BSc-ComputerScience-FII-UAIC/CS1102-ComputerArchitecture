@@ -1,0 +1,204 @@
+{
+  "id": "course12",
+  "source_file": "course/eng/course12.pdf",
+  "parsing_status": "success",
+  "title": "Memory Fragmentation, Pagination, Virtual Memory and Inter-process Communication",
+  "course": "Computer Architecture and Operating Systems",
+  "part": "Part II",
+  "part_number": 12,
+  "semester_half": 2,
+  "slide_range": {
+    "start": 202,
+    "end": 248
+  },
+  "main_topics": [
+    "V.5.1. Memory Segmentation (continued)",
+    "V.5.2. Memory Pagination",
+    "V.5.3. Virtual Memory",
+    "V.5.4. Inter-process Communication"
+  ],
+  "subtopics": [
+    "Placement algorithms (First Fit, Best Fit, Worst Fit)",
+    "External fragmentation and defragmentation",
+    "Memory pagination basics",
+    "Page tables",
+    "Multi-level page tables",
+    "TLB (Translation Lookaside Buffer)",
+    "Internal fragmentation",
+    "Virtual memory (swap)",
+    "Page file",
+    "Replacement policy (working set, demand paging)",
+    "Dirty bit",
+    "Shared memory inter-process communication",
+    "Mutual exclusion and semaphores",
+    "Thread communication"
+  ],
+  "key_concepts": [
+    "First Fit",
+    "Best Fit",
+    "Worst Fit",
+    "external fragmentation",
+    "memory defragmentation",
+    "internal fragmentation",
+    "page",
+    "page frame",
+    "page table",
+    "page size (typically 4 KB)",
+    "TLB (Translation Lookaside Buffer)",
+    "multi-level page table",
+    "Page Directory",
+    "virtual memory",
+    "swap",
+    "page file",
+    "demand paging",
+    "working set",
+    "dirty bit",
+    "inter-process communication",
+    "shared memory",
+    "mutual exclusion",
+    "semaphore",
+    "monitor",
+    "critical section"
+  ],
+  "definitions": [
+    {
+      "term": "First Fit",
+      "description": "Memory placement algorithm: allocate the first free zone large enough for the new segment."
+    },
+    {
+      "term": "Best Fit",
+      "description": "Memory placement algorithm: allocate the smallest free zone that is large enough."
+    },
+    {
+      "term": "Worst Fit",
+      "description": "Memory placement algorithm: allocate the largest free zone (if large enough)."
+    },
+    {
+      "term": "external fragmentation",
+      "description": "Many small free zones scattered through memory; total free space may suffice but no single contiguous zone is large enough."
+    },
+    {
+      "term": "page",
+      "description": "A fixed-size unit of virtual address space (typically 4 KB)."
+    },
+    {
+      "term": "page frame",
+      "description": "A fixed-size unit of physical memory, same size as a page."
+    },
+    {
+      "term": "page table",
+      "description": "A data structure maintained per-process that maps virtual pages to physical page frames."
+    },
+    {
+      "term": "TLB (Translation Lookaside Buffer)",
+      "description": "A small, fast cache inside the processor that stores recently used virtual-to-physical page mappings to speed up address translation."
+    },
+    {
+      "term": "virtual memory",
+      "description": "A technique that uses disk storage to extend apparent RAM capacity; inactive memory pages are stored on disk and loaded on demand."
+    },
+    {
+      "term": "demand paging",
+      "description": "Pages are only loaded into RAM when they are actually accessed (page fault triggers loading)."
+    },
+    {
+      "term": "dirty bit",
+      "description": "A bit in each page table entry indicating whether the page has been modified since it was last loaded from disk; used to avoid unnecessary disk writes on eviction."
+    },
+    {
+      "term": "semaphore",
+      "description": "A synchronization primitive that controls access to a shared resource; the simplest mutual exclusion mechanism."
+    },
+    {
+      "term": "mutual exclusion",
+      "description": "The guarantee that at most one process can access a shared resource at any moment."
+    }
+  ],
+  "formulas": [
+    {
+      "name": "Number of page table entries (32-bit, 4KB pages)",
+      "expression": "2^32 / 2^12 = 2^20 = 1,048,576 entries  (too large for a single-level table)"
+    },
+    {
+      "name": "Physical address from page",
+      "expression": "physical_address = page_frame * page_size + offset"
+    }
+  ],
+  "algorithms": [
+    {
+      "name": "Memory access via pagination",
+      "steps": [
+        "Program issues virtual address",
+        "Compute page number and offset",
+        "Look up page in page table (check TLB first)",
+        "If page not found → page fault trap",
+        "Determine corresponding page frame",
+        "Compute physical address = page_frame * page_size + offset",
+        "Access physical memory"
+      ]
+    },
+    {
+      "name": "Virtual memory page fault handling",
+      "steps": [
+        "Page fault trap is generated",
+        "OS service routine looks for the page in the page file",
+        "If not found → terminate program",
+        "Load page from page file into an available physical frame",
+        "Update page table",
+        "Resume the faulting instruction"
+      ]
+    }
+  ],
+  "examples": [
+    {
+      "name": "Pagination illustration",
+      "description": "Page size=1000; virtual address 8039 → page 8, frame 3, offset 39, physical=3039."
+    },
+    {
+      "name": "Pagination error",
+      "description": "Virtual address 5276 → page 5 not in page table → trap generated."
+    },
+    {
+      "name": "2-level Intel page table",
+      "description": "Page Directory + Page Table; only tables that are actually used are allocated, reducing memory overhead."
+    }
+  ],
+  "prerequisites": [
+    "lesson-memory-segmentation",
+    "lesson-process-management"
+  ],
+  "learning_objectives": [
+    "Compare First Fit, Best Fit, and Worst Fit memory placement algorithms",
+    "Explain external fragmentation and memory defragmentation",
+    "Describe memory pagination: pages, frames, page tables",
+    "Calculate physical addresses from virtual addresses using page tables",
+    "Explain the role of the TLB in speeding up address translation",
+    "Distinguish internal and external fragmentation",
+    "Describe virtual memory and demand paging",
+    "Explain the dirty bit and how it reduces unnecessary disk writes",
+    "Describe inter-process communication via shared memory",
+    "Explain mutual exclusion and semaphores"
+  ],
+  "lessons": [
+    "lesson-memory-fragmentation-and-placement",
+    "lesson-memory-pagination",
+    "lesson-tlb-and-multi-level-tables",
+    "lesson-virtual-memory",
+    "lesson-inter-process-communication"
+  ],
+  "unit": "unit-operating-system",
+  "relationships": [
+    {
+      "type": "follows",
+      "target": "course11"
+    },
+    {
+      "type": "precedes",
+      "target": "course13"
+    },
+    {
+      "type": "part_of",
+      "target": "unit-operating-system"
+    }
+  ]
+}

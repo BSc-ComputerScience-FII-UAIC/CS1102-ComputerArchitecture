@@ -1,0 +1,48 @@
+{
+  "id": "lesson-latches-and-flip-flops",
+  "title": "Latches and Flip-Flops",
+  "source_courses": [
+    "course3"
+  ],
+  "unit": "unit-sequential-circuits-and-automata",
+  "order": 3,
+  "duration_minutes_estimate": 60,
+  "summary": "Covers synchronous bistable circuits: RS, D, JK, and T latches (level-active), the master-slave D flip-flop (edge-active), and their applications.",
+  "key_concepts": [
+    "RS latch",
+    "D latch",
+    "JK latch",
+    "T latch",
+    "flip-flop",
+    "master-slave D flip-flop",
+    "level-active vs edge-active",
+    "forbidden combination elimination"
+  ],
+  "content_points": [
+    "Latches add a synchronisation (clock) input to the basic RS bistable.",
+    "D latch: Q_{t+1} = D regardless of previous state; no forbidden combination.",
+    "JK latch: J=K=1 inverts current state instead of being forbidden.",
+    "T latch: Q_{t+1} = Q_t XOR T (toggle on T=1).",
+    "Flip-flop: edge-active – state changes only on the rising/falling clock edge; makes exactly one step per clock period.",
+    "Master-slave: two latches in series clocked in antiphase – effectively edge-triggered.",
+    "Use flip-flops for control; latches for asynchronous circuits."
+  ],
+  "formulas": [
+    {
+      "name": "D flip-flop",
+      "expression": "Q_{t+1} = D"
+    },
+    {
+      "name": "T latch",
+      "expression": "Q_{t+1} = Q_t XOR T"
+    }
+  ],
+  "prerequisites": [
+    "lesson-bistable-circuits"
+  ],
+  "learning_objectives": [
+    "Describe and compare RS, D, JK, T latches",
+    "Explain master-slave flip-flop operation",
+    "Distinguish when to use latches vs. flip-flops"
+  ]
+}

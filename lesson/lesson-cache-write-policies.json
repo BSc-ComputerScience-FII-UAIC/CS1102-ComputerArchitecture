@@ -1,0 +1,32 @@
+{
+  "id": "lesson-cache-write-policies",
+  "title": "Cache Write Policies and Extended Cache Concept",
+  "source_courses": [
+    "course7"
+  ],
+  "unit": "unit-computer-architecture-and-memory",
+  "order": 8,
+  "duration_minutes_estimate": 30,
+  "summary": "Covers write-back and write-through cache policies, their trade-offs, and how the cache concept generalises to disk caches and browser caches.",
+  "key_concepts": [
+    "write-back",
+    "write-through",
+    "dirty bit",
+    "disk cache",
+    "browser cache"
+  ],
+  "content_points": [
+    "Write-back: write only to cache; update main memory on eviction. Fast but problematic in multiprocessor systems.",
+    "Write-through: write to both cache and main memory simultaneously. Simpler coherence but slower.",
+    "Cache concept generalises: disk cache (memory as cache for disk), browser cache (disk as cache for network).",
+    "Only temporal locality applies to browser caches (no spatial locality over the network)."
+  ],
+  "prerequisites": [
+    "lesson-cache-construction-types"
+  ],
+  "learning_objectives": [
+    "Compare write-back and write-through cache policies",
+    "Explain why write-back requires extra consideration in multiprocessors",
+    "Describe examples of the cache concept beyond main memory"
+  ]
+}

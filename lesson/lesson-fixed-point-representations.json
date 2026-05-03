@@ -1,0 +1,46 @@
+{
+  "id": "lesson-fixed-point-representations",
+  "title": "Fixed-point Representations: A+S, C1, C2",
+  "source_courses": [
+    "course4"
+  ],
+  "unit": "unit-internal-representations",
+  "order": 5,
+  "duration_minutes_estimate": 60,
+  "summary": "Compares sign-magnitude, one's complement, and two's complement fixed-point representations: ranges, precision, negation algorithms, and arithmetic.",
+  "key_concepts": [
+    "sign-magnitude (A+S)",
+    "one's complement (C1)",
+    "two's complement (C2)",
+    "redundant encoding",
+    "non-redundant encoding",
+    "sign bit",
+    "complementing",
+    "end-around carry"
+  ],
+  "content_points": [
+    "A+S: leftmost bit = sign; magnitude in remaining bits. Two representations for 0; range ±(2^(n-1) - 2^(-m)).",
+    "C1: negate by inverting all bits. Also two zeros; same range as A+S. Addition needs end-around carry.",
+    "C2: negate by inverting all bits and adding 1. Single zero; asymmetric range [-2^(n-1), 2^(n-1)-2^(-m)]. Addition identical to unsigned – one adder works for both.",
+    "C2 is the universally used integer representation in modern processors.",
+    "Precision (step) = 2^(-m) for all three encodings."
+  ],
+  "formulas": [
+    {
+      "name": "C2 range (n+m bits)",
+      "expression": "[-2^(n-1), 2^(n-1) - 2^(-m)]"
+    },
+    {
+      "name": "C2 negation",
+      "expression": "-q = ~q + 1  (bit-invert then add 1)"
+    }
+  ],
+  "prerequisites": [
+    "lesson-bcd-and-excess-representations"
+  ],
+  "learning_objectives": [
+    "Describe and compare A+S, C1, C2 representations",
+    "Perform negation in C1 and C2",
+    "Explain why C2 is preferred for integer arithmetic"
+  ]
+}

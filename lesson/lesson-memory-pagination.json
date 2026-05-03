@@ -1,0 +1,48 @@
+{
+  "id": "lesson-memory-pagination",
+  "title": "Memory Pagination",
+  "source_courses": [
+    "course12"
+  ],
+  "unit": "unit-operating-system",
+  "order": 8,
+  "duration_minutes_estimate": 60,
+  "summary": "Describes memory pagination: pages, page frames, page tables, address translation, multi-level tables, and the TLB.",
+  "key_concepts": [
+    "page",
+    "page frame",
+    "page table",
+    "page size",
+    "TLB",
+    "multi-level page table",
+    "Page Directory",
+    "internal fragmentation"
+  ],
+  "content_points": [
+    "Virtual address space and physical memory divided into equal-size pages/frames (typically 4 KB).",
+    "Page table (per process) maps virtual pages to physical frames.",
+    "Address translation: page_number = virtual_addr / page_size; offset = virtual_addr % page_size; physical = frame * page_size + offset.",
+    "32-bit address space with 4 KB pages → 2^20 entries per table → too large; solution: multi-level tables (Intel: Page Directory + Page Table).",
+    "TLB: small, fast cache inside the CPU for recent page translations. Invalidated on context switch.",
+    "Internal fragmentation: unused space within pages; less severe than external fragmentation."
+  ],
+  "formulas": [
+    {
+      "name": "Page number",
+      "expression": "page_number = floor(virtual_address / page_size)"
+    },
+    {
+      "name": "Physical address",
+      "expression": "physical_address = page_frame * page_size + offset"
+    }
+  ],
+  "prerequisites": [
+    "lesson-memory-fragmentation-and-placement"
+  ],
+  "learning_objectives": [
+    "Perform virtual-to-physical address translation",
+    "Explain multi-level page table structure",
+    "Describe the TLB and its invalidation",
+    "Compare internal and external memory fragmentation"
+  ]
+}

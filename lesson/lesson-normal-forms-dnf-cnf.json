@@ -1,0 +1,41 @@
+{
+  "id": "lesson-normal-forms-dnf-cnf",
+  "title": "Normal Forms: DNF, CNF and Sigma-Notation",
+  "source_courses": [
+    "course1"
+  ],
+  "unit": "unit-boole-algebra-and-combinational-circuits",
+  "order": 4,
+  "duration_minutes_estimate": 45,
+  "summary": "Explains how to derive Disjunctive Normal Form (DNF) and Conjunctive Normal Form (CNF) from truth tables, and introduces sigma-notation as a compact way to specify Boole functions.",
+  "key_concepts": [
+    "disjunctive normal form (DNF)",
+    "conjunctive normal form (CNF)",
+    "minterm",
+    "maxterm",
+    "sigma-notation",
+    "conjunction term",
+    "disjunction"
+  ],
+  "content_points": [
+    "DNF: for each row outputting 1, write a conjunction term containing each variable (negated if 0); OR all terms.",
+    "CNF is the dual: for each row outputting 0, write a disjunction term; AND all terms.",
+    "Sigma-notation Σ(m1,m2,...): lists minterm indices where the output is 1.",
+    "Number of variables needed: smallest n such that 2^n > max index in sigma list.",
+    "Minimisation goal: find a simpler equivalent expression via algebraic methods, Karnaugh, or Quine-McCluskey."
+  ],
+  "examples": [
+    {
+      "name": "Majority of 3",
+      "expression": "f(x1,x2,x3) = Σ(3,5,6,7) = x1x2 + x1x3 + x2x3"
+    }
+  ],
+  "prerequisites": [
+    "lesson-boole-algebra"
+  ],
+  "learning_objectives": [
+    "Derive DNF and CNF from a truth table",
+    "Write a Boole function in sigma-notation",
+    "Explain algebraic minimisation using Boole laws"
+  ]
+}

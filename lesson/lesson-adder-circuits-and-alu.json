@@ -1,0 +1,43 @@
+{
+  "id": "lesson-adder-circuits-and-alu",
+  "title": "Adder Circuits and the Arithmetic Logic Unit",
+  "source_courses": [
+    "course2"
+  ],
+  "unit": "unit-boole-algebra-and-combinational-circuits",
+  "order": 9,
+  "duration_minutes_estimate": 45,
+  "summary": "Covers half-adder, full adder, ripple-carry adder, carry lookahead adder, carry selection adder, and the 1-bit and 16-bit ALU.",
+  "key_concepts": [
+    "half-adder",
+    "full adder",
+    "ripple-carry adder",
+    "carry lookahead adder",
+    "carry selection adder",
+    "ALU"
+  ],
+  "content_points": [
+    "Half-adder: Sum = A XOR B; Carry = A AND B. Cannot cascade directly.",
+    "Full adder: adds A, B, and carry-in; outputs Sum and Carry-out. Can be cascaded.",
+    "Ripple-carry adder: n full adders in series; simple but delay proportional to n.",
+    "Carry lookahead adder: C_i = G_i + P_i·C_{i-1}; computes all carries in parallel – high speed, complex circuitry.",
+    "Carry selection adder: computes both carry-in=0 and carry-in=1 results; selects correct one – compromise.",
+    "1-bit ALU performs AND, OR, ADD, or SUB based on 2 control bits (F1, F0)."
+  ],
+  "formulas": [
+    {
+      "name": "Carry lookahead",
+      "expression": "C_i = A_i*B_i + (A_i + B_i)*C_{i-1}"
+    }
+  ],
+  "prerequisites": [
+    "lesson-normal-forms-dnf-cnf",
+    "lesson-logic-diagrams"
+  ],
+  "learning_objectives": [
+    "Design half-adder and full adder circuits",
+    "Explain carry propagation in a ripple-carry adder",
+    "Compare ripple-carry and carry lookahead adders",
+    "Describe the structure and operation of a simple ALU"
+  ]
+}

@@ -1,0 +1,132 @@
+{
+  "id": "course9",
+  "source_file": "course/eng/course9.pdf",
+  "parsing_status": "success",
+  "title": "Advanced CPU Performance: Speculative Execution, Predication, Out-of-order, Register Renaming, Hyperthreading",
+  "course": "Computer Architecture and Operating Systems",
+  "part": "Part II",
+  "part_number": 9,
+  "semester_half": 2,
+  "slide_range": {
+    "start": 57,
+    "end": 102
+  },
+  "main_topics": [
+    "II.4. Speculative Execution",
+    "II.5. Predication",
+    "II.6. Out-of-order Execution",
+    "II.7. Register Renaming",
+    "II.8. Hyperthreading"
+  ],
+  "subtopics": [
+    "Speculative execution vs. branch prediction",
+    "Selection adder example",
+    "IA-64 predicate registers",
+    "Out-of-order execution purpose and conditions",
+    "RAW, WAR, WAW data dependencies",
+    "Register renaming for WAR and WAW",
+    "Physical vs. architectural registers",
+    "Hyperthreading: logical vs. physical processors"
+  ],
+  "key_concepts": [
+    "speculative execution",
+    "predication",
+    "predicate register",
+    "out-of-order execution",
+    "in-order commit",
+    "RAW (Read After Write) dependency",
+    "WAR (Write After Read) dependency",
+    "WAW (Write After Write) dependency",
+    "anti-dependency",
+    "output dependency",
+    "register renaming",
+    "physical registers",
+    "architectural registers",
+    "hyperthreading",
+    "virtual processor",
+    "physical processor"
+  ],
+  "definitions": [
+    {
+      "term": "speculative execution",
+      "description": "Executing all possible branch outcomes in parallel before knowing which is correct; results of the wrong path are discarded."
+    },
+    {
+      "term": "predication",
+      "description": "Each instruction carries a predicate (Boolean condition); the instruction has effect only if its predicate is true. Eliminates branch instructions at the cost of executing both paths."
+    },
+    {
+      "term": "out-of-order execution",
+      "description": "Instructions begin or complete execution in a different order than written, when no data dependency prevents it, to fill pipeline stalls."
+    },
+    {
+      "term": "RAW (Read After Write)",
+      "description": "True dependency: instruction 2 reads a value written by instruction 1. Cannot be eliminated by renaming."
+    },
+    {
+      "term": "WAR (Write After Read)",
+      "description": "Anti-dependency: instruction 2 writes to a resource that instruction 1 reads. Can be eliminated by register renaming."
+    },
+    {
+      "term": "WAW (Write After Write)",
+      "description": "Output dependency: both instructions write to the same resource. Can be eliminated by register renaming."
+    },
+    {
+      "term": "register renaming",
+      "description": "Mapping architectural registers to a larger set of physical registers to eliminate WAR and WAW dependencies."
+    },
+    {
+      "term": "hyperthreading",
+      "description": "A single physical processor presents itself as two virtual processors to the OS by duplicating state components (registers) while sharing execution resources."
+    }
+  ],
+  "examples": [
+    {
+      "name": "Predication example",
+      "description": "if(R1==0){R2=5; R3=8;} else R2=21; – implemented with predicate registers P1/P2 instead of jump instructions."
+    },
+    {
+      "name": "Out-of-order example",
+      "description": "'in al,278; add bl,al; mov edx,[ebp+8]' – third instruction has no dependency, can complete before the first two."
+    },
+    {
+      "name": "Selection adder with speculative execution",
+      "description": "Compute sum for both carry-in=0 and carry-in=1 simultaneously; select correct result when carry is known."
+    }
+  ],
+  "prerequisites": [
+    "lesson-pipeline",
+    "lesson-pipeline-dependencies",
+    "lesson-branch-prediction"
+  ],
+  "learning_objectives": [
+    "Explain speculative execution and its trade-offs",
+    "Describe predication and how it eliminates control dependencies",
+    "Explain out-of-order execution and when it is applicable",
+    "Identify RAW, WAR, and WAW data dependencies",
+    "Explain how register renaming resolves WAR and WAW dependencies",
+    "Describe hyperthreading and its benefits and limitations"
+  ],
+  "lessons": [
+    "lesson-speculative-execution",
+    "lesson-predication",
+    "lesson-out-of-order-execution",
+    "lesson-register-renaming",
+    "lesson-hyperthreading"
+  ],
+  "unit": "unit-cpu-structure-and-performance",
+  "relationships": [
+    {
+      "type": "follows",
+      "target": "course8"
+    },
+    {
+      "type": "precedes",
+      "target": "course10"
+    },
+    {
+      "type": "part_of",
+      "target": "unit-cpu-structure-and-performance"
+    }
+  ]
+}

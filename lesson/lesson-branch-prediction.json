@@ -1,0 +1,37 @@
+{
+  "id": "lesson-branch-prediction",
+  "title": "Branch Prediction",
+  "source_courses": [
+    "course8"
+  ],
+  "unit": "unit-cpu-structure-and-performance",
+  "order": 5,
+  "duration_minutes_estimate": 45,
+  "summary": "Explains static and dynamic branch prediction schemes, the Intel Pentium BTB with 2-bit saturation counters, and trace caches.",
+  "key_concepts": [
+    "branch prediction",
+    "static prediction",
+    "dynamic prediction",
+    "BTB",
+    "2-bit saturation counter",
+    "local predictor",
+    "global predictor",
+    "trace cache"
+  ],
+  "content_points": [
+    "Goal: foresee jump outcome to avoid pipeline flush; wrong prediction → rollback effects.",
+    "Static: always taken (~60%), never taken (~40%), or backward-taken/forward-not-taken.",
+    "Dynamic: BTB table records recent jump history (taken/not-taken).",
+    "Intel Pentium BTB: 4-way set-associative, 256 entries, 2-bit saturation counter (4 states: strong-hit → weak-hit → weak-miss → strong-miss).",
+    "2-bit counter: gives a second chance before changing prediction direction.",
+    "Trace cache: stores instructions in execution order, not memory order."
+  ],
+  "prerequisites": [
+    "lesson-pipeline-dependencies"
+  ],
+  "learning_objectives": [
+    "Compare static and dynamic branch prediction",
+    "Describe the 2-bit saturation counter and its state transitions",
+    "Explain the Intel Pentium BTB implementation"
+  ]
+}

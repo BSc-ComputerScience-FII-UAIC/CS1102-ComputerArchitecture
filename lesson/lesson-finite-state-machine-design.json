@@ -1,0 +1,36 @@
+{
+  "id": "lesson-finite-state-machine-design",
+  "title": "Finite State Machine Design",
+  "source_courses": [
+    "course3"
+  ],
+  "unit": "unit-sequential-circuits-and-automata",
+  "order": 5,
+  "duration_minutes_estimate": 45,
+  "summary": "Systematic 6-step procedure for designing sequential circuits as finite state machines: state identification, transition table, state encoding, minimisation, and implementation.",
+  "key_concepts": [
+    "finite state machine",
+    "automaton",
+    "state transition",
+    "state encoding",
+    "next-state function",
+    "Mealy machine",
+    "Moore machine"
+  ],
+  "content_points": [
+    "Step 1: identify all states. Step 2: determine transitions (next state and outputs as functions of current state and inputs).",
+    "Step 3: encode states as binary bit strings. Step 4: write the transition truth table.",
+    "Step 5: minimise transition functions using Karnaugh diagrams.",
+    "Step 6: implement – flip-flops store state; combinational logic computes next state/output.",
+    "Example: 4-bit binary counter – 16 states, D flip-flops, minimised equations."
+  ],
+  "prerequisites": [
+    "lesson-registers-and-counters",
+    "lesson-karnaugh-minimization"
+  ],
+  "learning_objectives": [
+    "Apply the 6-step FSM design procedure",
+    "Encode states and write transition truth tables",
+    "Minimise and implement next-state functions"
+  ]
+}
