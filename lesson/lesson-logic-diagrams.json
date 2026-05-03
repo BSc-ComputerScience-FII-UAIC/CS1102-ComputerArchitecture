@@ -1,0 +1,37 @@
+{
+  "id": "lesson-logic-diagrams",
+  "title": "Logic Diagrams and Gate Implementation",
+  "source_courses": [
+    "course1"
+  ],
+  "unit": "unit-boole-algebra-and-combinational-circuits",
+  "order": 5,
+  "duration_minutes_estimate": 45,
+  "summary": "Covers logic gates (AND, OR, NOT, NAND, NOR, XOR, NXOR), their truth tables, symbols, and the concept of minimal sets of generators.",
+  "key_concepts": [
+    "logic gate",
+    "AND gate",
+    "OR gate",
+    "NOT gate",
+    "NAND gate",
+    "NOR gate",
+    "XOR gate",
+    "NXOR gate",
+    "set of generators",
+    "minimal set of generators"
+  ],
+  "content_points": [
+    "Logic gates implement Boole functions; truth tables describe each gate's input-output behaviour.",
+    "Elementary gates: AND, OR, NOT. Derived: NAND, NOR, XOR, NXOR.",
+    "A set of generators can implement any Boole function; minimal sets: {NAND} or {NOR} (single gate type suffices).",
+    "Associative gates can be extended to more than 2 inputs."
+  ],
+  "prerequisites": [
+    "lesson-boole-algebra"
+  ],
+  "learning_objectives": [
+    "Draw truth tables for AND, OR, NOT, NAND, NOR, XOR, NXOR",
+    "Identify minimal sets of gate generators",
+    "Implement simple Boole functions using logic diagrams"
+  ]
+}

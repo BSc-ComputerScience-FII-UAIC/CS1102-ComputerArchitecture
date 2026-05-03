@@ -1,0 +1,30 @@
+{
+  "id": "lesson-microprogramming",
+  "title": "Microprogramming",
+  "source_courses": [
+    "course3"
+  ],
+  "unit": "unit-sequential-circuits-and-automata",
+  "order": 6,
+  "duration_minutes_estimate": 30,
+  "summary": "Introduces microprogramming as an alternative sequential circuit implementation: the combinational part is replaced by a ROM whose contents encode the transition table.",
+  "key_concepts": [
+    "microprogramming",
+    "ROM-based combinational logic",
+    "flexibility vs speed trade-off"
+  ],
+  "content_points": [
+    "ROM replaces gate-level combinational logic: address = state + inputs; ROM data = next state + outputs.",
+    "Advantage: modifying the automaton only requires rewriting the ROM.",
+    "Drawback: ROM circuits are slower than dedicated gate implementations.",
+    "Example: 4-bit counter needs 2^4=16 ROM locations, each 4 bits wide."
+  ],
+  "prerequisites": [
+    "lesson-finite-state-machine-design"
+  ],
+  "learning_objectives": [
+    "Explain the microprogramming approach to sequential circuit design",
+    "Describe the ROM contents for a given FSM",
+    "Compare ROM-based vs. gate-based implementations"
+  ]
+}

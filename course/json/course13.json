@@ -1,0 +1,148 @@
+{
+  "id": "course13",
+  "source_file": "course/eng/course13.pdf",
+  "parsing_status": "success",
+  "title": "Using the MMU and Program Creation: Compilation, Linking, Relocation, Shared Libraries",
+  "course": "Computer Architecture and Operating Systems",
+  "part": "Part II",
+  "part_number": 13,
+  "semester_half": 2,
+  "slide_range": {
+    "start": 249,
+    "end": 278
+  },
+  "main_topics": [
+    "V.5.5. Using the MMU",
+    "V.6. Creating and Executing Programs"
+  ],
+  "subtopics": [
+    "Intel MMU: segmentation and pagination in practice",
+    "Windows/Linux MMU usage",
+    "MMU advantages and drawbacks",
+    "Compilation and linking stages",
+    "Object file structure",
+    "Relocation problem",
+    "External reference problem",
+    "Linker operation",
+    "Program execution and relocation",
+    "Static vs. dynamic (shared) libraries",
+    "Implicit and explicit linking",
+    "Windows/Linux dynamic linking examples"
+  ],
+  "key_concepts": [
+    "MMU (Memory Management Unit)",
+    "Intel segmentation (cannot be disabled)",
+    "Intel pagination (can be disabled)",
+    "4 KB pages (Windows/Linux default)",
+    "4 MB pages (Windows optional)",
+    "compilation",
+    "linking",
+    "object file",
+    "executable file",
+    "relocation",
+    "relocation constant",
+    "relocation register",
+    "position-independent code",
+    "entry point table",
+    "external reference table",
+    "relocation dictionary",
+    "linker",
+    "static library",
+    "shared library (DLL / .so)",
+    "dynamic linking",
+    "implicit linking",
+    "explicit linking",
+    "LoadLibrary / GetProcAddress (Windows)",
+    "dlopen / dlsym (Linux)"
+  ],
+  "definitions": [
+    {
+      "term": "compilation",
+      "description": "Translating a source file into an object file containing machine instructions; each module starts at address 0."
+    },
+    {
+      "term": "linking",
+      "description": "Combining multiple object files into a single executable; resolves external references and performs relocation."
+    },
+    {
+      "term": "relocation",
+      "description": "Adjusting absolute addresses in object code when modules are placed at their final memory positions."
+    },
+    {
+      "term": "object file structure",
+      "description": "Header, entry point table, external reference table, code, and relocation dictionary."
+    },
+    {
+      "term": "shared library",
+      "description": "A library loaded into memory once and shared by multiple programs; reduces disk and memory usage."
+    },
+    {
+      "term": "implicit linking",
+      "description": "The OS automatically loads required shared libraries when the program starts, based on import libraries statically linked into the executable."
+    },
+    {
+      "term": "explicit linking",
+      "description": "The program explicitly loads/unloads shared libraries at runtime using system calls (LoadLibrary/dlopen)."
+    },
+    {
+      "term": "position-independent code",
+      "description": "Code that uses only relative addresses (relative to PC); can be loaded at any memory address without relocation."
+    }
+  ],
+  "algorithms": [
+    {
+      "name": "Linker operation",
+      "steps": [
+        "Build a table of all object modules and their sizes",
+        "Assign start addresses to each module (cumulative sizes)",
+        "Add relocation constant (= module start address) to each address in the code",
+        "Resolve external references: insert addresses of functions/data defined in other modules"
+      ]
+    }
+  ],
+  "examples": [
+    {
+      "name": "Explicit linking on Windows",
+      "description": "hLib=LoadLibrary('module'); fAddr=GetProcAddress(hLib,'func'); (fAddr)(2,3,8); FreeLibrary(hLib);"
+    },
+    {
+      "name": "Explicit linking on Linux",
+      "description": "hLib=dlopen('module', RTLD_LAZY); fAddr=dlsym(hLib,'func'); (fAddr)(2,3,8); dlclose(hLib);"
+    },
+    {
+      "name": "Relocation solutions comparison",
+      "description": "4 approaches: relocation info in executable (DOS), relocation register, position-independent code, memory pagination."
+    }
+  ],
+  "prerequisites": [
+    "lesson-memory-pagination",
+    "lesson-memory-segmentation"
+  ],
+  "learning_objectives": [
+    "Describe how Intel hardware implements segmentation and pagination in practice",
+    "Explain how Windows and Linux use the MMU",
+    "Evaluate the trade-offs of using the MMU",
+    "Describe the stages of program creation (compilation and linking)",
+    "Explain the structure of an object file",
+    "Explain the relocation problem and four solutions",
+    "Describe the linker algorithm",
+    "Distinguish static and dynamic (shared) libraries",
+    "Compare implicit and explicit dynamic linking"
+  ],
+  "lessons": [
+    "lesson-mmu-intel-and-os",
+    "lesson-program-compilation-and-linking",
+    "lesson-shared-libraries"
+  ],
+  "unit": "unit-operating-system",
+  "relationships": [
+    {
+      "type": "follows",
+      "target": "course12"
+    },
+    {
+      "type": "part_of",
+      "target": "unit-operating-system"
+    }
+  ]
+}

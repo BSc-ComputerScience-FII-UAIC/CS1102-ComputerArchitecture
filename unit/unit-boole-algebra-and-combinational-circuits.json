@@ -1,0 +1,53 @@
+{
+  "id": "unit-boole-algebra-and-combinational-circuits",
+  "title": "Boole Algebra and Combinational Circuits",
+  "course": "Computer Architecture and Operating Systems",
+  "part": "Part I",
+  "order": 1,
+  "source_courses": [
+    "course1",
+    "course2"
+  ],
+  "lessons": [
+    "lesson-introduction-to-computing",
+    "lesson-empirical-laws",
+    "lesson-boole-algebra",
+    "lesson-normal-forms-dnf-cnf",
+    "lesson-logic-diagrams",
+    "lesson-circuit-minimization-algebraic",
+    "lesson-karnaugh-minimization",
+    "lesson-combinational-circuits-mux-decoder",
+    "lesson-adder-circuits-and-alu"
+  ],
+  "summary": "Covers the theoretical foundations of digital logic from the axiomatic Boole algebra through truth tables, DNF/CNF, logic gates, and minimisation techniques (algebraic and Karnaugh), to practical combinational circuit building blocks: multiplexers, decoders, adders and the ALU.",
+  "key_concepts": [
+    "Boole algebra axioms and theorems",
+    "combinational circuit",
+    "truth table",
+    "DNF and CNF",
+    "logic gates",
+    "Karnaugh minimisation",
+    "multiplexer",
+    "decoder",
+    "half-adder / full adder / ripple-carry / carry lookahead",
+    "ALU"
+  ],
+  "learning_objectives": [
+    "Apply Boole algebra axioms and theorems",
+    "Construct and minimise Boole functions via algebraic rewriting and Karnaugh diagrams",
+    "Implement Boole functions using gates, MUX, and decoders",
+    "Design adder circuits and understand ALU structure"
+  ],
+  "prerequisites": [],
+  "relationships": [
+    {
+      "type": "precedes",
+      "target": "unit-sequential-circuits-and-automata"
+    },
+    {
+      "type": "part_of",
+      "target": "year-1"
+    }
+  ],
+  "estimated_total_minutes": 390
+}

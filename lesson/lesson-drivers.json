@@ -1,0 +1,28 @@
+{
+  "id": "lesson-drivers",
+  "title": "Device Drivers",
+  "source_courses": [
+    "course11"
+  ],
+  "unit": "unit-operating-system",
+  "order": 4,
+  "duration_minutes_estimate": 20,
+  "summary": "Explains what device drivers are, how they fit in the OS architecture, and why the modular driver structure allows hardware changes without reinstalling the OS.",
+  "key_concepts": [
+    "driver",
+    "modular OS",
+    "hardware interrupt handling"
+  ],
+  "content_points": [
+    "Drivers manage communication with specific peripheral devices; run in kernel mode.",
+    "Not part of the kernel but controlled by it; called from interrupt handling routines.",
+    "Modular: replace a device → replace its driver; no OS reinstall needed."
+  ],
+  "prerequisites": [
+    "lesson-system-calls"
+  ],
+  "learning_objectives": [
+    "Describe the role of device drivers",
+    "Explain how modular driver design improves maintainability"
+  ]
+}

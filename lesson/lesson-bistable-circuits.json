@@ -1,0 +1,36 @@
+{
+  "id": "lesson-bistable-circuits",
+  "title": "The RS Bistable Circuit",
+  "source_courses": [
+    "course3"
+  ],
+  "unit": "unit-sequential-circuits-and-automata",
+  "order": 2,
+  "duration_minutes_estimate": 45,
+  "summary": "Analyses the no-clock RS bistable circuit using Karnaugh diagrams to identify stable states and explains its set/reset/hold/forbidden behaviour.",
+  "key_concepts": [
+    "RS bistable circuit",
+    "stable state",
+    "NOR implementation",
+    "feedback",
+    "set",
+    "reset",
+    "hold",
+    "forbidden combination"
+  ],
+  "content_points": [
+    "Two NOR gates with cross-coupled feedback; two inputs (R, S), two outputs (Q, P), with P = NOT Q.",
+    "Stable state analysis via Karnaugh: (Q,P) stabilises when (Q,P) = (q,p).",
+    "(R=0,S=1): always stabilises at Q=1 (set). (R=1,S=0): always Q=0 (reset).",
+    "(R=0,S=0): holds current state (P≠Q). (R=1,S=1): Q=P=0 – forbidden (P=Q violates bit semantics)."
+  ],
+  "prerequisites": [
+    "lesson-sequential-circuits-intro",
+    "lesson-karnaugh-minimization"
+  ],
+  "learning_objectives": [
+    "Analyse the RS bistable using stable-state Karnaugh analysis",
+    "Describe the set, reset, hold, and forbidden states",
+    "Explain why R=S=1 is forbidden"
+  ]
+}

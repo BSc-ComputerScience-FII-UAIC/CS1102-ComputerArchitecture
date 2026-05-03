@@ -1,0 +1,53 @@
+{
+  "id": "lesson-boole-algebra",
+  "title": "Boole Functions and Boole Algebra",
+  "source_courses": [
+    "course1"
+  ],
+  "unit": "unit-boole-algebra-and-combinational-circuits",
+  "order": 3,
+  "duration_minutes_estimate": 60,
+  "summary": "Introduces the algebraic structure of Boole algebra, defines Boole functions, truth tables, and the complete set of axioms and theorems including De Morgan laws.",
+  "key_concepts": [
+    "Boole algebra",
+    "Boole function",
+    "truth table",
+    "analogical vs digital signal",
+    "combinational circuit",
+    "sequential circuit",
+    "binary operations",
+    "unary operation",
+    "De Morgan laws",
+    "absorption law",
+    "unification"
+  ],
+  "content_points": [
+    "Boole algebra: set B={0,1} with operations +, ·, ¯ satisfying identity, constants, idempotence, involution, complementarity, commutativity, associativity, distributivity.",
+    "A Boole function f: B^n → B^m; there are (2^m)^(2^n) distinct such functions.",
+    "Computers use 2-level digital signals; combinational circuits implement Boole functions.",
+    "Key theorems: unification, absorption, De Morgan (X+Y)¯ = X¯·Y¯ and (X·Y)¯ = X¯+Y¯, duality.",
+    "Truth tables enumerate all 2^n input combinations with corresponding outputs."
+  ],
+  "formulas": [
+    {
+      "name": "Number of n-input m-output Boole functions",
+      "expression": "(2^m)^(2^n)"
+    },
+    {
+      "name": "De Morgan (1)",
+      "expression": "NOT(X OR Y) = (NOT X) AND (NOT Y)"
+    },
+    {
+      "name": "De Morgan (2)",
+      "expression": "NOT(X AND Y) = (NOT X) OR (NOT Y)"
+    }
+  ],
+  "prerequisites": [
+    "lesson-introduction-to-computing"
+  ],
+  "learning_objectives": [
+    "State the axioms and theorems of Boole algebra",
+    "Construct truth tables for given Boole functions",
+    "Apply De Morgan and other laws to simplify expressions"
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "id": "lesson-register-renaming",
+  "title": "Register Renaming",
+  "source_courses": [
+    "course9"
+  ],
+  "unit": "unit-cpu-structure-and-performance",
+  "order": 9,
+  "duration_minutes_estimate": 30,
+  "summary": "Explains RAW, WAR, and WAW data dependencies, and how register renaming eliminates WAR and WAW dependencies by mapping architectural registers to a larger physical register file.",
+  "key_concepts": [
+    "RAW dependency",
+    "WAR dependency",
+    "WAW dependency",
+    "register renaming",
+    "physical registers",
+    "architectural registers"
+  ],
+  "content_points": [
+    "RAW (true dependency): cannot be eliminated; the written value is genuinely needed.",
+    "WAR (anti-dependency): instruction 1 reads a register, instruction 2 writes it. Renaming: give instruction 2 a fresh physical register.",
+    "WAW (output dependency): both write to the same register. Renaming: each write goes to a different physical register.",
+    "Processor uses more physical registers than the ISA exposes; renaming done automatically.",
+    "Increases parallelism; especially effective with superscalar/out-of-order."
+  ],
+  "prerequisites": [
+    "lesson-out-of-order-execution"
+  ],
+  "learning_objectives": [
+    "Identify RAW, WAR, and WAW data dependencies in instruction sequences",
+    "Explain how register renaming resolves WAR and WAW"
+  ]
+}

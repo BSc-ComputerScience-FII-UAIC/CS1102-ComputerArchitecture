@@ -1,0 +1,41 @@
+{
+  "id": "lesson-process-management",
+  "title": "Process Management",
+  "source_courses": [
+    "course11"
+  ],
+  "unit": "unit-operating-system",
+  "order": 5,
+  "duration_minutes_estimate": 60,
+  "summary": "Covers processes and threads, process states (running/ready/waiting), multitasking (preemptive and non-preemptive), scheduling, and the real-time clock role.",
+  "key_concepts": [
+    "process",
+    "thread",
+    "process states",
+    "running",
+    "ready",
+    "waiting",
+    "preemptive multitasking",
+    "non-preemptive multitasking",
+    "scheduling",
+    "real-time clock",
+    "context switch"
+  ],
+  "content_points": [
+    "A process is a running program instance with its own memory zones; threads share a process's memory.",
+    "States: running (on CPU), ready (waiting for CPU), waiting (waiting for I/O or system call).",
+    "Preemptive multitasking: OS can forcibly deactivate a process after its time slice (clock interrupt).",
+    "Non-preemptive: process runs until it voluntarily yields or makes a system call.",
+    "Real-time clock generates periodic interrupts to give OS control for scheduling.",
+    "Thread scheduling: by OS or by application via a threading library."
+  ],
+  "prerequisites": [
+    "lesson-kernel"
+  ],
+  "learning_objectives": [
+    "Describe the states of a process and their transitions",
+    "Compare preemptive and non-preemptive multitasking",
+    "Distinguish processes from threads",
+    "Explain the role of the real-time clock in scheduling"
+  ]
+}

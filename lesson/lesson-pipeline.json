@@ -1,0 +1,37 @@
+{
+  "id": "lesson-pipeline",
+  "title": "Pipeline Architecture",
+  "source_courses": [
+    "course8"
+  ],
+  "unit": "unit-cpu-structure-and-performance",
+  "order": 3,
+  "duration_minutes_estimate": 60,
+  "summary": "Explains the pipeline concept: overlapping instruction execution stages, performance metrics (latency, throughput), separation registers, and clock frequency determination.",
+  "key_concepts": [
+    "pipeline",
+    "pipeline stage",
+    "separation register",
+    "latency",
+    "throughput",
+    "clock frequency",
+    "superscalar",
+    "superpipeline"
+  ],
+  "content_points": [
+    "Pipeline: n stages; each stage uses different CPU resources; n instructions active simultaneously.",
+    "First instruction: n cycles; subsequent: 1 cycle each (ideal throughput = 1 instr/cycle).",
+    "Clock period determined by the slowest stage; more, simpler stages → higher clock.",
+    "Separation registers hold results between stages.",
+    "Intel pipeline evolution: Pentium III=10, Pentium IV Prescott=32 stages.",
+    "Superscalar: multiple ALUs for >1 instruction per cycle. Superpipeline: multiple parallel pipelines."
+  ],
+  "prerequisites": [
+    "lesson-instruction-execution"
+  ],
+  "learning_objectives": [
+    "Explain how a pipeline improves instruction throughput",
+    "Calculate ideal throughput of a pipelined processor",
+    "Describe superscalar and superpipeline designs"
+  ]
+}

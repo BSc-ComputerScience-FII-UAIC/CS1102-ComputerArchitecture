@@ -1,0 +1,36 @@
+{
+  "id": "lesson-peripheral-devices",
+  "title": "Peripheral Devices and I/O Methods",
+  "source_courses": [
+    "course10"
+  ],
+  "unit": "unit-io-interrupts-and-parallel",
+  "order": 3,
+  "duration_minutes_estimate": 45,
+  "summary": "Describes peripheral device structure, the I/O controller, memory-mapped vs. isolated I/O, and the three communication modes: programmed I/O, DMA, and interrupt-driven I/O.",
+  "key_concepts": [
+    "peripheral device",
+    "I/O controller",
+    "memory-mapped I/O",
+    "isolated I/O",
+    "programmed I/O",
+    "DMA",
+    "interrupt-driven I/O"
+  ],
+  "content_points": [
+    "Peripheral = device + I/O controller (with data, status, and command registers).",
+    "Memory-mapped I/O: peripheral registers mapped into main memory address space; same read/write signals.",
+    "Isolated I/O: separate address space and control signals for peripherals.",
+    "Programmed I/O (polling): CPU loops waiting for device – wastes cycles.",
+    "DMA: controller transfers data directly between device and memory; CPU bypassed; efficient for bulk transfers.",
+    "Interrupt-driven I/O: device notifies CPU via interrupt when ready; CPU does other work meanwhile."
+  ],
+  "prerequisites": [
+    "lesson-computer-organization"
+  ],
+  "learning_objectives": [
+    "Describe the I/O controller register model",
+    "Distinguish memory-mapped and isolated I/O",
+    "Compare programmed I/O, DMA, and interrupt-driven I/O"
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "id": "lesson-shared-libraries",
+  "title": "Shared Libraries and Dynamic Linking",
+  "source_courses": [
+    "course13"
+  ],
+  "unit": "unit-operating-system",
+  "order": 13,
+  "duration_minutes_estimate": 30,
+  "summary": "Explains static vs. dynamic (shared) libraries, implicit and explicit dynamic linking, and OS/platform examples (Windows LoadLibrary, Linux dlopen).",
+  "key_concepts": [
+    "shared library",
+    "dynamic linking",
+    "static library",
+    "implicit linking",
+    "explicit linking",
+    "import library",
+    "LoadLibrary",
+    "dlopen"
+  ],
+  "content_points": [
+    "Static library: code included in executable at link time; each program has its own copy.",
+    "Shared library (DLL/.so): loaded once into memory; shared by all programs that need it.",
+    "Implicit linking: OS loads required libraries on program start; program lists them in import libraries.",
+    "Explicit linking: program calls LoadLibrary()/dlopen() at runtime; can load/unload at any time.",
+    "Benefits: smaller executables, single on-disk copy, easier updates.",
+    "Windows: LoadLibrary/GetProcAddress/FreeLibrary. Linux: dlopen/dlsym/dlclose."
+  ],
+  "prerequisites": [
+    "lesson-program-compilation-and-linking"
+  ],
+  "learning_objectives": [
+    "Compare static and dynamic libraries",
+    "Explain implicit and explicit dynamic linking",
+    "Show Windows and Linux API equivalents for explicit linking"
+  ]
+}

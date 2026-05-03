@@ -1,0 +1,40 @@
+{
+  "id": "lesson-memory-structure-and-addressing",
+  "title": "Memory Addressing: Types, Byte Order and Decoding",
+  "source_courses": [
+    "course6"
+  ],
+  "unit": "unit-computer-architecture-and-memory",
+  "order": 4,
+  "duration_minutes_estimate": 30,
+  "summary": "Covers absolute, relative and symbolic addresses, big-endian vs. little-endian byte order, and full vs. partial address decoding.",
+  "key_concepts": [
+    "absolute address",
+    "relative address",
+    "symbolic address",
+    "big endian",
+    "little endian",
+    "full decoding",
+    "partial decoding"
+  ],
+  "content_points": [
+    "Absolute address: assigned location number (from 0). Relative: offset from a base. Symbolic: named label (variable).",
+    "Big endian: most significant byte at lowest address. Little endian: least significant byte at lowest address.",
+    "Intel x86 is little-endian. Example: 0xB67A49E3 at 150–153: 150→E3, 151→49, 152→7A, 153→B6.",
+    "Full decoding: each address uniquely selects one circuit. Partial: some address bits ignored → aliasing."
+  ],
+  "examples": [
+    {
+      "name": "Little-endian storage",
+      "description": "0xB67A49E3 stored little-endian at address 150: [150]=E3, [151]=49, [152]=7A, [153]=B6"
+    }
+  ],
+  "prerequisites": [
+    "lesson-memory-types"
+  ],
+  "learning_objectives": [
+    "Distinguish absolute, relative, and symbolic addresses",
+    "Explain big-endian and little-endian byte ordering",
+    "Show how a multi-byte value is stored in each ordering"
+  ]
+}

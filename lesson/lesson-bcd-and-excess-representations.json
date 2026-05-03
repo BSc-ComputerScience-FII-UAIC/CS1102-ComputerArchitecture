@@ -1,0 +1,41 @@
+{
+  "id": "lesson-bcd-and-excess-representations",
+  "title": "BCD and Excess Representations",
+  "source_courses": [
+    "course4"
+  ],
+  "unit": "unit-internal-representations",
+  "order": 4,
+  "duration_minutes_estimate": 30,
+  "summary": "Explains BCD (Binary Coded Decimal) representation and addition algorithm, and the Excess-k representation with its representable interval.",
+  "key_concepts": [
+    "BCD",
+    "BCD addition",
+    "correction by 6",
+    "excess-k representation"
+  ],
+  "content_points": [
+    "BCD: each decimal digit stored in 4 bits; used in business/display applications.",
+    "BCD addition: if digit sum > 9 or carry occurs, add 6 (0110) to get correct BCD result.",
+    "Excess-k on n bits: value = binary_value - k; range [-k, 2^n - k - 1].",
+    "Excess-127 is used for the exponent field in IEEE 754 single precision."
+  ],
+  "formulas": [
+    {
+      "name": "Excess-k value",
+      "expression": "value = binary_unsigned_value - k"
+    },
+    {
+      "name": "Excess-k range (n bits)",
+      "expression": "[-k, 2^n - k - 1]"
+    }
+  ],
+  "prerequisites": [
+    "lesson-base-conversion"
+  ],
+  "learning_objectives": [
+    "Encode decimal numbers in BCD",
+    "Perform BCD addition with correction",
+    "Describe excess-k representation and determine its range"
+  ]
+}

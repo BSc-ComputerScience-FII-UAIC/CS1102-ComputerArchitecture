@@ -1,0 +1,171 @@
+{
+  "id": "course10",
+  "source_file": "course/eng/course10.pdf",
+  "parsing_status": "success",
+  "title": "Multiprocessor Communication, Cache Coherence, Peripheral Devices, Buses and Interrupts",
+  "course": "Computer Architecture and Operating Systems",
+  "part": "Part II",
+  "part_number": 10,
+  "semester_half": 2,
+  "slide_range": {
+    "start": 103,
+    "end": 148
+  },
+  "main_topics": [
+    "Multiprocessor Communication",
+    "Memory Coherence",
+    "III. Peripheral Devices",
+    "IV. The Interrupt System"
+  ],
+  "subtopics": [
+    "Bus vs. interconnection network communication",
+    "Memory coherence definition",
+    "Write-back vs write-through coherence problems",
+    "Coherence protocols (directory-based, snooping)",
+    "Write invalidate protocol",
+    "Write update protocol",
+    "Peripheral device structure",
+    "Memory-mapped I/O vs isolated I/O",
+    "Programmed I/O, DMA, interrupt-driven I/O",
+    "Bus structure and arbitration",
+    "Tri-state and open-collector circuits",
+    "Interrupt types (hardware, trap, software)",
+    "Interrupt handling phases",
+    "Interrupt controller",
+    "Interrupt vector table"
+  ],
+  "key_concepts": [
+    "bus communication",
+    "interconnection network",
+    "memory coherence",
+    "cache coherence",
+    "snooping protocol",
+    "directory-based protocol",
+    "write invalidate",
+    "write update",
+    "invalid / dirty / shared cache line state",
+    "peripheral device",
+    "I/O controller",
+    "memory-mapped I/O",
+    "isolated I/O",
+    "programmed I/O (polling)",
+    "DMA (Direct Memory Access)",
+    "interrupt-driven I/O",
+    "bus arbitration",
+    "tri-state output",
+    "open-collector circuit",
+    "interrupt",
+    "maskable interrupt",
+    "non-maskable interrupt",
+    "IF (Interrupt Flag)",
+    "interrupt controller (Intel 8259)",
+    "IRQ line",
+    "interrupt vector table",
+    "service routine",
+    "trap",
+    "software interrupt"
+  ],
+  "definitions": [
+    {
+      "term": "memory coherence",
+      "description": "The guarantee that all processors observe a consistent view of shared memory: reads return the last written value, and all writes are seen in the same order by all processors."
+    },
+    {
+      "term": "write invalidate",
+      "description": "When a processor writes to a cache line, all other copies of that line in other caches are invalidated."
+    },
+    {
+      "term": "write update",
+      "description": "When a processor writes to a cache line, all other caches with a copy receive the new value immediately."
+    },
+    {
+      "term": "DMA (Direct Memory Access)",
+      "description": "A specialized controller that transfers data between a peripheral device and memory directly, bypassing the CPU."
+    },
+    {
+      "term": "interrupt",
+      "description": "A mechanism by which the CPU suspends its current program to handle an asynchronous event; the interrupted program is resumed afterward."
+    },
+    {
+      "term": "interrupt vector table",
+      "description": "A table at physical address 0 holding the start addresses of all interrupt service routines; indexed by the interrupt type byte."
+    },
+    {
+      "term": "trap",
+      "description": "An interrupt generated internally by the CPU to signal an abnormal condition (e.g., division by zero)."
+    },
+    {
+      "term": "tri-state output",
+      "description": "A circuit output with three states: 0, 1, or high-impedance (electrically disconnected from the bus)."
+    }
+  ],
+  "algorithms": [
+    {
+      "name": "Interrupt handling sequence",
+      "steps": [
+        "Peripheral asserts its IRQ line",
+        "Interrupt controller asserts INT",
+        "CPU checks IF flag (maskable interrupts only)",
+        "CPU responds with INTA; current program suspended; registers saved to stack",
+        "IF flag cleared",
+        "Controller places type byte on data bus",
+        "CPU reads interrupt vector table at 4×type_byte to find service routine address",
+        "CPU jumps to service routine",
+        "Service routine executes and returns",
+        "Registers restored from stack; IF flag restored; program resumes"
+      ]
+    }
+  ],
+  "examples": [
+    {
+      "name": "Write invalidate trace",
+      "description": "Processor A writes x=5 → A's cache updated, B's copy invalidated; B's next read causes a cache miss and fetches 5."
+    },
+    {
+      "name": "Write update trace",
+      "description": "Processor A writes x=5 → both A's and B's caches updated to 5 immediately."
+    },
+    {
+      "name": "Interrupt vector table size",
+      "description": "256 sources × 4 bytes/address = 1 KB at physical address 0."
+    }
+  ],
+  "prerequisites": [
+    "lesson-cache-construction-types",
+    "lesson-parallel-architectures"
+  ],
+  "learning_objectives": [
+    "Compare bus and interconnection network communication for multiprocessors",
+    "Define and explain the three conditions for memory coherence",
+    "Describe snooping and directory-based coherence protocols",
+    "Compare write invalidate and write update protocols",
+    "Describe how peripheral devices communicate with the CPU",
+    "Distinguish memory-mapped and isolated I/O",
+    "Compare programmed I/O, DMA, and interrupt-driven I/O",
+    "Explain bus arbitration and tri-state circuits",
+    "Trace the complete interrupt handling sequence",
+    "Distinguish hardware interrupts, traps, and software interrupts"
+  ],
+  "lessons": [
+    "lesson-multiprocessor-communication",
+    "lesson-cache-coherence",
+    "lesson-peripheral-devices",
+    "lesson-bus-communication",
+    "lesson-interrupt-system"
+  ],
+  "unit": "unit-io-interrupts-and-parallel",
+  "relationships": [
+    {
+      "type": "follows",
+      "target": "course9"
+    },
+    {
+      "type": "precedes",
+      "target": "course11"
+    },
+    {
+      "type": "part_of",
+      "target": "unit-io-interrupts-and-parallel"
+    }
+  ]
+}

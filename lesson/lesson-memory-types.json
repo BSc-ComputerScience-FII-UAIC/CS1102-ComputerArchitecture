@@ -1,0 +1,38 @@
+{
+  "id": "lesson-memory-types",
+  "title": "Memory Types: ROM and RAM Technologies",
+  "source_courses": [
+    "course6"
+  ],
+  "unit": "unit-computer-architecture-and-memory",
+  "order": 3,
+  "duration_minutes_estimate": 30,
+  "summary": "Covers ROM (PROM, EPROM, EEPROM) and RAM (SRAM, DRAM) technologies with their properties, and the basic structure of a memory circuit.",
+  "key_concepts": [
+    "ROM",
+    "RAM",
+    "PROM",
+    "EPROM",
+    "EEPROM",
+    "SRAM",
+    "DRAM",
+    "volatile vs non-volatile",
+    "memory address space",
+    "decoding block"
+  ],
+  "content_points": [
+    "ROM: non-volatile; read-only; PROM (one-time programmable), EPROM (UV erasable), EEPROM (electrically erasable).",
+    "RAM: volatile; read/write; SRAM (fast, expensive), DRAM (slower, denser, cheaper).",
+    "Memory structure: 1D array of locations; each location has a unique address; decoding block selects by address.",
+    "Size = 2^(number_of_address_bits).",
+    "Address space limited by address bus width: 32-bit bus → max 4 GB."
+  ],
+  "prerequisites": [
+    "lesson-computer-organization"
+  ],
+  "learning_objectives": [
+    "Distinguish ROM and RAM, and their sub-technologies",
+    "Calculate memory size from address bit width",
+    "Explain full vs. partial address decoding"
+  ]
+}

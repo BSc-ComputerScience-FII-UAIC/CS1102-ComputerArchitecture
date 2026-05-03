@@ -1,0 +1,32 @@
+{
+  "id": "lesson-memory-fragmentation-and-placement",
+  "title": "Memory Fragmentation and Placement Algorithms",
+  "source_courses": [
+    "course12"
+  ],
+  "unit": "unit-operating-system",
+  "order": 7,
+  "duration_minutes_estimate": 45,
+  "summary": "Covers the segment placement problem, First/Best/Worst Fit algorithms, external fragmentation, and memory defragmentation.",
+  "key_concepts": [
+    "First Fit",
+    "Best Fit",
+    "Worst Fit",
+    "external fragmentation",
+    "defragmentation"
+  ],
+  "content_points": [
+    "Placement algorithms: First Fit (first large-enough free zone), Best Fit (smallest sufficient), Worst Fit (largest).",
+    "External fragmentation: many small free zones after repeated alloc/free; total space may suffice but no contiguous zone large enough.",
+    "Defragmentation: compact segments into one block, leaving a single large free zone. Time-consuming; updates all descriptors.",
+    "Trigger: when placement fails, periodically, or when fragmentation exceeds a threshold."
+  ],
+  "prerequisites": [
+    "lesson-memory-segmentation"
+  ],
+  "learning_objectives": [
+    "Compare First, Best, and Worst Fit algorithms",
+    "Explain external fragmentation and defragmentation",
+    "Identify conditions for running the defragmenter"
+  ]
+}

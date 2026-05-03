@@ -1,0 +1,194 @@
+{
+  "id": "course5",
+  "source_file": "course/eng/course5.pdf",
+  "parsing_status": "success",
+  "title": "Overflows in Fixed-point Representations and Floating-point Representations",
+  "course": "Computer Architecture and Operating Systems",
+  "part": "Part I",
+  "part_number": 5,
+  "semester_half": 1,
+  "slide_range": {
+    "start": 187,
+    "end": 224
+  },
+  "main_topics": [
+    "IV.5. Overflows in Operations on Fixed-point Representations",
+    "IV.4. Floating-point Representations"
+  ],
+  "subtopics": [
+    "Moving to longer and shorter representations",
+    "Overflow definition and detection in C2",
+    "Algebraic sum theorems in C2",
+    "Scientific notation in base 2",
+    "IEEE 754 single precision",
+    "IEEE 754 double precision",
+    "Extended arithmetic (NaN, infinity)",
+    "Denormalized representations",
+    "Floating-point approximations",
+    "Floating-point addition and multiplication"
+  ],
+  "key_concepts": [
+    "overflow",
+    "underflow",
+    "sign extension",
+    "C2 overflow detection",
+    "carry bits C_{n-1} and C_n",
+    "NXOR overflow test",
+    "floating-point representation",
+    "scientific notation",
+    "normalized form",
+    "mantissa",
+    "characteristic (exponent field)",
+    "excess representation of exponent",
+    "sign bit",
+    "IEEE 754",
+    "single precision (32-bit)",
+    "double precision (64-bit)",
+    "NaN (Not a Number)",
+    "infinity",
+    "denormalized number",
+    "floating-point addition steps",
+    "floating-point multiplication steps"
+  ],
+  "definitions": [
+    {
+      "term": "overflow (fixed-point)",
+      "description": "Occurs when the result of an arithmetic operation falls outside the representable interval [min, max]."
+    },
+    {
+      "term": "sign extension",
+      "description": "Extending an n-bit representation to (n+k) bits: for A+S, insert k zeros after the sign bit; for C1/C2, repeat the sign bit k times."
+    },
+    {
+      "term": "floating-point representation",
+      "description": "N = (-1)^S × 1.f × 2^(C - excess), where S is the sign, f is the fractional part of the mantissa, and C is the characteristic (biased exponent)."
+    },
+    {
+      "term": "normalized form",
+      "description": "Floating-point form where exactly one significant digit (always 1 in base 2) is to the left of the decimal point: 1.xx...x × 2^e."
+    },
+    {
+      "term": "mantissa",
+      "description": "The significand of a floating-point number; in normalized form M = 1.f (only f is stored)."
+    },
+    {
+      "term": "characteristic",
+      "description": "The biased exponent field in a floating-point number; stores e + excess."
+    },
+    {
+      "term": "NaN (Not a Number)",
+      "description": "Special floating-point value representing the result of an undefined operation (e.g., 0/0). Propagates through computations."
+    },
+    {
+      "term": "denormalized number",
+      "description": "A floating-point value smaller in magnitude than the smallest normalized number; uses form 0.f × 2^e_min."
+    },
+    {
+      "term": "underflow (floating-point)",
+      "description": "The exponent is too small to represent; the number is treated as 0."
+    }
+  ],
+  "formulas": [
+    {
+      "name": "C2 overflow condition",
+      "description": "Overflow occurs iff C_{n-1} ≠ C_n (the two most-significant carry bits differ). Detected by attaching an NXOR gate to the adder."
+    },
+    {
+      "name": "IEEE 754 single precision",
+      "description": "32 bits: 1 sign + 8 exponent (excess-127) + 23 fractional mantissa. Range: ±1.2×10^(-38) to ±3.4×10^38."
+    },
+    {
+      "name": "IEEE 754 double precision",
+      "description": "64 bits: 1 sign + 11 exponent (excess-1023) + 52 fractional mantissa. Range: ±1.7×10^(-308) to ±1.7×10^308."
+    },
+    {
+      "name": "Floating-point value",
+      "expression": "N = (-1)^S × 1.f × 2^(C - excess)  (normalized)"
+    },
+    {
+      "name": "Floating-point single precision precision",
+      "expression": "2^(e-23)  for exponent e"
+    }
+  ],
+  "algorithms": [
+    {
+      "name": "Floating-point addition",
+      "steps": [
+        "Compare the exponents; shift the mantissa of the smaller number to align",
+        "Add the mantissas (in two's complement)",
+        "Normalize the sum if necessary",
+        "Round the result to the available bits"
+      ]
+    },
+    {
+      "name": "Floating-point multiplication",
+      "steps": [
+        "Add the exponents",
+        "Multiply the mantissas",
+        "Normalize the product",
+        "Round the result",
+        "Determine the sign (XOR of the two sign bits)"
+      ]
+    }
+  ],
+  "examples": [
+    {
+      "name": "C2 overflow example 1",
+      "description": "1111 + 1111 = carry-out, but result 1110 is correct (no overflow; C3 = C4 = 1)."
+    },
+    {
+      "name": "C2 overflow example 2",
+      "description": "0111 + 0111 = 1110: overflow because C3=0, C4=1 differ."
+    },
+    {
+      "name": "IEEE 754 single: -23.25",
+      "description": "Sign=1, e=4, C=131=10000011_2, f=0111010...0; hex C1BA0000."
+    },
+    {
+      "name": "IEEE 754 single: 42D80000h",
+      "description": "S=0 (positive), C=133→e=6, M=1.1011 → value = 108(10)."
+    },
+    {
+      "name": "arccos(-1) with extended arithmetic",
+      "description": "Requires representation of ∞ to compute arccos(-1) = π through the formula."
+    }
+  ],
+  "exercises": [
+    "Follow floating-point addition steps for -0.75 and +0.375 (IEEE 754 single precision)",
+    "Follow floating-point multiplication steps for the same numbers",
+    "Prove that overflow cannot occur when adding numbers of opposite signs"
+  ],
+  "prerequisites": [
+    "lesson-fixed-point-representations"
+  ],
+  "learning_objectives": [
+    "Define overflow for fixed-point representations",
+    "Apply sign extension to change representation width",
+    "Detect overflow in C2 arithmetic using carry bits and NXOR",
+    "Explain the structure of IEEE 754 floating-point (single and double precision)",
+    "Encode and decode IEEE 754 single-precision numbers",
+    "Distinguish normalized, denormalized, zero, infinity, and NaN values",
+    "Perform floating-point addition and multiplication step by step",
+    "Understand the precision and rounding implications of floating-point"
+  ],
+  "lessons": [
+    "lesson-overflow-detection",
+    "lesson-floating-point-representations",
+    "lesson-floating-point-arithmetic"
+  ],
+  "unit": "unit-internal-representations",
+  "relationships": [
+    {
+      "type": "follows",
+      "target": "course4"
+    },
+    {
+      "type": "precedes",
+      "target": "course6"
+    },
+    {
+      "type": "part_of",
+      "target": "unit-internal-representations"
+    }
+  ]
+}

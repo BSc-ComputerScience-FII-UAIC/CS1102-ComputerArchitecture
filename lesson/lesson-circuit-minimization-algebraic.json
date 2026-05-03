@@ -1,0 +1,32 @@
+{
+  "id": "lesson-circuit-minimization-algebraic",
+  "title": "Circuit Minimization: Algebraic Rewriting",
+  "source_courses": [
+    "course1"
+  ],
+  "unit": "unit-boole-algebra-and-combinational-circuits",
+  "order": 6,
+  "duration_minutes_estimate": 30,
+  "summary": "Demonstrates minimisation of Boole function expressions using algebraic laws (idempotence, unification), listing the available methods and their trade-offs.",
+  "key_concepts": [
+    "minimisation",
+    "algebraic rewriting",
+    "idempotence",
+    "unification",
+    "Veitch-Karnaugh method",
+    "Quine-McCluskey method"
+  ],
+  "content_points": [
+    "Minimisation reduces circuit cost (fewer gates), increases speed, and improves reliability.",
+    "Algebraic approach: use Boole laws to rewrite the DNF into a simpler equivalent expression.",
+    "Example: f = ABC + ABC + ABC + ABC → BC + AC + AB (using idempotence and unification).",
+    "Alternative methods: Karnaugh diagrams (visual), Quine-McCluskey (tabular), hybridisation."
+  ],
+  "prerequisites": [
+    "lesson-normal-forms-dnf-cnf"
+  ],
+  "learning_objectives": [
+    "Apply idempotence and unification to simplify a DNF",
+    "Compare algebraic, Karnaugh, and Quine-McCluskey minimisation"
+  ]
+}

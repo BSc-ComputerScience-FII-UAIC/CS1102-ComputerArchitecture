@@ -1,0 +1,166 @@
+{
+  "id": "course6",
+  "source_file": "course/eng/course6.pdf",
+  "parsing_status": "success",
+  "title": "Computer Architecture and Organization: von Neumann Model, Memory, Cache Introduction",
+  "course": "Computer Architecture and Operating Systems",
+  "part": "Part I",
+  "part_number": 6,
+  "semester_half": 1,
+  "slide_range": {
+    "start": 230,
+    "end": 271
+  },
+  "main_topics": [
+    "V.1. Computer Architecture: Possible Visions",
+    "V.2. Computer Organization",
+    "V.3. The Memory",
+    "V.3.1. Cache Memory (introduction)"
+  ],
+  "subtopics": [
+    "ISA vs machine organization",
+    "Programmer's vs user's vision",
+    "Low-level and high-level languages",
+    "Language translation (assembler, compiler)",
+    "Architect's vs implementer's vision",
+    "Main components (CPU, memory, I/O, buses)",
+    "Memory types (ROM, RAM, SRAM, DRAM)",
+    "ROM technologies (PROM, EPROM, EEPROM)",
+    "Memory structure and address space",
+    "Address decoding (full, partial)",
+    "Address types (absolute, relative, symbolic)",
+    "Byte order (big endian, little endian)",
+    "Memory hierarchy",
+    "Cache memory introduction"
+  ],
+  "key_concepts": [
+    "ISA (Instruction Set Architecture)",
+    "machine organization",
+    "von Neumann computer",
+    "program counter (PC)",
+    "machine language",
+    "assembly language",
+    "high-level language",
+    "assembler",
+    "compiler",
+    "CPU (Central Processing Unit)",
+    "main memory",
+    "peripheral devices",
+    "data bus / address bus / control bus",
+    "ROM",
+    "RAM",
+    "SRAM",
+    "DRAM",
+    "PROM",
+    "EPROM",
+    "EEPROM",
+    "memory address space",
+    "address decoding",
+    "big endian",
+    "little endian",
+    "memory hierarchy",
+    "cache memory"
+  ],
+  "definitions": [
+    {
+      "term": "von Neumann computer",
+      "description": "A computer where program instructions are stored in the same memory as data; instructions are executed sequentially (or with branches), with a PC tracking the next instruction."
+    },
+    {
+      "term": "ISA (Instruction Set Architecture)",
+      "description": "The abstract interface between software and hardware: defines the instruction set, registers, and addressing modes visible to the programmer."
+    },
+    {
+      "term": "assembler",
+      "description": "A program that translates assembly language into machine language."
+    },
+    {
+      "term": "compiler",
+      "description": "A program that translates a high-level language into machine language (directly or via assembly language)."
+    },
+    {
+      "term": "ROM (Read-Only Memory)",
+      "description": "Non-volatile memory whose contents can be read but not (easily) modified."
+    },
+    {
+      "term": "RAM (Random Access Memory)",
+      "description": "Volatile read/write memory; loses its contents when power is removed."
+    },
+    {
+      "term": "SRAM (Static RAM)",
+      "description": "High-speed, high-price RAM; retains data as long as powered."
+    },
+    {
+      "term": "DRAM (Dynamic RAM)",
+      "description": "Slower, cheaper, denser RAM; requires periodic refresh."
+    },
+    {
+      "term": "big endian",
+      "description": "The most significant byte of a multi-byte value is stored at the lowest memory address."
+    },
+    {
+      "term": "little endian",
+      "description": "The least significant byte of a multi-byte value is stored at the lowest memory address."
+    },
+    {
+      "term": "memory hierarchy",
+      "description": "Layered memory organisation with increasing capacity and decreasing speed: registers → cache → main memory → disk."
+    }
+  ],
+  "formulas": [
+    {
+      "name": "Memory size from address bits",
+      "expression": "size = 2^(number_of_address_bits)"
+    }
+  ],
+  "examples": [
+    {
+      "name": "Machine vs. assembly language",
+      "description": "Binary: 0100 1010 1101 0010 ↔ assembly: sub myvar, 5."
+    },
+    {
+      "name": "Byte order example",
+      "description": "unsigned int x = 0xB67A49E3: big-endian stores B6 at address 153; little-endian stores E3 at address 153."
+    },
+    {
+      "name": "Address decoding example",
+      "description": "32-bit processor with four 1 GB memory circuits: 2 address bits select the circuit; partial decoding creates aliased addresses."
+    }
+  ],
+  "prerequisites": [
+    "lesson-boole-algebra",
+    "lesson-sequential-circuits-intro"
+  ],
+  "learning_objectives": [
+    "Distinguish ISA from machine organization",
+    "Describe the von Neumann computer model",
+    "Explain the roles of assembler and compiler in language translation",
+    "List the main hardware components of a computing system",
+    "Differentiate ROM and RAM technologies",
+    "Understand memory structure and address decoding",
+    "Explain big-endian and little-endian byte ordering",
+    "Describe the memory hierarchy and the motivation for cache memory"
+  ],
+  "lessons": [
+    "lesson-computer-architecture-visions",
+    "lesson-computer-organization",
+    "lesson-memory-types",
+    "lesson-memory-structure-and-addressing",
+    "lesson-memory-hierarchy-and-cache-intro"
+  ],
+  "unit": "unit-computer-architecture-and-memory",
+  "relationships": [
+    {
+      "type": "follows",
+      "target": "course5"
+    },
+    {
+      "type": "precedes",
+      "target": "course7"
+    },
+    {
+      "type": "part_of",
+      "target": "unit-computer-architecture-and-memory"
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "id": "lesson-inter-process-communication",
+  "title": "Inter-process Communication and Mutual Exclusion",
+  "source_courses": [
+    "course12"
+  ],
+  "unit": "unit-operating-system",
+  "order": 10,
+  "duration_minutes_estimate": 45,
+  "summary": "Covers IPC via shared memory, the mutual exclusion problem, semaphores, monitors, and thread communication risks.",
+  "key_concepts": [
+    "inter-process communication",
+    "shared memory",
+    "mutual exclusion",
+    "semaphore",
+    "monitor",
+    "critical section",
+    "race condition"
+  ],
+  "content_points": [
+    "Shared memory IPC: same segment in multiple descriptor tables or same page frame in multiple page tables.",
+    "OS controls shared zones; processes are aware of shared nature.",
+    "Mutual exclusion: at most one process accesses a shared resource at any time.",
+    "Semaphore: simplest synchronisation primitive; managed by the OS via system calls.",
+    "Interference risk in threads: global variables are automatically shared → race conditions.",
+    "Programmer's responsibility: use semaphores correctly at low level."
+  ],
+  "prerequisites": [
+    "lesson-virtual-memory",
+    "lesson-process-management"
+  ],
+  "learning_objectives": [
+    "Describe IPC via shared memory (segmentation and pagination mechanisms)",
+    "Explain mutual exclusion and the semaphore concept",
+    "Identify race conditions in threaded programs"
+  ]
+}

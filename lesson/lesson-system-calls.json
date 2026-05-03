@@ -1,0 +1,33 @@
+{
+  "id": "lesson-system-calls",
+  "title": "System Calls",
+  "source_courses": [
+    "course11"
+  ],
+  "unit": "unit-operating-system",
+  "order": 3,
+  "duration_minutes_estimate": 45,
+  "summary": "Describes the system call mechanism: what it is, why it is needed, the complete 9-step sequence, and the importance of buffering for performance.",
+  "key_concepts": [
+    "system call",
+    "software interrupt",
+    "kernel transition",
+    "buffer",
+    "printf example"
+  ],
+  "content_points": [
+    "System calls let user-mode applications request privileged services from the kernel.",
+    "Implemented via software interrupts: CPU switches to kernel mode, routine executes, returns to user mode.",
+    "9 steps from parameter placement to result retrieval.",
+    "System calls are expensive (mode switch overhead); use buffers to minimise call frequency.",
+    "Example: printf buffers text locally; write() system call only when buffer is full."
+  ],
+  "prerequisites": [
+    "lesson-kernel"
+  ],
+  "learning_objectives": [
+    "Explain why system calls are necessary",
+    "Trace the system call sequence",
+    "Describe buffering as a performance optimisation"
+  ]
+}

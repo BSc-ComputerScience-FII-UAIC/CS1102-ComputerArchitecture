@@ -1,0 +1,193 @@
+{
+  "id": "course3",
+  "source_file": "course/eng/course3.pdf",
+  "parsing_status": "success",
+  "title": "Sequential Circuits and Automata",
+  "course": "Computer Architecture and Operating Systems",
+  "part": "Part I",
+  "part_number": 3,
+  "semester_half": 1,
+  "slide_range": {
+    "start": 87,
+    "end": 137
+  },
+  "main_topics": [
+    "III. Sequential Circuits"
+  ],
+  "subtopics": [
+    "III.1. Bistable Circuits",
+    "III.2. Complex Sequential Circuits",
+    "RS bistable circuit",
+    "Synchronous sequential circuits",
+    "Latches (RS, D, JK, T)",
+    "Flip-flops and master-slave circuits",
+    "Parallel and shift registers",
+    "Universal shift register",
+    "Binary counter",
+    "Microprogramming",
+    "Finite state machine design",
+    "Introduction to internal representations"
+  ],
+  "key_concepts": [
+    "sequential circuit",
+    "internal state",
+    "synchronous vs asynchronous operation",
+    "clock signal",
+    "level-active vs edge-active",
+    "feedback connection",
+    "bistable circuit",
+    "latch",
+    "flip-flop",
+    "RS bistable circuit",
+    "RS latch",
+    "D latch",
+    "JK latch",
+    "T latch",
+    "master-slave D flip-flop",
+    "parallel register",
+    "shift register",
+    "universal shift register",
+    "binary counter",
+    "finite state machine (automaton)",
+    "state encoding",
+    "microprogramming",
+    "ROM-based combinational part",
+    "parity bit",
+    "Hamming code"
+  ],
+  "definitions": [
+    {
+      "term": "sequential circuit",
+      "description": "A circuit whose output depends on both the current input and the internal state, which evolves over time."
+    },
+    {
+      "term": "latch",
+      "description": "A level-active bistable circuit: state changes while the clock signal is at the active level."
+    },
+    {
+      "term": "flip-flop",
+      "description": "An edge-active bistable circuit: state changes only on the rising (or falling) edge of the clock signal."
+    },
+    {
+      "term": "RS bistable circuit",
+      "description": "Basic bistable: S=1,R=0 sets Q=1; R=1,S=0 resets Q=0; S=R=0 holds state; S=R=1 is forbidden."
+    },
+    {
+      "term": "D latch",
+      "description": "Transparent latch: Q follows D when clock is active, holds otherwise. No forbidden combinations."
+    },
+    {
+      "term": "JK latch",
+      "description": "Like RS but J=K=1 inverts the stored bit instead of being forbidden."
+    },
+    {
+      "term": "T latch",
+      "description": "Toggle latch derived from JK with J=K=T: T=0 holds, T=1 inverts."
+    },
+    {
+      "term": "shift register",
+      "description": "A register where data shifts by one position on each clock cycle."
+    },
+    {
+      "term": "finite state machine (automaton)",
+      "description": "A model of computation with a finite set of states, transitions between states on inputs, and outputs based on state/input."
+    },
+    {
+      "term": "microprogramming",
+      "description": "Implementing the combinational part of a sequential circuit using a ROM: ROM addresses are inputs; ROM data are next-state/output values."
+    },
+    {
+      "term": "Hamming code",
+      "description": "An error-detecting and -correcting code using 4 information bits and 3 parity bits."
+    }
+  ],
+  "formulas": [
+    {
+      "name": "D flip-flop next-state",
+      "expression": "Q_{t+1} = D"
+    },
+    {
+      "name": "T latch next-state",
+      "expression": "Q_{t+1} = Q_t XOR T"
+    },
+    {
+      "name": "Binary counter n=4, D flip-flop equations",
+      "description": "d0 = NOT q0; d1 = q1 XOR q0; d2 = q2 XOR (q1 AND q0); d3 = q3 XOR (q2 AND q1 AND q0)"
+    }
+  ],
+  "algorithms": [
+    {
+      "name": "Sequential circuit design procedure",
+      "steps": [
+        "Determine the states of the circuit",
+        "Determine state transitions (next state and output as function of inputs and current state)",
+        "Encode states using the necessary number of bits",
+        "Write the truth table for state transitions",
+        "Minimize the transition functions",
+        "Implement: flip-flops for state, minimized expressions for combinational part"
+      ]
+    },
+    {
+      "name": "Microprogramming approach",
+      "description": "Map the truth table of the next-state function to ROM locations; address = current state + inputs; data = next state + outputs."
+    }
+  ],
+  "examples": [
+    {
+      "name": "RS bistable stable-state analysis",
+      "description": "Full Karnaugh-based analysis of stable states for all (R,S) combinations."
+    },
+    {
+      "name": "4-bit binary counter",
+      "description": "16-state counter with D flip-flop implementations; state table and minimized equations given."
+    },
+    {
+      "name": "ROM-based 4-bit counter",
+      "description": "Microprogramming implementation showing ROM contents for the 16-state counter."
+    }
+  ],
+  "exercises": [
+    "Implement and analyze the no-clock RS circuit using NAND gates",
+    "Implement RS, D, JK, T latches with NAND gates",
+    "Why can shift registers only be built with flip-flops (not latches)?",
+    "Homework: prove that C1 representation value is negative when the sign bit is 1"
+  ],
+  "prerequisites": [
+    "lesson-logic-diagrams",
+    "lesson-circuit-minimization-algebraic",
+    "lesson-karnaugh-minimization"
+  ],
+  "learning_objectives": [
+    "Distinguish synchronous from asynchronous sequential circuits",
+    "Analyze the RS bistable circuit and identify stable states",
+    "Understand the difference between latches and flip-flops",
+    "Describe and compare RS, D, JK, T bistable circuits",
+    "Build registers and counters from bistable circuits",
+    "Design a sequential circuit using the finite state machine approach",
+    "Apply microprogramming as an alternative circuit implementation technique",
+    "Understand error detection and correction (parity, Hamming)"
+  ],
+  "lessons": [
+    "lesson-sequential-circuits-intro",
+    "lesson-bistable-circuits",
+    "lesson-latches-and-flip-flops",
+    "lesson-registers-and-counters",
+    "lesson-finite-state-machine-design",
+    "lesson-microprogramming"
+  ],
+  "unit": "unit-sequential-circuits-and-automata",
+  "relationships": [
+    {
+      "type": "follows",
+      "target": "course2"
+    },
+    {
+      "type": "precedes",
+      "target": "course4"
+    },
+    {
+      "type": "part_of",
+      "target": "unit-sequential-circuits-and-automata"
+    }
+  ]
+}

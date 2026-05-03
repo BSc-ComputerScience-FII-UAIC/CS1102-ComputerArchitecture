@@ -1,0 +1,35 @@
+{
+  "id": "lesson-alphanumerical-codes",
+  "title": "Alpha-numerical Codes and Error Detection",
+  "source_courses": [
+    "course3",
+    "course4"
+  ],
+  "unit": "unit-internal-representations",
+  "order": 1,
+  "duration_minutes_estimate": 30,
+  "summary": "Explains how computers encode characters (ASCII, EBCDIC, Unicode), introduces parity bits and Hamming code for error detection and correction.",
+  "key_concepts": [
+    "ASCII",
+    "EBCDIC",
+    "ISO 8859-1",
+    "Unicode",
+    "parity bit",
+    "even parity",
+    "odd parity",
+    "Hamming code"
+  ],
+  "content_points": [
+    "Characters are assigned unique numbers; ASCII: 7 bits + 1 parity bit.",
+    "'a'=97, 'A'=65, '0'=48 (not 0); lexicographic comparison ≡ binary comparison.",
+    "Unicode extends ASCII to cover non-Latin scripts.",
+    "Parity: 1 extra bit; detects a 1-bit error. Odd parity example: 110_2 (2 ones, even) → add 1 → send 1101.",
+    "Hamming code: 4 info bits + 3 parity bits; can detect/correct multiple errors simultaneously."
+  ],
+  "prerequisites": [],
+  "learning_objectives": [
+    "Explain ASCII encoding and decode character values",
+    "Describe even/odd parity error detection",
+    "Explain Hamming code structure and its advantages over parity"
+  ]
+}

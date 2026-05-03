@@ -1,0 +1,69 @@
+{
+  "id": "unit-cpu-structure-and-performance",
+  "title": "CPU Structure and Performance Optimisation",
+  "course": "Computer Architecture and Operating Systems",
+  "part": "Part II",
+  "order": 5,
+  "source_courses": [
+    "course8",
+    "course9"
+  ],
+  "lessons": [
+    "lesson-cpu-structure",
+    "lesson-instruction-execution",
+    "lesson-pipeline",
+    "lesson-pipeline-dependencies",
+    "lesson-branch-prediction",
+    "lesson-speculative-execution",
+    "lesson-predication",
+    "lesson-out-of-order-execution",
+    "lesson-register-renaming",
+    "lesson-hyperthreading",
+    "lesson-risc-vs-cisc",
+    "lesson-parallel-architectures"
+  ],
+  "summary": "Covers the internal structure of the CPU (ALU, registers, control unit), the instruction execution cycle, and all major performance optimisation techniques: pipeline, dependency resolution (stall/forwarding), branch prediction (static/dynamic BTB), speculative execution, predication, out-of-order execution, register renaming, hyperthreading, RISC vs. CISC, and multiprocessor architectures.",
+  "key_concepts": [
+    "CPU structure",
+    "instruction execution cycle",
+    "pipeline",
+    "structural / data / control dependency",
+    "stall / forwarding",
+    "branch prediction",
+    "BTB",
+    "speculative execution",
+    "predication",
+    "out-of-order execution",
+    "register renaming",
+    "hyperthreading",
+    "RISC / CISC",
+    "UMA / NUMA / message-passing"
+  ],
+  "learning_objectives": [
+    "Trace the instruction execution cycle",
+    "Explain pipeline operation and dependencies",
+    "Compare static and dynamic branch prediction",
+    "Describe speculative execution, predication, out-of-order execution, and register renaming",
+    "Explain hyperthreading",
+    "Compare RISC and CISC",
+    "Describe multiprocessor memory architectures"
+  ],
+  "prerequisites": [
+    "unit-computer-architecture-and-memory"
+  ],
+  "relationships": [
+    {
+      "type": "follows",
+      "target": "unit-computer-architecture-and-memory"
+    },
+    {
+      "type": "precedes",
+      "target": "unit-io-interrupts-and-parallel"
+    },
+    {
+      "type": "part_of",
+      "target": "year-1"
+    }
+  ],
+  "estimated_total_minutes": 435
+}

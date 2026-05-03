@@ -1,0 +1,39 @@
+{
+  "id": "lesson-program-compilation-and-linking",
+  "title": "Program Creation: Compilation, Linking and Relocation",
+  "source_courses": [
+    "course13"
+  ],
+  "unit": "unit-operating-system",
+  "order": 12,
+  "duration_minutes_estimate": 60,
+  "summary": "Covers the stages of program creation (compilation, linking), object file structure, the relocation and external-reference problems, and four solutions to the load-time relocation problem.",
+  "key_concepts": [
+    "compilation",
+    "linking",
+    "object file",
+    "entry point table",
+    "external reference table",
+    "relocation dictionary",
+    "relocation",
+    "linker",
+    "position-independent code",
+    "relocation register"
+  ],
+  "content_points": [
+    "Compilation: source → object file (each module compiled independently, starting at address 0).",
+    "Object file: header + entry point table + external reference table + code + relocation dictionary.",
+    "Linking: assign start addresses (cumulative sizes); add relocation constants; resolve external references.",
+    "Load-time relocation solutions: (1) relocation info in executable; (2) relocation register; (3) position-independent code; (4) pagination (program believes it starts at 0).",
+    "Position-independent code: uses only relative addresses; portable but hard to write."
+  ],
+  "prerequisites": [
+    "lesson-memory-pagination"
+  ],
+  "learning_objectives": [
+    "Describe the compilation and linking stages",
+    "Explain the contents of an object file",
+    "Describe the linker algorithm",
+    "Compare four solutions to the load-time relocation problem"
+  ]
+}

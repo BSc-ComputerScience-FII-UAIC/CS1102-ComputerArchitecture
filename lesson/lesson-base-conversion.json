@@ -1,0 +1,43 @@
+{
+  "id": "lesson-base-conversion",
+  "title": "Base Conversion",
+  "source_courses": [
+    "course4"
+  ],
+  "unit": "unit-internal-representations",
+  "order": 3,
+  "duration_minutes_estimate": 45,
+  "summary": "Algorithms for converting numbers between bases: base-d to decimal (formula), decimal to base-d (integer: repeated division; fractional: repeated multiplication), and shortcuts between bases that are powers of each other.",
+  "key_concepts": [
+    "base conversion",
+    "repeated division",
+    "repeated multiplication",
+    "hexadecimal",
+    "octal",
+    "binary"
+  ],
+  "content_points": [
+    "Base d → decimal: apply the positional formula N = Σ a_i * d^i.",
+    "Decimal integer → base d: divide repeatedly by d; remainders (bottom-up) give digits.",
+    "Decimal fraction → base d: multiply by d repeatedly; integer parts (top-down) give digits. May produce a repeating sequence.",
+    "If d1 = d2^k: each base-d1 digit maps to exactly k base-d2 digits (group substitution).",
+    "Hex ↔ binary: each hex digit = 4 binary digits."
+  ],
+  "examples": [
+    {
+      "name": "5E4.D(16) → decimal",
+      "expression": "5×256 + 14×16 + 4×1 + 13/16 = 24128.8125"
+    },
+    {
+      "name": "87.35(10) → binary",
+      "expression": "1010111.01(0110)_2"
+    }
+  ],
+  "prerequisites": [
+    "lesson-positional-representation"
+  ],
+  "learning_objectives": [
+    "Convert integers and fractions between bases using the standard algorithms",
+    "Use group-substitution shortcuts for hex ↔ binary"
+  ]
+}

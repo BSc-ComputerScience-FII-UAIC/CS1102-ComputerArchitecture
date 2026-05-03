@@ -1,0 +1,59 @@
+{
+  "id": "unit-io-interrupts-and-parallel",
+  "title": "I/O System, Interrupts and Cache Coherence",
+  "course": "Computer Architecture and Operating Systems",
+  "part": "Part II",
+  "order": 6,
+  "source_courses": [
+    "course10"
+  ],
+  "lessons": [
+    "lesson-multiprocessor-communication",
+    "lesson-cache-coherence",
+    "lesson-peripheral-devices",
+    "lesson-bus-communication",
+    "lesson-interrupt-system"
+  ],
+  "summary": "Covers multiprocessor communication (bus and interconnection networks), cache coherence protocols (snooping, directory, write-invalidate, write-update), peripheral device structure and I/O methods (polling, DMA, interrupt-driven), bus architecture and arbitration, and the complete interrupt system with hardware/trap/software interrupt types.",
+  "key_concepts": [
+    "bus / interconnection network",
+    "cache coherence",
+    "write invalidate / write update",
+    "snooping / directory protocol",
+    "peripheral device",
+    "I/O controller",
+    "memory-mapped / isolated I/O",
+    "programmed I/O / DMA / interrupt-driven I/O",
+    "bus arbitration",
+    "tri-state / open-collector",
+    "interrupt",
+    "interrupt vector table",
+    "maskable / non-maskable interrupt",
+    "hardware / trap / software interrupt"
+  ],
+  "learning_objectives": [
+    "Compare bus and network multiprocessor communication",
+    "Define cache coherence and compare protocols",
+    "Describe I/O communication modes",
+    "Explain bus arbitration",
+    "Trace the interrupt handling sequence"
+  ],
+  "prerequisites": [
+    "unit-cpu-structure-and-performance"
+  ],
+  "relationships": [
+    {
+      "type": "follows",
+      "target": "unit-cpu-structure-and-performance"
+    },
+    {
+      "type": "precedes",
+      "target": "unit-operating-system"
+    },
+    {
+      "type": "part_of",
+      "target": "year-1"
+    }
+  ],
+  "estimated_total_minutes": 225
+}
