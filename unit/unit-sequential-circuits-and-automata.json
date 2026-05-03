@@ -1,0 +1,54 @@
+{
+  "id": "unit-sequential-circuits-and-automata",
+  "title": "Sequential Circuits and Automata",
+  "course": "Computer Architecture and Operating Systems",
+  "part": "Part I",
+  "order": 2,
+  "source_courses": [
+    "course3"
+  ],
+  "lessons": [
+    "lesson-sequential-circuits-intro",
+    "lesson-bistable-circuits",
+    "lesson-latches-and-flip-flops",
+    "lesson-registers-and-counters",
+    "lesson-finite-state-machine-design",
+    "lesson-microprogramming"
+  ],
+  "summary": "Introduces sequential (stateful) digital circuits: bistable circuits (RS, D, JK, T), the difference between latches and flip-flops, registers, shift registers, counters, and systematic FSM design. Concludes with microprogramming as a ROM-based design alternative.",
+  "key_concepts": [
+    "sequential circuit",
+    "RS / D / JK / T bistable circuit",
+    "latch vs flip-flop",
+    "master-slave D flip-flop",
+    "register / shift register / counter",
+    "finite state machine",
+    "state encoding",
+    "microprogramming"
+  ],
+  "learning_objectives": [
+    "Distinguish combinational and sequential circuits",
+    "Describe and compare bistable circuit types",
+    "Build registers and counters from flip-flops",
+    "Apply the FSM design procedure",
+    "Implement sequential circuits using microprogramming"
+  ],
+  "prerequisites": [
+    "unit-boole-algebra-and-combinational-circuits"
+  ],
+  "relationships": [
+    {
+      "type": "follows",
+      "target": "unit-boole-algebra-and-combinational-circuits"
+    },
+    {
+      "type": "precedes",
+      "target": "unit-internal-representations"
+    },
+    {
+      "type": "part_of",
+      "target": "year-1"
+    }
+  ],
+  "estimated_total_minutes": 255
+}

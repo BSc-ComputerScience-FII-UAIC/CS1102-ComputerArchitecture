@@ -1,0 +1,71 @@
+{
+  "id": "unit-operating-system",
+  "title": "Operating System Internals",
+  "course": "Computer Architecture and Operating Systems",
+  "part": "Part II",
+  "order": 7,
+  "source_courses": [
+    "course11",
+    "course12",
+    "course13"
+  ],
+  "lessons": [
+    "lesson-operating-system-intro",
+    "lesson-kernel",
+    "lesson-system-calls",
+    "lesson-drivers",
+    "lesson-process-management",
+    "lesson-memory-segmentation",
+    "lesson-memory-fragmentation-and-placement",
+    "lesson-memory-pagination",
+    "lesson-virtual-memory",
+    "lesson-inter-process-communication",
+    "lesson-mmu-intel-and-os",
+    "lesson-program-compilation-and-linking",
+    "lesson-shared-libraries"
+  ],
+  "summary": "Covers all major OS subsystems: kernel/user mode separation, system calls, device drivers, process management (states, multitasking, threads), memory management (segmentation with descriptors and privilege levels, pagination with page tables and TLB, virtual memory with demand paging), inter-process communication (shared memory, semaphores), MMU usage, and program creation (compilation, linking, relocation, shared libraries).",
+  "key_concepts": [
+    "operating system",
+    "kernel mode / user mode",
+    "system call",
+    "device driver",
+    "process / thread",
+    "process states",
+    "preemptive multitasking",
+    "memory segmentation",
+    "memory pagination",
+    "TLB",
+    "virtual memory",
+    "demand paging",
+    "dirty bit",
+    "inter-process communication",
+    "mutual exclusion / semaphore",
+    "MMU",
+    "compilation / linking / relocation",
+    "shared library"
+  ],
+  "learning_objectives": [
+    "Explain the role and structure of the operating system",
+    "Describe system calls and device drivers",
+    "Manage processes and threads",
+    "Perform address translation using segmentation and pagination",
+    "Explain virtual memory and demand paging",
+    "Describe IPC and synchronisation",
+    "Trace program creation from source to execution"
+  ],
+  "prerequisites": [
+    "unit-io-interrupts-and-parallel"
+  ],
+  "relationships": [
+    {
+      "type": "follows",
+      "target": "unit-io-interrupts-and-parallel"
+    },
+    {
+      "type": "part_of",
+      "target": "year-1"
+    }
+  ],
+  "estimated_total_minutes": 490
+}

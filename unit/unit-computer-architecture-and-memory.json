@@ -1,0 +1,62 @@
+{
+  "id": "unit-computer-architecture-and-memory",
+  "title": "Computer Architecture and Memory System",
+  "course": "Computer Architecture and Operating Systems",
+  "part": "Part I",
+  "order": 4,
+  "source_courses": [
+    "course6",
+    "course7"
+  ],
+  "lessons": [
+    "lesson-computer-architecture-visions",
+    "lesson-computer-organization",
+    "lesson-memory-types",
+    "lesson-memory-structure-and-addressing",
+    "lesson-memory-hierarchy-and-cache-intro",
+    "lesson-cache-performance",
+    "lesson-cache-construction-types",
+    "lesson-cache-write-policies"
+  ],
+  "summary": "Introduces the von Neumann computer model, ISA vs. machine organisation, the main hardware components and system buses, ROM/RAM technologies, memory addressing (byte order, decoding), the memory hierarchy, and cache memory in depth: performance, direct/fully-associative/set-associative construction, and write policies.",
+  "key_concepts": [
+    "von Neumann model",
+    "ISA",
+    "machine organisation",
+    "ROM / RAM / SRAM / DRAM",
+    "big endian / little endian",
+    "memory hierarchy",
+    "cache memory",
+    "hit ratio",
+    "cache line",
+    "replacement policy",
+    "direct mapped / fully associative / set associative",
+    "write-back / write-through"
+  ],
+  "learning_objectives": [
+    "Describe the von Neumann computer model",
+    "List ROM and RAM technologies and their properties",
+    "Explain big-endian and little-endian byte ordering",
+    "Calculate average memory access time",
+    "Compare cache construction types",
+    "Describe cache write policies"
+  ],
+  "prerequisites": [
+    "unit-sequential-circuits-and-automata"
+  ],
+  "relationships": [
+    {
+      "type": "follows",
+      "target": "unit-internal-representations"
+    },
+    {
+      "type": "precedes",
+      "target": "unit-cpu-structure-and-performance"
+    },
+    {
+      "type": "part_of",
+      "target": "year-1"
+    }
+  ],
+  "estimated_total_minutes": 255
+}

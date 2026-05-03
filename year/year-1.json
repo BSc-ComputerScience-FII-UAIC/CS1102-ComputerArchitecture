@@ -1,0 +1,172 @@
+{
+  "id": "year-1",
+  "title": "Year 1 – Computer Architecture and Operating Systems",
+  "academic_year": "Year 1, Computer Science",
+  "course_name": "Computer Architecture and Operating Systems",
+  "course_code": "CS1102",
+  "institution": "UAIC – Faculty of Computer Science",
+  "language": "English",
+  "total_parts": 2,
+  "parts": [
+    {
+      "id": "part-1",
+      "title": "Part I – Digital Logic, Representations, and Architecture",
+      "semester_half": 1,
+      "units": [
+        "unit-boole-algebra-and-combinational-circuits",
+        "unit-sequential-circuits-and-automata",
+        "unit-internal-representations",
+        "unit-computer-architecture-and-memory"
+      ],
+      "source_courses": [
+        "course1",
+        "course2",
+        "course3",
+        "course4",
+        "course5",
+        "course6",
+        "course7"
+      ],
+      "summary": "Lays the theoretical and practical foundations of digital computing: from Boole algebra and logic gates through combinational and sequential circuit design, to number representations (fixed-point, floating-point) and the computer's memory system (ROM/RAM technologies, cache memory)."
+    },
+    {
+      "id": "part-2",
+      "title": "Part II – CPU, I/O and Operating Systems",
+      "semester_half": 2,
+      "units": [
+        "unit-cpu-structure-and-performance",
+        "unit-io-interrupts-and-parallel",
+        "unit-operating-system"
+      ],
+      "source_courses": [
+        "course8",
+        "course9",
+        "course10",
+        "course11",
+        "course12",
+        "course13"
+      ],
+      "summary": "Builds on Part I to cover high-performance CPU design (pipeline, branch prediction, speculative execution, out-of-order execution, RISC), multiprocessor communication and cache coherence, the I/O subsystem and interrupt mechanism, and finally the operating system (kernel, system calls, process and memory management, virtual memory, IPC, linking, shared libraries)."
+    }
+  ],
+  "all_units": [
+    "unit-boole-algebra-and-combinational-circuits",
+    "unit-sequential-circuits-and-automata",
+    "unit-internal-representations",
+    "unit-computer-architecture-and-memory",
+    "unit-cpu-structure-and-performance",
+    "unit-io-interrupts-and-parallel",
+    "unit-operating-system"
+  ],
+  "all_courses": [
+    "course1",
+    "course2",
+    "course3",
+    "course4",
+    "course5",
+    "course6",
+    "course7",
+    "course8",
+    "course9",
+    "course10",
+    "course11",
+    "course12",
+    "course13"
+  ],
+  "all_lessons": [
+    "lesson-introduction-to-computing",
+    "lesson-empirical-laws",
+    "lesson-boole-algebra",
+    "lesson-normal-forms-dnf-cnf",
+    "lesson-logic-diagrams",
+    "lesson-circuit-minimization-algebraic",
+    "lesson-karnaugh-minimization",
+    "lesson-combinational-circuits-mux-decoder",
+    "lesson-adder-circuits-and-alu",
+    "lesson-sequential-circuits-intro",
+    "lesson-bistable-circuits",
+    "lesson-latches-and-flip-flops",
+    "lesson-registers-and-counters",
+    "lesson-finite-state-machine-design",
+    "lesson-microprogramming",
+    "lesson-alphanumerical-codes",
+    "lesson-positional-representation",
+    "lesson-base-conversion",
+    "lesson-bcd-and-excess-representations",
+    "lesson-fixed-point-representations",
+    "lesson-overflow-detection",
+    "lesson-floating-point-representations",
+    "lesson-floating-point-arithmetic",
+    "lesson-computer-architecture-visions",
+    "lesson-computer-organization",
+    "lesson-memory-types",
+    "lesson-memory-structure-and-addressing",
+    "lesson-memory-hierarchy-and-cache-intro",
+    "lesson-cache-performance",
+    "lesson-cache-construction-types",
+    "lesson-cache-write-policies",
+    "lesson-cpu-structure",
+    "lesson-instruction-execution",
+    "lesson-pipeline",
+    "lesson-pipeline-dependencies",
+    "lesson-branch-prediction",
+    "lesson-speculative-execution",
+    "lesson-predication",
+    "lesson-out-of-order-execution",
+    "lesson-register-renaming",
+    "lesson-hyperthreading",
+    "lesson-risc-vs-cisc",
+    "lesson-parallel-architectures",
+    "lesson-multiprocessor-communication",
+    "lesson-cache-coherence",
+    "lesson-peripheral-devices",
+    "lesson-bus-communication",
+    "lesson-interrupt-system",
+    "lesson-operating-system-intro",
+    "lesson-kernel",
+    "lesson-system-calls",
+    "lesson-drivers",
+    "lesson-process-management",
+    "lesson-memory-segmentation",
+    "lesson-memory-fragmentation-and-placement",
+    "lesson-memory-pagination",
+    "lesson-virtual-memory",
+    "lesson-inter-process-communication",
+    "lesson-mmu-intel-and-os",
+    "lesson-program-compilation-and-linking",
+    "lesson-shared-libraries"
+  ],
+  "total_lessons": 61,
+  "total_units": 7,
+  "total_source_pdfs": 13,
+  "instructors": [
+    "Prof. dr. Henri Luchian",
+    "Lect. dr. Vlad Rădulescu"
+  ],
+  "description": "A first-year course introducing computer architecture from the gate level up to the operating system. Part I covers digital logic (Boole algebra, combinational and sequential circuits), data representations (fixed-point, floating-point), and the computer's memory system. Part II covers CPU performance techniques (pipeline, branch prediction, speculative execution), multiprocessor systems, I/O and interrupts, and OS internals (process management, memory management, IPC, program linking).",
+  "prerequisites": [],
+  "knowledge_graph_entry_points": [
+    "lesson-introduction-to-computing",
+    "lesson-boole-algebra",
+    "lesson-positional-representation"
+  ],
+  "curriculum_map": {
+    "digital_logic": [
+      "unit-boole-algebra-and-combinational-circuits",
+      "unit-sequential-circuits-and-automata"
+    ],
+    "data_representation": [
+      "unit-internal-representations"
+    ],
+    "hardware_architecture": [
+      "unit-computer-architecture-and-memory",
+      "unit-cpu-structure-and-performance"
+    ],
+    "io_and_interrupts": [
+      "unit-io-interrupts-and-parallel"
+    ],
+    "operating_systems": [
+      "unit-operating-system"
+    ]
+  }
+}

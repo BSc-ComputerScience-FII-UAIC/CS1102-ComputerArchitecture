@@ -1,0 +1,60 @@
+{
+  "id": "unit-internal-representations",
+  "title": "Internal Data Representations",
+  "course": "Computer Architecture and Operating Systems",
+  "part": "Part I",
+  "order": 3,
+  "source_courses": [
+    "course3",
+    "course4",
+    "course5"
+  ],
+  "lessons": [
+    "lesson-alphanumerical-codes",
+    "lesson-positional-representation",
+    "lesson-base-conversion",
+    "lesson-bcd-and-excess-representations",
+    "lesson-fixed-point-representations",
+    "lesson-overflow-detection",
+    "lesson-floating-point-representations",
+    "lesson-floating-point-arithmetic"
+  ],
+  "summary": "Covers all standard data representations used inside computers: character codes (ASCII, Unicode), positional number systems and base conversion, BCD and excess-k, fixed-point (A+S, C1, C2) including overflow detection, and floating-point (IEEE 754 single/double precision) including arithmetic algorithms.",
+  "key_concepts": [
+    "ASCII / Unicode",
+    "positional number system",
+    "base conversion",
+    "BCD",
+    "excess-k",
+    "sign-magnitude / one's complement / two's complement",
+    "overflow detection",
+    "IEEE 754 floating-point",
+    "NaN / infinity / denormalised"
+  ],
+  "learning_objectives": [
+    "Convert numbers between bases",
+    "Perform BCD addition with correction",
+    "Compare A+S, C1, and C2 fixed-point representations",
+    "Detect overflow in two's complement arithmetic",
+    "Encode and decode IEEE 754 single-precision numbers",
+    "Perform floating-point addition and multiplication"
+  ],
+  "prerequisites": [
+    "unit-boole-algebra-and-combinational-circuits"
+  ],
+  "relationships": [
+    {
+      "type": "follows",
+      "target": "unit-sequential-circuits-and-automata"
+    },
+    {
+      "type": "precedes",
+      "target": "unit-computer-architecture-and-memory"
+    },
+    {
+      "type": "part_of",
+      "target": "year-1"
+    }
+  ],
+  "estimated_total_minutes": 360
+}
