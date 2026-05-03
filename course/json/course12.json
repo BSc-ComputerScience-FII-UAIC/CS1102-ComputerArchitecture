@@ -182,7 +182,6 @@
   "lessons": [
     "lesson-memory-fragmentation-and-placement",
     "lesson-memory-pagination",
-    "lesson-tlb-and-multi-level-tables",
     "lesson-virtual-memory",
     "lesson-inter-process-communication"
   ],
